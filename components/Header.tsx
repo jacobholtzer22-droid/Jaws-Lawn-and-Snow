@@ -62,7 +62,7 @@ export default function Header() {
           {/* Mobile: call + menu */}
           <a
             href={site.business.phoneHref}
-            className="btn-primary px-4 py-2.5 sm:hidden"
+            className="btn-primary min-h-[44px] px-4 py-3 sm:hidden"
             aria-label={`Call ${site.business.name}`}
           >
             <Phone className="h-4 w-4" aria-hidden="true" />

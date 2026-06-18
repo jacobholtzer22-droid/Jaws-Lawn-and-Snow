@@ -12,6 +12,12 @@ type Props = {
   priority?: boolean;
   /** Extra classes on the <img> / placeholder root. */
   className?: string;
+  /**
+   * Where the placeholder label sits.
+   * 'center' (default) for self-contained image boxes.
+   * 'top' for full-bleed heroes — keeps the label out of the headline/copy zone.
+   */
+  align?: "center" | "top";
 };
 
 /**
@@ -25,6 +31,7 @@ export default function ImagePlaceholder({
   sizes = "100vw",
   priority = false,
   className = "",
+  align = "center",
 }: Props) {
   if (image.src) {
     return (
@@ -39,20 +46,34 @@ export default function ImagePlaceholder({
     );
   }
 
+  const isTop = align === "top";
+
   return (
     <div
       role="img"
       aria-label={image.alt}
-      className={`flex h-full w-full flex-col items-center justify-center gap-2 bg-pine p-6 text-center ${className}`}
+      className={`flex h-full w-full flex-col items-center gap-2 bg-pine p-6 text-center ${
+        isTop ? "justify-start pt-24" : "justify-center"
+      } ${className}`}
       style={{
         backgroundImage:
           "repeating-linear-gradient(118deg, rgba(244,241,232,0.05) 0 14px, transparent 14px 28px)",
       }}
     >
-      <ImageOff className="h-6 w-6 text-birch/55" aria-hidden="true" />
-      <span className="max-w-[26ch] text-xs font-medium uppercase tracking-wider text-birch/70">
-        {image.placeholderLabel}
-      </span>
+      {isTop ? (
+        /* Compact pill near the top — never overlaps the bottom-anchored hero copy. */
+        <span className="inline-flex items-center gap-2 rounded-full bg-loam/55 px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider text-birch/70 backdrop-blur-sm">
+          <ImageOff className="h-4 w-4 shrink-0" aria-hidden="true" />
+          {image.placeholderLabel}
+        </span>
+      ) : (
+        <>
+          <ImageOff className="h-6 w-6 text-birch/55" aria-hidden="true" />
+          <span className="max-w-[26ch] text-xs font-medium uppercase tracking-wider text-birch/70">
+            {image.placeholderLabel}
+          </span>
+        </>
+      )}
     </div>
   );
 }

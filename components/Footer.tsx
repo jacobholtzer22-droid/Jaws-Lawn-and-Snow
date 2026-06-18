@@ -20,7 +20,7 @@ export default function Footer() {
             </p>
             <a
               href={site.business.phoneHref}
-              className="mt-5 inline-flex items-center gap-2 font-display text-lg font-bold text-birch transition-colors hover:text-sap"
+              className="mt-4 inline-flex min-h-[44px] items-center gap-2 font-display text-lg font-bold text-birch transition-colors hover:text-sap"
             >
               <Phone className="h-5 w-5 text-sap" aria-hidden="true" />
               {site.business.phoneDisplay}
@@ -36,12 +36,12 @@ export default function Footer() {
             <h2 className="text-xs font-semibold uppercase tracking-wider text-birch/55">
               {site.footer.exploreLabel}
             </h2>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-2 space-y-1">
               {site.nav.map((item) => (
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="text-sm text-birch/75 transition-colors hover:text-birch"
+                    className="inline-flex min-h-[44px] items-center text-sm text-birch/75 transition-colors hover:text-birch"
                   >
                     {item.label}
                   </a>

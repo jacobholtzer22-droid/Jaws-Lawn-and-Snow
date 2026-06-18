@@ -60,10 +60,10 @@ export default function Reviews() {
                 ) : (
                   /* Placeholder — paste a real review in site.config.ts, never invent. */
                   <div className="mt-4 flex flex-1 flex-col justify-center rounded-xl border border-dashed border-birch/25 p-6 text-center">
-                    <span className="text-xs font-semibold uppercase tracking-wider text-birch/55">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-birch/70">
                       {reviews.placeholderLabel} {i + 1}
                     </span>
-                    <span className="mt-1 text-xs text-birch/40">
+                    <span className="mt-1 text-xs text-birch/55">
                       {reviews.placeholderHint}
                     </span>
                   </div>

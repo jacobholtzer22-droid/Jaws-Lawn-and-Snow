@@ -152,7 +152,7 @@ export default function ContactForm() {
           type="checkbox"
           checked={smsConsent}
           onChange={(e) => setSmsConsent(e.target.checked)}
-          className="mt-1 h-5 w-5 shrink-0 cursor-pointer accent-sap"
+          className="mt-0.5 h-6 w-6 shrink-0 cursor-pointer accent-sap"
         />
         <label
           htmlFor="smsConsent"

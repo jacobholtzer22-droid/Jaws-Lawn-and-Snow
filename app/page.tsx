@@ -7,6 +7,7 @@ import ServiceArea from "@/components/ServiceArea";
 import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
+import MobileCtaBar from "@/components/MobileCtaBar";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <MobileCtaBar />
     </>
   );
 }

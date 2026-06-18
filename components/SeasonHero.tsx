@@ -42,6 +42,7 @@ export default function SeasonHero() {
                 image={site.images[hero.seasons[key].imageKey]}
                 sizes="100vw"
                 priority={key === hero.defaultSeason}
+                align="top"
               />
             </div>
           );
@@ -88,7 +89,7 @@ export default function SeasonHero() {
                   type="button"
                   aria-pressed={isActive}
                   onClick={() => setSeason(key)}
-                  className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
+                  className={`inline-flex min-h-[44px] items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
                     isActive
                       ? activeClass
                       : "text-birch/70 hover:text-birch"
