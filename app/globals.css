@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    scroll-behavior: smooth;
+  }
+
+  /* Anchor links land below the sticky header, not under it. */
+  section[id] {
+    scroll-margin-top: 84px;
+  }
+
+  body {
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: #79b515;
+    color: #173404;
+  }
+
+  /* Visible keyboard focus everywhere — never remove the outline silently. */
+  :focus-visible {
+    outline: 2px solid #79b515;
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* Respect reduced-motion: kill smooth scroll + animations + transitions. */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-page px-5 sm:px-8;
+  }
+
+  .eyebrow {
+    @apply font-display text-xs font-semibold uppercase tracking-[0.18em] text-glacier-dark;
+  }
+
+  /* Display headings — Bricolage in sentence case, tight and confident. */
+  .h-display {
+    @apply font-display font-extrabold leading-[1.04] tracking-[-0.02em];
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-body text-sm font-semibold transition-colors duration-200 focus-visible:outline-offset-4;
+  }
+
+  .btn-primary {
+    @apply btn bg-sap px-6 py-3.5 text-sap-deep hover:bg-sap-light;
+  }
+
+  .btn-snow {
+    @apply btn bg-glacier px-6 py-3.5 text-white hover:bg-glacier-light;
+  }
+
+  .btn-ghost {
+    @apply btn border border-birch/40 bg-transparent px-6 py-3.5 text-birch hover:border-birch/70 hover:bg-white/10;
+  }
+
+  .btn-dark {
+    @apply btn bg-pine px-6 py-3.5 text-birch hover:bg-pine-light;
+  }
+
+  /* The mowing-stripe motif — alternating tonal diagonal bands.
+   * Used as a thin divider ("field rule") and as section texture. */
+  .field-rule {
+    height: 8px;
+    width: 100%;
+    background-image: repeating-linear-gradient(
+      118deg,
+      #1e3d2c 0 14px,
+      #2c5740 14px 28px
+    );
+    opacity: 0.9;
+  }
+
+  /* Subtle stripe wash for light section backgrounds. */
+  .stripe-wash {
+    background-image: repeating-linear-gradient(
+      118deg,
+      rgba(30, 61, 44, 0.04) 0 16px,
+      transparent 16px 32px
+    );
+  }
+}
