@@ -165,36 +165,66 @@ export const site = {
       description:
         "Sharp, even cuts on a schedule that fits your yard. We mow, handle the clippings, and leave clean lines every single visit.",
       icon: Sprout,
+      image: {
+        src: "", // -> /images/service-mowing.jpg
+        alt: "A freshly mowed green lawn with clean, even mowing stripes",
+        placeholderLabel: "Lawn mowing — striped, freshly cut lawn",
+      },
     },
     {
       title: "Trimming & Edging",
       description:
         "Crisp edges along walks, drives, and beds, plus trimming around fences and trees — the details that make a yard look finished.",
       icon: Scissors,
+      image: {
+        src: "", // -> /images/service-edging.jpg
+        alt: "A crisp, clean-edged lawn border running along a walkway",
+        placeholderLabel: "Trimming & edging — crisp lawn border",
+      },
     },
     {
       title: "Spring & Fall Cleanups",
       description:
         "Leaves, sticks, and winter mess cleared out so your lawn starts the season healthy and your beds look ready, not buried.",
       icon: Leaf,
+      image: {
+        src: "", // -> /images/service-cleanup.jpg
+        alt: "A yard being cleared of fallen autumn leaves",
+        placeholderLabel: "Cleanups — clearing fall leaves",
+      },
     },
     {
       title: "Mulch & Bed Care",
       description:
         "Fresh mulch, weeded beds, and tidy borders that lock in moisture, hold back weeds, and make the whole yard pop.",
       icon: Flower2,
+      image: {
+        src: "", // -> /images/service-mulch.jpg
+        alt: "A tidy garden bed topped with fresh dark mulch",
+        placeholderLabel: "Mulch & beds — fresh mulched bed",
+      },
     },
     {
       title: "Snow Plowing",
       description:
         "Driveways and lots plowed fast after every storm, with markers set ahead of time so we protect your grass and your concrete.",
       icon: Truck,
+      image: {
+        src: "", // -> /images/service-plowing.jpg
+        alt: "A residential driveway freshly plowed clear of snow",
+        placeholderLabel: "Snow plowing — cleared driveway",
+      },
     },
     {
       title: "Shoveling & Salting",
       description:
         "Walkways, steps, and entries cleared by hand and salted down, so no one slips on the way to the door.",
       icon: Shovel,
+      image: {
+        src: "", // -> /images/service-salting.jpg
+        alt: "A shoveled and salted front walkway in winter",
+        placeholderLabel: "Shoveling & salting — cleared walkway",
+      },
     },
   ] satisfies Service[],
 
@@ -370,6 +400,7 @@ export const site = {
 
   /* --- Nav (one entry per page/route) --- */
   nav: [
+    { label: "Home", href: "/" },
     { label: "Services", href: "/services" },
     { label: "About", href: "/about" },
     { label: "Reviews", href: "/reviews" },
