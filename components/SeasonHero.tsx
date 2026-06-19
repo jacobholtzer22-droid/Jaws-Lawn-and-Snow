@@ -14,6 +14,52 @@ import ImagePlaceholder from "./ImagePlaceholder";
  * single interaction. Toggle buttons (aria-pressed), keyboard-operable, and the
  * crossfade is killed under prefers-reduced-motion (see globals.css).
  */
+
+/**
+ * Designed winter backdrop for the snow side — a deep-blue snowy night, clearly
+ * not a real job photo. Used only while `images.heroWinter.src` is empty; the
+ * moment a real snow photo is set in the config, the photo takes over instead.
+ */
+function WinterScene() {
+  const flakes =
+    "radial-gradient(3px 3px at 12% 18%, #fff, transparent)," +
+    "radial-gradient(2px 2px at 28% 32%, rgba(255,255,255,.8), transparent)," +
+    "radial-gradient(2.5px 2.5px at 45% 12%, #fff, transparent)," +
+    "radial-gradient(2px 2px at 62% 28%, rgba(255,255,255,.75), transparent)," +
+    "radial-gradient(3px 3px at 78% 16%, #fff, transparent)," +
+    "radial-gradient(2px 2px at 90% 34%, rgba(255,255,255,.7), transparent)," +
+    "radial-gradient(2.5px 2.5px at 18% 48%, #fff, transparent)," +
+    "radial-gradient(2px 2px at 38% 58%, rgba(255,255,255,.7), transparent)," +
+    "radial-gradient(3px 3px at 55% 46%, #fff, transparent)," +
+    "radial-gradient(2px 2px at 72% 62%, rgba(255,255,255,.75), transparent)," +
+    "radial-gradient(2.5px 2.5px at 86% 54%, #fff, transparent)," +
+    "radial-gradient(2px 2px at 8% 70%, rgba(255,255,255,.7), transparent)," +
+    "radial-gradient(3px 3px at 30% 78%, #fff, transparent)," +
+    "radial-gradient(2px 2px at 50% 72%, rgba(255,255,255,.7), transparent)," +
+    "radial-gradient(2.5px 2.5px at 66% 84%, #fff, transparent)," +
+    "radial-gradient(2px 2px at 82% 76%, rgba(255,255,255,.7), transparent)," +
+    "radial-gradient(2px 2px at 95% 66%, rgba(255,255,255,.7), transparent)";
+  return (
+    <div className="absolute inset-0" aria-hidden="true">
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, #0A1F2B 0%, #143A4E 55%, #1F506A 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-x-0 bottom-0 h-1/2"
+        style={{
+          backgroundImage:
+            "linear-gradient(180deg, transparent, rgba(110,160,188,0.25))",
+        }}
+      />
+      <div className="absolute inset-0" style={{ backgroundImage: flakes }} />
+    </div>
+  );
+}
+
 export default function SeasonHero() {
   const { hero, business, trust } = site;
   const [season, setSeason] = useState<SeasonKey>(hero.defaultSeason);
@@ -31,6 +77,8 @@ export default function SeasonHero() {
       <div className="absolute inset-0 -z-10">
         {seasonKeys.map((key) => {
           const isActive = key === season;
+          const img = site.images[hero.seasons[key].imageKey];
+          const useWinterScene = key === "winter" && !img.src;
           return (
             <div
               key={key}
@@ -39,33 +87,24 @@ export default function SeasonHero() {
                 isActive ? "opacity-100" : "opacity-0"
               }`}
             >
-              <ImagePlaceholder
-                image={site.images[hero.seasons[key].imageKey]}
-                sizes="100vw"
-                priority={key === hero.defaultSeason}
-                align="top"
-              />
+              {useWinterScene ? (
+                <WinterScene />
+              ) : (
+                <ImagePlaceholder
+                  image={img}
+                  sizes="100vw"
+                  priority={key === hero.defaultSeason}
+                  align="top"
+                />
+              )}
             </div>
           );
         })}
 
-        {/* Legibility scrim — deep green pooling up from the bottom + left. */}
-        <div className="absolute inset-0 bg-gradient-to-t from-loam via-loam/70 to-loam/20" />
-        <div className="absolute inset-0 bg-gradient-to-r from-loam/80 via-transparent to-transparent" />
-        {/* Seasonal color cast (sap = summer, glacier = winter). */}
-        <div
-          className={`absolute inset-0 mix-blend-soft-light transition-colors duration-500 ${
-            isWinter ? "bg-glacier/30" : "bg-sap/20"
-          }`}
-        />
-        {/* Mowing-stripe texture, very subtle. */}
-        <div
-          className="absolute inset-0 opacity-[0.06]"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(118deg, #ffffff 0 18px, transparent 18px 36px)",
-          }}
-        />
+        {/* Legibility scrim — light and weighted to the bottom-left (behind the copy)
+         * so the photo itself stays clearly visible. No stripe texture or color tint. */}
+        <div className="absolute inset-0 bg-gradient-to-t from-loam/95 via-loam/45 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-loam/55 via-transparent to-transparent" />
       </div>
 
       <div className="container-page w-full pb-16 pt-28 sm:pb-24">
