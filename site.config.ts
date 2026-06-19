@@ -101,6 +101,12 @@ export const site = {
   cta: {
     label: "Get a free quote", // header, services, etc.
     callShort: "Call", // mobile header button
+    href: "/contact", // where every primary CTA points
+    band: {
+      // Closing call-to-action band (Home + Reviews pages).
+      heading: "Ready to hand it off?",
+      sub: "Get a fast, free quote — lawn, snow, or both. No pressure, no obligation.",
+    },
   },
 
   /* --- Hero (THE signature: a season switch flips everything below) ---------
@@ -362,23 +368,52 @@ export const site = {
     errorLead: "Something went wrong sending that. Please call or text us at",
   },
 
-  /* --- Nav (anchor links on a single page) --- */
+  /* --- Nav (one entry per page/route) --- */
   nav: [
-    { label: "Services", href: "#services" },
-    { label: "Year-round", href: "#seasons" },
-    { label: "Why us", href: "#why-us" },
-    { label: "Service area", href: "#service-area" },
-    { label: "Reviews", href: "#reviews" },
-    { label: "Contact", href: "#contact" },
+    { label: "Services", href: "/services" },
+    { label: "About", href: "/about" },
+    { label: "Reviews", href: "/reviews" },
+    { label: "Contact", href: "/contact" },
   ] satisfies NavItem[],
 
-  /* --- SEO --- */
+  /* --- SEO ---
+   * `pages` holds per-route title/description (used by lib/seo.ts pageMetadata).
+   * `title`/`description` are the site defaults / home fallback.
+   */
   seo: {
     title:
       "Jaws Lawn & Snow — Lawn Care & Snow Removal in Southeast Michigan",
     description:
       "Lawn care in summer, snow removal in winter — one local, insured crew for your whole property in Southeast Michigan. Mowing, cleanups, plowing, and salting. Get a free quote.",
     url: "https://jawslawnandsnow.com", // TODO: confirm final domain
+    pages: {
+      home: {
+        title:
+          "Jaws Lawn & Snow — Lawn Care & Snow Removal in Southeast Michigan",
+        description:
+          "Lawn care in summer, snow removal in winter — one local, insured crew for your whole property in Southeast Michigan. Get a free quote.",
+      },
+      services: {
+        title: "Services — Lawn Care & Snow Removal | Jaws Lawn & Snow",
+        description:
+          "Mowing, edging, spring & fall cleanups, mulch, snow plowing, shoveling and salting — one local crew for your whole property, all year.",
+      },
+      about: {
+        title: "About — Local, Insured Lawn & Snow Crew | Jaws Lawn & Snow",
+        description:
+          "A local, owner-run crew that treats your property like our own — and shows up in January, not just July. Serving Southeast Michigan year-round.",
+      },
+      reviews: {
+        title: "Reviews — Jaws Lawn & Snow",
+        description:
+          "See what Southeast Michigan homeowners say about Jaws Lawn & Snow's lawn care and snow removal.",
+      },
+      contact: {
+        title: "Get a Free Quote — Jaws Lawn & Snow",
+        description:
+          "Tell us about your property and get a fast, free quote for lawn care, snow removal, or both. We'll text you back quickly.",
+      },
+    },
   },
 
   /* --- Footer --- */

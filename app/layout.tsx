@@ -1,6 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import { site } from "@/site.config";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import MobileCtaBar from "@/components/MobileCtaBar";
 import "./globals.css";
 
 /* Display: Bricolage Grotesque — an expressive, slightly characterful grotesque.
@@ -22,15 +25,11 @@ const body = Figtree({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.seo.url),
-  title: site.seo.title,
-  description: site.seo.description,
-  openGraph: {
-    title: site.seo.title,
-    description: site.seo.description,
-    url: site.seo.url,
-    siteName: site.business.name,
-    type: "website",
+  title: {
+    default: site.seo.title,
+    template: "%s",
   },
+  description: site.seo.description,
   robots: { index: true, follow: true },
 };
 
@@ -45,7 +44,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body className="bg-birch font-body text-loam antialiased">{children}</body>
+      <body className="bg-birch font-body text-loam antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-pine focus:px-4 focus:py-2 focus:font-semibold focus:text-birch"
+        >
+          Skip to content
+        </a>
+        <Header />
+        <main id="main">{children}</main>
+        <Footer />
+        <MobileCtaBar />
+      </body>
     </html>
   );
 }

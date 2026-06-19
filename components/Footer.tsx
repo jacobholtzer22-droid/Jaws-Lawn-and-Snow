@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Phone, MapPin } from "lucide-react";
 import { site } from "@/site.config";
 import { DAY_ORDER, dayLabel, formatDayHours } from "@/lib/format";
@@ -39,12 +40,12 @@ export default function Footer() {
             <ul className="mt-2 space-y-1">
               {site.nav.map((item) => (
                 <li key={item.href}>
-                  <a
+                  <Link
                     href={item.href}
                     className="inline-flex min-h-[44px] items-center text-sm text-birch/75 transition-colors hover:text-birch"
                   >
                     {item.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

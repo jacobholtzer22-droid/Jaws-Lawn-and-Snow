@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Phone, Star } from "lucide-react";
 import { site } from "@/site.config";
 import type { SeasonKey } from "@/site.config";
@@ -119,12 +120,12 @@ export default function SeasonHero() {
             </p>
 
             <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href="#contact"
+              <Link
+                href={site.cta.href}
                 className={`${isWinter ? "btn-snow" : "btn-primary"} px-7 py-4 text-base`}
               >
                 {active.primaryCta}
-              </a>
+              </Link>
               <a
                 href={business.phoneHref}
                 className="btn-ghost px-7 py-4 text-base"

@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Phone, Menu, X } from "lucide-react";
 import { site } from "@/site.config";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -14,6 +17,14 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close the mobile menu whenever the route changes.
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header
@@ -24,27 +35,35 @@ export default function Header() {
       }`}
     >
       <div className="container-page flex h-16 items-center justify-between gap-4">
-        {/* Wordmark */}
-        <a
-          href="#top"
+        {/* Wordmark → home */}
+        <Link
+          href="/"
           className="h-display text-xl text-birch sm:text-2xl"
-          aria-label={`${site.business.name} — back to top`}
+          aria-label={`${site.business.name} — home`}
         >
           {site.business.shortName}
           <span className="text-sap">.</span>
-        </a>
+        </Link>
 
         {/* Desktop nav */}
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {site.nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-sm font-medium text-birch/75 transition-colors hover:text-birch"
-            >
-              {item.label}
-            </a>
-          ))}
+          {site.nav.map((item) => {
+            const active = isActive(item.href);
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={active ? "page" : undefined}
+                className={`text-sm font-medium transition-colors ${
+                  active
+                    ? "text-birch underline decoration-sap decoration-2 underline-offset-[10px]"
+                    : "text-birch/75 hover:text-birch"
+                }`}
+              >
+                {item.label}
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
@@ -55,9 +74,9 @@ export default function Header() {
             <Phone className="h-4 w-4 text-sap" aria-hidden="true" />
             {site.business.phoneDisplay}
           </a>
-          <a href="#contact" className="btn-primary hidden sm:inline-flex">
+          <Link href={site.cta.href} className="btn-primary hidden sm:inline-flex">
             {site.cta.label}
-          </a>
+          </Link>
 
           {/* Mobile: call + menu */}
           <a
@@ -89,23 +108,24 @@ export default function Header() {
           className="border-t border-white/10 bg-pine/97 backdrop-blur lg:hidden"
         >
           <div className="container-page flex flex-col py-3">
-            {site.nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="border-b border-white/5 py-3 text-base font-medium text-birch/80 transition-colors hover:text-birch"
-              >
-                {item.label}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="btn-primary mt-4"
-            >
+            {site.nav.map((item) => {
+              const active = isActive(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={active ? "page" : undefined}
+                  className={`border-b border-white/5 py-3 text-base font-medium transition-colors ${
+                    active ? "text-sap" : "text-birch/80 hover:text-birch"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+            <Link href={site.cta.href} className="btn-primary mt-4">
               {site.cta.label}
-            </a>
+            </Link>
           </div>
         </nav>
       )}

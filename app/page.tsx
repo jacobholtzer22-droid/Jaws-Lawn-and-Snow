@@ -1,29 +1,16 @@
-import Header from "@/components/Header";
 import SeasonHero from "@/components/SeasonHero";
-import Services from "@/components/Services";
 import Seasons from "@/components/Seasons";
-import WhyUs from "@/components/WhyUs";
-import ServiceArea from "@/components/ServiceArea";
-import Reviews from "@/components/Reviews";
-import Contact from "@/components/Contact";
-import Footer from "@/components/Footer";
-import MobileCtaBar from "@/components/MobileCtaBar";
+import CtaBand from "@/components/CtaBand";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata("home");
 
 export default function Home() {
   return (
     <>
-      <Header />
-      <main>
-        <SeasonHero />
-        <Services />
-        <Seasons />
-        <WhyUs />
-        <ServiceArea />
-        <Reviews />
-        <Contact />
-      </main>
-      <Footer />
-      <MobileCtaBar />
+      <SeasonHero />
+      <Seasons />
+      <CtaBand />
     </>
   );
 }

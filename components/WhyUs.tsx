@@ -3,7 +3,8 @@ import Section from "./Section";
 import { site } from "@/site.config";
 import ImagePlaceholder from "./ImagePlaceholder";
 
-export default function WhyUs() {
+/** `hideHeading` drops the eyebrow + title when a PageHeader already provides the page title. */
+export default function WhyUs({ hideHeading = false }: { hideHeading?: boolean }) {
   const { whyUs, images } = site;
 
   return (
@@ -21,11 +22,17 @@ export default function WhyUs() {
 
         {/* Copy */}
         <div>
-          <p className="eyebrow mb-4">{whyUs.eyebrow}</p>
-          <h2 className="h-display text-3xl text-pine sm:text-4xl">
-            {whyUs.heading}
-          </h2>
-          <p className="mt-4 text-base text-loam/70">{whyUs.body}</p>
+          {!hideHeading && (
+            <>
+              <p className="eyebrow mb-4">{whyUs.eyebrow}</p>
+              <h2 className="h-display text-3xl text-pine sm:text-4xl">
+                {whyUs.heading}
+              </h2>
+            </>
+          )}
+          <p className={`${hideHeading ? "" : "mt-4"} text-base text-loam/70`}>
+            {whyUs.body}
+          </p>
 
           <ul className="mt-7 space-y-3">
             {whyUs.bullets.map((bullet) => (

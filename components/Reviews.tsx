@@ -1,39 +1,46 @@
 import { Star, Quote } from "lucide-react";
 import { site } from "@/site.config";
 
-export default function Reviews() {
+/** `hideHeading` drops the intro block when a PageHeader already provides the page title. */
+export default function Reviews({ hideHeading = false }: { hideHeading?: boolean }) {
   const { reviews } = site;
   const hasRating = reviews.rating != null;
 
   return (
     <section id="reviews" className="bg-loam py-20 text-birch sm:py-28">
       <div className="container-page">
-        <div className="mx-auto max-w-2xl text-center">
-          <p className="eyebrow mb-4 text-sap-light">{reviews.eyebrow}</p>
-          <h2 className="h-display text-3xl text-birch sm:text-4xl">
-            {hasRating
-              ? `Rated ${reviews.rating!.toFixed(1)} on ${reviews.source}.`
-              : reviews.heading}
-          </h2>
-          {hasRating ? (
-            <div
-              className="mt-5 flex items-center justify-center gap-1"
-              aria-label={`${reviews.rating!.toFixed(1)} out of 5 stars`}
-            >
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star
-                  key={i}
-                  className="h-6 w-6 fill-marigold text-marigold"
-                  aria-hidden="true"
-                />
-              ))}
-            </div>
-          ) : (
-            <p className="mt-4 text-base text-birch/70">{reviews.sub}</p>
-          )}
-        </div>
+        {!hideHeading && (
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow mb-4 text-sap-light">{reviews.eyebrow}</p>
+            <h2 className="h-display text-3xl text-birch sm:text-4xl">
+              {hasRating
+                ? `Rated ${reviews.rating!.toFixed(1)} on ${reviews.source}.`
+                : reviews.heading}
+            </h2>
+            {hasRating ? (
+              <div
+                className="mt-5 flex items-center justify-center gap-1"
+                aria-label={`${reviews.rating!.toFixed(1)} out of 5 stars`}
+              >
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className="h-6 w-6 fill-marigold text-marigold"
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
+            ) : (
+              <p className="mt-4 text-base text-birch/70">{reviews.sub}</p>
+            )}
+          </div>
+        )}
 
-        <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
+        <div
+          className={`mx-auto ${
+            hideHeading ? "" : "mt-12"
+          } grid max-w-4xl gap-6 sm:grid-cols-2`}
+        >
           {reviews.quotes.map((review, i) => {
             const hasQuote = review.quote.trim().length > 0;
             return (

@@ -1,20 +1,28 @@
+import Link from "next/link";
 import Section from "./Section";
 import { site } from "@/site.config";
 
-export default function Services() {
+/** `hideHeading` drops the intro block when a PageHeader already provides the page title. */
+export default function Services({ hideHeading = false }: { hideHeading?: boolean }) {
   const { servicesIntro, services, cta } = site;
 
   return (
     <Section id="services" tone="birch" className="stripe-wash">
-      <div className="max-w-2xl">
-        <p className="eyebrow mb-4">{servicesIntro.eyebrow}</p>
-        <h2 className="h-display text-3xl text-pine sm:text-4xl">
-          {servicesIntro.heading}
-        </h2>
-        <p className="mt-4 text-base text-loam/65">{servicesIntro.sub}</p>
-      </div>
+      {!hideHeading && (
+        <div className="max-w-2xl">
+          <p className="eyebrow mb-4">{servicesIntro.eyebrow}</p>
+          <h2 className="h-display text-3xl text-pine sm:text-4xl">
+            {servicesIntro.heading}
+          </h2>
+          <p className="mt-4 text-base text-loam/65">{servicesIntro.sub}</p>
+        </div>
+      )}
 
-      <ul className="mt-12 grid gap-px overflow-hidden rounded-2xl border border-pine/10 bg-pine/10 sm:grid-cols-2 lg:grid-cols-3">
+      <ul
+        className={`${
+          hideHeading ? "" : "mt-12"
+        } grid gap-px overflow-hidden rounded-2xl border border-pine/10 bg-pine/10 sm:grid-cols-2 lg:grid-cols-3`}
+      >
         {services.map((service) => {
           const Icon = service.icon;
           return (
@@ -37,9 +45,9 @@ export default function Services() {
       </ul>
 
       <div className="mt-10">
-        <a href="#contact" className="btn-dark px-7 py-4 text-base">
+        <Link href={cta.href} className="btn-dark px-7 py-4 text-base">
           {cta.label}
-        </a>
+        </Link>
       </div>
     </Section>
   );

@@ -1,13 +1,21 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
 import { site } from "@/site.config";
 
 /**
  * Mobile-only sticky bottom bar so the two highest-intent actions — call and
  * request a quote — are always within thumb reach (the sticky header only shows
- * Call). Hidden on lg+ where the header CTA + phone are persistently visible.
+ * Call). Hidden on lg+ where the header CTA + phone are persistently visible, and
+ * hidden on the contact page where the form + call card are already on screen.
  * Config-driven: all labels come from site.config.ts. No CRM involvement.
  */
 export default function MobileCtaBar() {
+  const pathname = usePathname();
+  if (pathname === site.cta.href) return null;
+
   return (
     <>
       {/* Reserve flow height so the fixed bar never covers the footer's last row.
@@ -32,12 +40,12 @@ export default function MobileCtaBar() {
             <Phone className="h-4 w-4" aria-hidden="true" />
             {site.cta.callShort}
           </a>
-          <a
-            href="#contact"
+          <Link
+            href={site.cta.href}
             className="btn-primary min-h-[48px] flex-1 px-4 py-3"
           >
             {site.cta.label}
-          </a>
+          </Link>
         </div>
       </div>
     </>

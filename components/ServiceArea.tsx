@@ -1,9 +1,10 @@
+import Link from "next/link";
 import { MapPin } from "lucide-react";
 import Section from "./Section";
 import { site } from "@/site.config";
 
 export default function ServiceArea() {
-  const { serviceArea } = site;
+  const { serviceArea, cta } = site;
 
   return (
     <Section id="service-area" tone="cream">
@@ -20,9 +21,9 @@ export default function ServiceArea() {
           <p className="mt-4 max-w-md text-base text-loam/65">
             {serviceArea.note}
           </p>
-          <a href="#contact" className="btn-dark mt-7 px-7 py-4 text-base">
+          <Link href={cta.href} className="btn-dark mt-7 px-7 py-4 text-base">
             {serviceArea.cta}
-          </a>
+          </Link>
         </div>
 
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3">

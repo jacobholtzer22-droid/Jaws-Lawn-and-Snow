@@ -5,20 +5,27 @@ import { site } from "@/site.config";
 
 const INFO_ICONS = [MessageSquare, CalendarClock] as const;
 
-export default function Contact() {
+/** `hideHeading` drops the title block when a PageHeader already provides the page title. */
+export default function Contact({ hideHeading = false }: { hideHeading?: boolean }) {
   const { contact, business } = site;
 
   return (
     <Section id="contact" tone="birch" className="stripe-wash">
       <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
         <div>
-          <p className="eyebrow mb-4">{contact.eyebrow}</p>
-          <h2 className="h-display text-3xl text-pine sm:text-5xl">
-            {contact.heading}
-          </h2>
-          <p className="mt-4 max-w-md text-base text-loam/65">{contact.sub}</p>
+          {!hideHeading && (
+            <>
+              <p className="eyebrow mb-4">{contact.eyebrow}</p>
+              <h2 className="h-display text-3xl text-pine sm:text-5xl">
+                {contact.heading}
+              </h2>
+              <p className="mt-4 max-w-md text-base text-loam/65">
+                {contact.sub}
+              </p>
+            </>
+          )}
 
-          <div className="mt-8 space-y-4">
+          <div className={`${hideHeading ? "" : "mt-8"} space-y-4`}>
             <a
               href={business.phoneHref}
               className="flex items-center gap-4 rounded-xl border border-pine/10 bg-white/60 px-5 py-4 transition-colors hover:border-sap"
