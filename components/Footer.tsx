@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, MapPin } from "lucide-react";
 import { site } from "@/site.config";
 import { DAY_ORDER, dayLabel, formatDayHours } from "@/lib/format";
@@ -12,11 +13,21 @@ export default function Footer() {
         <div className="grid gap-10 lg:grid-cols-4">
           {/* Brand + contact */}
           <div className="lg:col-span-2">
-            <div className="h-display text-2xl text-birch">
-              {site.business.name}
-              <span className="text-sap">.</span>
-            </div>
-            <p className="mt-3 max-w-xs text-sm text-birch/60">
+            {site.business.logo ? (
+              <Image
+                src={site.business.logo}
+                alt={site.business.logoAlt}
+                width={112}
+                height={112}
+                className="h-28 w-28 rounded-2xl"
+              />
+            ) : (
+              <div className="h-display text-2xl text-birch">
+                {site.business.name}
+                <span className="text-sap">.</span>
+              </div>
+            )}
+            <p className="mt-4 max-w-xs text-sm text-birch/60">
               {site.business.tagline}.
             </p>
             <a

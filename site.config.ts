@@ -95,6 +95,9 @@ export const site = {
     phoneHref: "tel:+17342622365",
     region: "Southeast Michigan",
     email: "", // optional — add a public contact email if Joey wants one shown
+    // Brand logo (square lockup). Set to "" to fall back to the text wordmark.
+    logo: "/images/logo.png",
+    logoAlt: "Jaws Lawn & Snow — Michigan",
   },
 
   /* --- Shared microcopy (buttons used in more than one place) --- */
@@ -166,8 +169,8 @@ export const site = {
         "Sharp, even cuts on a schedule that fits your yard. We mow, handle the clippings, and leave clean lines every single visit.",
       icon: Sprout,
       image: {
-        src: "", // -> /images/service-mowing.jpg
-        alt: "A freshly mowed green lawn with clean, even mowing stripes",
+        src: "/images/service-mowing.jpg",
+        alt: "View across a large lawn with fresh mowing stripes from behind the mower",
         placeholderLabel: "Lawn mowing — striped, freshly cut lawn",
       },
     },
@@ -177,8 +180,8 @@ export const site = {
         "Crisp edges along walks, drives, and beds, plus trimming around fences and trees — the details that make a yard look finished.",
       icon: Scissors,
       image: {
-        src: "", // -> /images/service-edging.jpg
-        alt: "A crisp, clean-edged lawn border running along a walkway",
+        src: "/images/service-edging.jpg",
+        alt: "A fenced backyard mowed in crisp stripes with clean edges along the perimeter",
         placeholderLabel: "Trimming & edging — crisp lawn border",
       },
     },
@@ -188,8 +191,8 @@ export const site = {
         "Leaves, sticks, and winter mess cleared out so your lawn starts the season healthy and your beds look ready, not buried.",
       icon: Leaf,
       image: {
-        src: "", // -> /images/service-cleanup.jpg
-        alt: "A yard being cleared of fallen autumn leaves",
+        src: "/images/service-cleanup.jpg",
+        alt: "A freshly cut lawn in autumn with fallen leaves scattered along the edges",
         placeholderLabel: "Cleanups — clearing fall leaves",
       },
     },
@@ -199,8 +202,8 @@ export const site = {
         "Fresh mulch, weeded beds, and tidy borders that lock in moisture, hold back weeds, and make the whole yard pop.",
       icon: Flower2,
       image: {
-        src: "", // -> /images/service-mulch.jpg
-        alt: "A tidy garden bed topped with fresh dark mulch",
+        src: "/images/service-mulch.jpg",
+        alt: "A manicured striped lawn and tidy landscaped beds beside a stone home",
         placeholderLabel: "Mulch & beds — fresh mulched bed",
       },
     },
@@ -257,6 +260,49 @@ export const site = {
         ],
       },
     ] satisfies SeasonColumn[],
+  },
+
+  /* --- Recent work gallery (Home page) ---
+   * Finished-job photos. Drop files in /public/images and list them here.
+   */
+  work: {
+    eyebrow: "Recent work",
+    heading: "Stripes we're proud of.",
+    sub: "A few recent lawns and properties we keep looking sharp across Southeast Michigan.",
+    photos: [
+      {
+        src: "/images/work-1.jpg",
+        alt: "A large backyard lawn mowed in clean stripes, bordered by tall trees",
+      },
+      {
+        src: "/images/work-2.jpg",
+        alt: "An expansive striped lawn running up to a row of evergreens",
+      },
+      {
+        src: "/images/work-3.jpg",
+        alt: "A wide striped lawn seen from behind a riding mower",
+      },
+      {
+        src: "/images/work-4.jpg",
+        alt: "A two-story home with a neatly striped front lawn",
+      },
+      {
+        src: "/images/work-5.jpg",
+        alt: "A rural property with a white rail fence and freshly cut grass",
+      },
+      {
+        src: "/images/work-6.jpg",
+        alt: "A backyard with a stone fire pit and a tidy, maintained lawn",
+      },
+      {
+        src: "/images/work-7.jpg",
+        alt: "A red brick home with a freshly striped front lawn",
+      },
+      {
+        src: "/images/work-8.jpg",
+        alt: "A neatly striped lawn under a clear blue sky",
+      },
+    ],
   },
 
   /* --- Why us / about --- */
@@ -340,18 +386,18 @@ export const site = {
    */
   images: {
     heroSummer: {
-      src: "", // -> /images/hero-lawn.jpg
-      alt: "Freshly mowed green lawn with clean mowing stripes in front of a Southeast Michigan home",
+      src: "/images/hero-lawn.jpg",
+      alt: "A two-story home with a freshly mowed, crisply striped front lawn under a clear blue sky",
       placeholderLabel: "Hero (summer) — striped green lawn, the strongest shot",
     },
     heroWinter: {
-      src: "", // -> /images/hero-snow.jpg
+      src: "", // TODO: no snow photo yet -> /images/hero-snow.jpg
       alt: "A residential driveway plowed clear of snow on a bright winter morning",
       placeholderLabel: "Hero (winter) — freshly plowed driveway",
     },
     about: {
-      src: "", // -> /images/crew.jpg
-      alt: "Jaws crew member mowing a tidy residential lawn beside the work truck",
+      src: "/images/crew.jpg",
+      alt: "The Jaws work truck parked at a home with a freshly striped front lawn",
       placeholderLabel: "About — the crew / truck at work",
     },
   } satisfies Record<string, SiteImage>,

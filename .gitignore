@@ -28,3 +28,6 @@ next-env.d.ts
 
 # vercel
 .vercel
+
+# raw client photo drop (HEIC originals) — processed JPGs live in /public/images
+/Jaws Lawn and Snow Photos/

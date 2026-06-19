@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Phone, Menu, X } from "lucide-react";
 import { site } from "@/site.config";
@@ -35,14 +36,27 @@ export default function Header() {
       }`}
     >
       <div className="container-page flex h-16 items-center justify-between gap-4">
-        {/* Wordmark → home */}
+        {/* Brand → home */}
         <Link
           href="/"
-          className="h-display text-xl text-birch sm:text-2xl"
+          className="flex items-center"
           aria-label={`${site.business.name} — home`}
         >
-          {site.business.shortName}
-          <span className="text-sap">.</span>
+          {site.business.logo ? (
+            <Image
+              src={site.business.logo}
+              alt={site.business.logoAlt}
+              width={48}
+              height={48}
+              priority
+              className="h-12 w-12 rounded-lg"
+            />
+          ) : (
+            <span className="h-display text-xl text-birch sm:text-2xl">
+              {site.business.shortName}
+              <span className="text-sap">.</span>
+            </span>
+          )}
         </Link>
 
         {/* Desktop nav */}
