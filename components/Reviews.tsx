@@ -1,6 +1,16 @@
 import { Star, Quote } from "lucide-react";
 import { site } from "@/site.config";
 
+function Stars({ className = "h-4 w-4" }: { className?: string }) {
+  return (
+    <span className="inline-flex" aria-hidden="true">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star key={i} className={`${className} fill-marigold text-marigold`} />
+      ))}
+    </span>
+  );
+}
+
 /** `hideHeading` drops the intro block when a PageHeader already provides the page title. */
 export default function Reviews({ hideHeading = false }: { hideHeading?: boolean }) {
   const { reviews } = site;
@@ -13,34 +23,44 @@ export default function Reviews({ hideHeading = false }: { hideHeading?: boolean
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-4 text-sap-light">{reviews.eyebrow}</p>
             <h2 className="h-display text-3xl text-birch sm:text-4xl">
-              {hasRating
-                ? `Rated ${reviews.rating!.toFixed(1)} on ${reviews.source}.`
-                : reviews.heading}
+              {reviews.heading}
             </h2>
-            {hasRating ? (
-              <div
-                className="mt-5 flex items-center justify-center gap-1"
-                aria-label={`${reviews.rating!.toFixed(1)} out of 5 stars`}
-              >
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star
-                    key={i}
-                    className="h-6 w-6 fill-marigold text-marigold"
-                    aria-hidden="true"
-                  />
-                ))}
-              </div>
-            ) : (
-              <p className="mt-4 text-base text-birch/70">{reviews.sub}</p>
-            )}
+            <p className="mt-4 text-base text-birch/70">{reviews.sub}</p>
           </div>
         )}
 
-        <div
-          className={`mx-auto ${
-            hideHeading ? "" : "mt-12"
-          } grid max-w-4xl gap-6 sm:grid-cols-2`}
-        >
+        {/* Rating summary + leave-a-review CTA (shown even when the heading is hidden). */}
+        {hasRating && (
+          <div
+            className={`mx-auto flex max-w-2xl flex-col items-center text-center ${
+              hideHeading ? "" : "mt-10"
+            }`}
+          >
+            <span
+              className="flex items-center gap-1"
+              aria-label={`${reviews.rating!.toFixed(1)} out of 5 stars`}
+            >
+              <Stars className="h-6 w-6" />
+            </span>
+            <p className="mt-3 text-base font-semibold text-birch">
+              Rated {reviews.rating!.toFixed(1)} on {reviews.source}
+              <span className="font-normal text-birch/60">
+                {" "}
+                · {reviews.reviewCount} reviews
+              </span>
+            </p>
+            <a
+              href={reviews.reviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary mt-5 px-6 py-3 text-sm"
+            >
+              {reviews.reviewCtaLabel}
+            </a>
+          </div>
+        )}
+
+        <div className="mx-auto mt-12 grid max-w-4xl gap-6 sm:grid-cols-2">
           {reviews.quotes.map((review, i) => {
             const hasQuote = review.quote.trim().length > 0;
             return (
@@ -48,9 +68,12 @@ export default function Reviews({ hideHeading = false }: { hideHeading?: boolean
                 key={i}
                 className="flex flex-col rounded-2xl border border-white/10 bg-pine/40 p-7"
               >
-                <Quote className="h-7 w-7 text-sap/70" aria-hidden="true" />
                 {hasQuote ? (
                   <>
+                    <div className="flex items-center justify-between">
+                      <Stars />
+                      <Quote className="h-7 w-7 text-sap/70" aria-hidden="true" />
+                    </div>
                     <blockquote className="mt-4 flex-1 text-lg leading-relaxed text-birch">
                       “{review.quote}”
                     </blockquote>
@@ -66,7 +89,7 @@ export default function Reviews({ hideHeading = false }: { hideHeading?: boolean
                   </>
                 ) : (
                   /* Placeholder — paste a real review in site.config.ts, never invent. */
-                  <div className="mt-4 flex flex-1 flex-col justify-center rounded-xl border border-dashed border-birch/25 p-6 text-center">
+                  <div className="flex flex-1 flex-col justify-center rounded-xl border border-dashed border-birch/25 p-6 text-center">
                     <span className="text-xs font-semibold uppercase tracking-wider text-birch/70">
                       {reviews.placeholderLabel} {i + 1}
                     </span>

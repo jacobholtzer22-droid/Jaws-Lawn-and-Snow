@@ -145,7 +145,7 @@ export const site = {
    * Google rating is confirmed). Set a number to show stars + "X.X on Google".
    */
   trust: {
-    rating: null as number | null, // TODO: set Joey's real Google rating, or leave null
+    rating: 5.0 as number | null, // all visible Google reviews are 5★ — confirm exact figure
     ratingSource: "Google",
     points: [
       "Locally owned & fully insured",
@@ -352,16 +352,45 @@ export const site = {
    * keeps the section honest (no star number) until a real rating is confirmed.
    */
   reviews: {
-    rating: null as number | null, // TODO: set Joey's real Google rating, or leave null
+    // TODO: confirm exact Google rating (5.0 inferred — all visible reviews are 5★).
+    rating: 5.0 as number | null,
+    reviewCount: 18,
     source: "Google",
+    // "Leave a review" link → Joey's Google listing (built from his place CID).
+    // For a true one-click write-review flow, swap in his GBP short link (g.page/r/.../review).
+    reviewUrl: "https://www.google.com/maps?cid=5948580125521396404",
+    reviewCtaLabel: "Leave us a review",
     eyebrow: "Reviews",
     heading: "Word gets around.",
     sub: "We let the work — and our customers — do the talking.",
     placeholderLabel: "Review coming soon",
     placeholderHint: "Paste a real Google review in site.config.ts",
+    // Real Google reviews (from jawslawnandsnow.com). All 5★. Do not invent more.
     quotes: [
-      { quote: "", author: "", context: "Google review" },
-      { quote: "", author: "", context: "Google review" },
+      {
+        quote:
+          "Jaws Lawn and Snow did a terrific job for me. Joey worked for 2 days to remove all the leaves our former lawn care left me with.",
+        author: "Carol Burki",
+        context: "Google review",
+      },
+      {
+        quote:
+          "Excellent service and communication. Kept us updated when we moved around multiple storms.",
+        author: "Ben Samuel",
+        context: "Google review",
+      },
+      {
+        quote:
+          "Jaws Lawn and Snow is very professional and Joey went above and beyond to make sure we were taken care of. Highly recommended.",
+        author: "Michael Toth",
+        context: "Google review",
+      },
+      {
+        quote:
+          "Joey gave me a quote and came out the same day. He did an excellent job.",
+        author: "Teri Davis",
+        context: "Google review",
+      },
     ] satisfies Review[],
   },
 
