@@ -5,7 +5,7 @@ import { site } from "@/site.config";
 
 /** `hideHeading` drops the intro block when a PageHeader already provides the page title. */
 export default function Services({ hideHeading = false }: { hideHeading?: boolean }) {
-  const { servicesIntro, services, cta } = site;
+  const { servicesIntro, serviceCategories, cta } = site;
 
   return (
     <Section id="services" tone="birch" className="stripe-wash">
@@ -19,47 +19,66 @@ export default function Services({ hideHeading = false }: { hideHeading?: boolea
         </div>
       )}
 
-      <ul
-        className={`${
-          hideHeading ? "" : "mt-12"
-        } grid gap-6 sm:grid-cols-2 lg:grid-cols-3`}
-      >
-        {services.map((service) => {
-          const Icon = service.icon;
+      <div className={hideHeading ? "" : "mt-12"}>
+        {serviceCategories.map((cat, ci) => {
+          const CatIcon = cat.icon;
           return (
-            <li
-              key={service.title}
-              className="group overflow-hidden rounded-2xl border border-pine/10 bg-birch transition-colors hover:border-pine/25"
+            <div
+              key={cat.key}
+              id={cat.key}
+              className={`scroll-mt-24 ${ci > 0 ? "mt-16" : ""}`}
             >
-              {/* Photo banner — labeled placeholder until the real photo lands. */}
-              <div className="relative aspect-[16/10] overflow-hidden bg-pine">
-                {service.image && (
-                  <ImagePlaceholder
-                    image={service.image}
-                    sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
-                    className="transition-transform duration-500 group-hover:scale-[1.03]"
-                  />
-                )}
-                {/* Brand icon badge, overlaid bottom-left. */}
-                <span className="absolute bottom-3 left-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-pine text-sap ring-2 ring-birch/90">
-                  <Icon className="h-5 w-5" aria-hidden="true" />
+              <div className="flex items-center gap-3">
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-pine text-sap">
+                  <CatIcon className="h-6 w-6" aria-hidden="true" />
                 </span>
+                <h2 className="font-display text-2xl font-bold text-pine">
+                  {cat.label}
+                </h2>
               </div>
+              <p className="mt-3 max-w-2xl text-base text-loam/65">{cat.blurb}</p>
 
-              <div className="p-6">
-                <h3 className="font-display text-lg font-bold tracking-tight text-pine">
-                  {service.title}
-                </h3>
-                <p className="mt-2 text-[15px] leading-relaxed text-loam/65">
-                  {service.description}
-                </p>
-              </div>
-            </li>
+              <ul className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                {cat.services.map((service) => {
+                  const Icon = service.icon;
+                  return (
+                    <li
+                      key={service.title}
+                      className="group overflow-hidden rounded-2xl border border-pine/10 bg-birch transition-colors hover:border-pine/25"
+                    >
+                      {/* Photo banner — labeled placeholder until the real photo lands. */}
+                      <div className="relative aspect-[16/10] overflow-hidden bg-pine">
+                        {service.image && (
+                          <ImagePlaceholder
+                            image={service.image}
+                            sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                            className="transition-transform duration-500 group-hover:scale-[1.03]"
+                          />
+                        )}
+                        {/* Brand icon badge, overlaid bottom-left. */}
+                        <span className="absolute bottom-3 left-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-pine text-sap ring-2 ring-birch/90">
+                          <Icon className="h-5 w-5" aria-hidden="true" />
+                        </span>
+                      </div>
+
+                      <div className="p-6">
+                        <h3 className="font-display text-lg font-bold tracking-tight text-pine">
+                          {service.title}
+                        </h3>
+                        <p className="mt-2 text-[15px] leading-relaxed text-loam/65">
+                          {service.description}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           );
         })}
-      </ul>
+      </div>
 
-      <div className="mt-10">
+      <div className="mt-12">
         <Link href={cta.href} className="btn-dark px-7 py-4 text-base">
           {cta.label}
         </Link>

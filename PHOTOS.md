@@ -15,17 +15,21 @@ edits, ever.**
 
 ## Service photos (one per card on the Services page)
 
-These live on each service in `site.config.ts` under `services[].image` (not the top-level
-`images` manifest). Same rule: set `src` and the placeholder is replaced.
+These live on each service in `site.config.ts` under `serviceCategories[].services[].image`
+(not the top-level `images` manifest). Same rule: set `src` and the placeholder is replaced.
 
-| Service (`site.config.ts`) | What goes here | Suggested file |
+| Category / Service (`site.config.ts`) | What goes here | Suggested file |
 |---|---|---|
-| Lawn Mowing | A striped, freshly cut lawn. | `/images/service-mowing.jpg` |
-| Trimming & Edging | A crisp lawn edge along a walk or drive. | `/images/service-edging.jpg` |
-| Spring & Fall Cleanups | Clearing leaves / seasonal debris. | `/images/service-cleanup.jpg` |
-| Mulch & Bed Care | A garden bed with fresh dark mulch. | `/images/service-mulch.jpg` |
-| Snow Plowing | A plowed, cleared driveway. | `/images/service-plowing.jpg` |
-| Shoveling & Salting | A shoveled, salted walkway. | `/images/service-salting.jpg` |
+| Lawn Care › Lawn Mowing | A striped, freshly cut lawn. | `/images/service-mowing.jpg` ✓ |
+| Lawn Care › Trimming & Edging | A crisp lawn edge along a walk or drive. | `/images/service-edging.jpg` ✓ |
+| Lawn Care › Spring & Fall Cleanups | Clearing leaves / seasonal debris. | `/images/service-cleanup.jpg` ✓ |
+| Landscaping › Mulch & Rock Beds | A garden bed with fresh dark mulch or rock. | `/images/service-mulch.jpg` ✓ |
+| Landscaping › Retaining Walls | A block/stone retaining wall (NEEDED). | `/images/service-walls.jpg` |
+| Landscaping › Plantings & Beds | Newly planted shrubs / flower beds (NEEDED). | `/images/service-plantings.jpg` |
+| Snow Removal › Snow Plowing | A plowed, cleared driveway (NEEDED). | `/images/service-plowing.jpg` |
+| Snow Removal › Shoveling & Salting | A shoveled, salted walkway (NEEDED). | `/images/service-salting.jpg` |
+
+A "✓" means the photo is already in place; the rest still show labeled placeholders.
 
 Set each one by editing that service's `image.src` (e.g. `src: "/images/service-mowing.jpg"`).
 Service-card photos read best as **landscape** (the card crops to 16:10).

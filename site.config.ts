@@ -16,6 +16,8 @@ import {
   Scissors,
   Leaf,
   Flower2,
+  Layers,
+  Trees,
   Truck,
   Shovel,
   Sun,
@@ -41,6 +43,16 @@ export type Service = {
   icon: LucideIcon;
   /** Optional per-service photo. Unused by default (cards are icon-led). */
   image?: SiteImage;
+};
+
+export type ServiceCategory = {
+  key: string;
+  label: string;
+  blurb: string;
+  icon: LucideIcon;
+  /** Representative photo for the Home category card. */
+  image: SiteImage;
+  services: Service[];
 };
 
 export type Review = {
@@ -162,74 +174,138 @@ export const site = {
     heading: "Everything your property needs, all year.",
     sub: "Pick the services you want or hand us the whole property. Either way, it gets done right and on time.",
   },
-  services: [
+  serviceCategories: [
     {
-      title: "Lawn Mowing",
-      description:
-        "Sharp, even cuts on a schedule that fits your yard. We mow, handle the clippings, and leave clean lines every single visit.",
+      key: "lawn",
+      label: "Lawn Care",
+      blurb:
+        "Weekly mowing, crisp edges, and seasonal cleanups that keep your yard sharp.",
       icon: Sprout,
       image: {
         src: "/images/service-mowing.jpg",
-        alt: "View across a large lawn with fresh mowing stripes from behind the mower",
-        placeholderLabel: "Lawn mowing — striped, freshly cut lawn",
+        alt: "A large lawn with fresh mowing stripes",
+        placeholderLabel: "Lawn care — striped lawn",
       },
+      services: [
+        {
+          title: "Lawn Mowing",
+          description:
+            "Sharp, even cuts on a schedule that fits your yard. We mow, handle the clippings, and leave clean lines every single visit.",
+          icon: Sprout,
+          image: {
+            src: "/images/service-mowing.jpg",
+            alt: "View across a large lawn with fresh mowing stripes from behind the mower",
+            placeholderLabel: "Lawn mowing — striped, freshly cut lawn",
+          },
+        },
+        {
+          title: "Trimming & Edging",
+          description:
+            "Crisp edges along walks, drives, and beds, plus trimming around fences and trees — the details that make a yard look finished.",
+          icon: Scissors,
+          image: {
+            src: "/images/service-edging.jpg",
+            alt: "A fenced backyard mowed in crisp stripes with clean edges along the perimeter",
+            placeholderLabel: "Trimming & edging — crisp lawn border",
+          },
+        },
+        {
+          title: "Spring & Fall Cleanups",
+          description:
+            "Leaves, sticks, and winter mess cleared out so your lawn starts the season healthy and your beds look ready, not buried.",
+          icon: Leaf,
+          image: {
+            src: "/images/service-cleanup.jpg",
+            alt: "A freshly cut lawn in autumn with fallen leaves scattered along the edges",
+            placeholderLabel: "Cleanups — clearing fall leaves",
+          },
+        },
+      ],
     },
     {
-      title: "Trimming & Edging",
-      description:
-        "Crisp edges along walks, drives, and beds, plus trimming around fences and trees — the details that make a yard look finished.",
-      icon: Scissors,
-      image: {
-        src: "/images/service-edging.jpg",
-        alt: "A fenced backyard mowed in crisp stripes with clean edges along the perimeter",
-        placeholderLabel: "Trimming & edging — crisp lawn border",
-      },
-    },
-    {
-      title: "Spring & Fall Cleanups",
-      description:
-        "Leaves, sticks, and winter mess cleared out so your lawn starts the season healthy and your beds look ready, not buried.",
-      icon: Leaf,
-      image: {
-        src: "/images/service-cleanup.jpg",
-        alt: "A freshly cut lawn in autumn with fallen leaves scattered along the edges",
-        placeholderLabel: "Cleanups — clearing fall leaves",
-      },
-    },
-    {
-      title: "Mulch & Bed Care",
-      description:
-        "Fresh mulch, weeded beds, and tidy borders that lock in moisture, hold back weeds, and make the whole yard pop.",
+      key: "landscaping",
+      label: "Landscaping",
+      blurb:
+        "Beds, walls, and plantings that give the whole property structure and curb appeal.",
       icon: Flower2,
       image: {
         src: "/images/service-mulch.jpg",
-        alt: "A manicured striped lawn and tidy landscaped beds beside a stone home",
-        placeholderLabel: "Mulch & beds — fresh mulched bed",
+        alt: "A manicured lawn with tidy landscaped beds",
+        placeholderLabel: "Landscaping — beds & borders",
       },
+      services: [
+        {
+          title: "Mulch & Rock Beds",
+          description:
+            "Fresh mulch or decorative rock, weeded and edged clean — beds that lock in moisture, hold back weeds, and make the whole yard pop.",
+          icon: Flower2,
+          image: {
+            src: "/images/service-mulch.jpg",
+            alt: "A manicured striped lawn and tidy landscaped beds beside a stone home",
+            placeholderLabel: "Mulch & rock beds — fresh mulched bed",
+          },
+        },
+        {
+          title: "Retaining Walls",
+          description:
+            "Block and stone retaining walls that hold back slopes, define beds, and add lasting structure to your yard.",
+          icon: Layers,
+          image: {
+            src: "", // TODO -> /images/service-walls.jpg
+            alt: "A block retaining wall edging a landscaped bed",
+            placeholderLabel: "Retaining walls — block / stone wall",
+          },
+        },
+        {
+          title: "Plantings & Beds",
+          description:
+            "Shrubs, perennials, and fresh planting beds laid out and planted to add color and curb appeal around your home.",
+          icon: Trees,
+          image: {
+            src: "", // TODO -> /images/service-plantings.jpg
+            alt: "Freshly planted shrubs and flower beds along a home",
+            placeholderLabel: "Plantings — shrubs & beds",
+          },
+        },
+      ],
     },
     {
-      title: "Snow Plowing",
-      description:
-        "Driveways and lots plowed fast after every storm, with markers set ahead of time so we protect your grass and your concrete.",
-      icon: Truck,
+      key: "snow",
+      label: "Snow Removal",
+      blurb:
+        "Plowing, shoveling, and salting so you get out on time no matter what fell overnight.",
+      icon: Snowflake,
       image: {
-        src: "", // -> /images/service-plowing.jpg
-        alt: "A residential driveway freshly plowed clear of snow",
-        placeholderLabel: "Snow plowing — cleared driveway",
+        src: "", // TODO: no snow photo yet -> /images/service-plowing.jpg
+        alt: "A residential driveway plowed clear of snow",
+        placeholderLabel: "Snow removal — plowed driveway",
       },
+      services: [
+        {
+          title: "Snow Plowing",
+          description:
+            "Driveways and lots plowed fast after every storm, with markers set ahead of time so we protect your grass and your concrete.",
+          icon: Truck,
+          image: {
+            src: "", // -> /images/service-plowing.jpg
+            alt: "A residential driveway freshly plowed clear of snow",
+            placeholderLabel: "Snow plowing — cleared driveway",
+          },
+        },
+        {
+          title: "Shoveling & Salting",
+          description:
+            "Walkways, steps, and entries cleared by hand and salted down, so no one slips on the way to the door.",
+          icon: Shovel,
+          image: {
+            src: "", // -> /images/service-salting.jpg
+            alt: "A shoveled and salted front walkway in winter",
+            placeholderLabel: "Shoveling & salting — cleared walkway",
+          },
+        },
+      ],
     },
-    {
-      title: "Shoveling & Salting",
-      description:
-        "Walkways, steps, and entries cleared by hand and salted down, so no one slips on the way to the door.",
-      icon: Shovel,
-      image: {
-        src: "", // -> /images/service-salting.jpg
-        alt: "A shoveled and salted front walkway in winter",
-        placeholderLabel: "Shoveling & salting — cleared walkway",
-      },
-    },
-  ] satisfies Service[],
+  ] satisfies ServiceCategory[],
 
   /* --- Two-season band (reinforces the year-round identity) --- */
   seasons: {
