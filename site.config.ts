@@ -205,7 +205,7 @@ export const site = {
           icon: Scissors,
           image: {
             src: "/images/service-edging.jpg",
-            alt: "A fenced backyard mowed in crisp stripes with clean edges along the perimeter",
+            alt: "A front lawn cut in clean stripes with crisp edges along the driveway and walkway",
             placeholderLabel: "Trimming & edging — crisp lawn border",
           },
         },
@@ -352,7 +352,7 @@ export const site = {
       },
       {
         src: "/images/work-2.jpg",
-        alt: "An expansive striped lawn running up to a row of evergreens",
+        alt: "A two-story home with a freshly striped front lawn",
       },
       {
         src: "/images/work-3.jpg",
@@ -360,7 +360,7 @@ export const site = {
       },
       {
         src: "/images/work-4.jpg",
-        alt: "A two-story home with a neatly striped front lawn",
+        alt: "A fenced backyard mowed in crisp green stripes",
       },
       {
         src: "/images/work-5.jpg",
@@ -492,7 +492,7 @@ export const site = {
   images: {
     heroSummer: {
       src: "/images/hero-lawn.jpg",
-      alt: "A two-story home with a freshly mowed, crisply striped front lawn under a clear blue sky",
+      alt: "A wide, freshly striped lawn sweeping up toward a row of evergreen trees",
       placeholderLabel: "Hero (summer) — striped green lawn, the strongest shot",
     },
     heroWinter: {
