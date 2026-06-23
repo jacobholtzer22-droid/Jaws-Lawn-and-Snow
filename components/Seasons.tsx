@@ -12,7 +12,7 @@ export default function Seasons() {
   return (
     <Section id="seasons" tone="pine">
       <div className="max-w-2xl">
-        <p className="eyebrow mb-4 text-sap-light">{seasons.eyebrow}</p>
+        <p className="eyebrow mb-4 text-birch">{seasons.eyebrow}</p>
         <h2 className="h-display text-3xl text-birch sm:text-4xl">
           {seasons.heading}
         </h2>

@@ -122,7 +122,7 @@ export default function SeasonHero() {
               const activeClass =
                 key === "winter"
                   ? "bg-glacier text-white"
-                  : "bg-sap text-sap-deep";
+                  : "bg-sap text-white";
               return (
                 <button
                   key={key}
@@ -144,7 +144,7 @@ export default function SeasonHero() {
 
           {/* Copy re-animates on season change (disabled under reduced-motion). */}
           <div key={season} className="animate-fade-up">
-            <p className="eyebrow mb-5 text-sap-light">{active.eyebrow}</p>
+            <p className="eyebrow mb-5 text-birch">{active.eyebrow}</p>
 
             <h1 className="h-display text-4xl text-birch sm:text-6xl lg:text-7xl">
               {active.headline.split("\n").map((line, i) => (

@@ -16,17 +16,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Deep evergreen — the structural anchor (both seasons).
-        pine: { DEFAULT: "#1E3D2C", dark: "#163020", light: "#2C5740" },
-        // Warm near-black green — text + deepest bands. Not pure black.
-        loam: { DEFAULT: "#13231A", deep: "#0D1812" },
-        // Warm birch paper — the page base. Not stark white, not cream.
-        birch: { DEFAULT: "#F4F1E8", dark: "#E9E4D5", deep: "#FBFAF4" },
-        // Summer / lawn accent — bright spring grass.
-        sap: { DEFAULT: "#79B515", dark: "#5E8F10", light: "#92CE2E", deep: "#173404" },
-        // Winter / snow accent — cold steel-ice blue.
-        glacier: { DEFAULT: "#4E86A6", dark: "#3C6E8B", light: "#7FAAC4", ice: "#DCEAF0", deep: "#0E3140" },
-        // Warm spark — rating stars + small highlights.
+        // Brand palette derived from the Jaws Lawn & Snow logo (red / navy / cream).
+        // Token names are legacy (from the old green theme); the VALUES now match
+        // the logo so every component re-themes without edits.
+        //
+        // Navy — structure: headers, footers, dark bands, headings, icon chips.
+        pine: { DEFAULT: "#103257", dark: "#0B2542", light: "#2C5781" },
+        // Ink (near-black navy) — body text + the darkest bands.
+        loam: { DEFAULT: "#0C1E34", deep: "#07131F" },
+        // Cream — the page base / light text on dark bands (the logo background).
+        birch: { DEFAULT: "#F5F1E7", dark: "#EBE5D6", deep: "#FBFAF3" },
+        // Red — the brand accent + primary CTA (the logo "JAWS").
+        sap: { DEFAULT: "#C01F22", dark: "#991619", light: "#D84A45", deep: "#4E0B0C" },
+        // Cold blue — winter / snow accent (a lighter tint of the navy family).
+        glacier: { DEFAULT: "#2E6E9C", dark: "#23577D", light: "#6CA0C8", ice: "#DCEAF4", deep: "#123A57" },
+        // Gold — rating stars (kept; a conventional, readable star color).
         marigold: { DEFAULT: "#E0962E", dark: "#BE7A1C" },
       },
       fontFamily: {

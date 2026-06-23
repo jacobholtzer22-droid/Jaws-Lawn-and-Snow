@@ -22,7 +22,7 @@ export default function PageHeader({ eyebrow, title, subtitle }: Props) {
         aria-hidden="true"
       />
       <div className="container-page relative">
-        <p className="eyebrow mb-4 text-sap-light">{eyebrow}</p>
+        <p className="eyebrow mb-4 text-birch">{eyebrow}</p>
         <h1 className="h-display text-4xl text-birch sm:text-5xl">{title}</h1>
         {subtitle && (
           <p className="mt-4 max-w-2xl text-base text-birch/75 sm:text-lg">

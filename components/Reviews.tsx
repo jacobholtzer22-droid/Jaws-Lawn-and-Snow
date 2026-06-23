@@ -21,7 +21,7 @@ export default function Reviews({ hideHeading = false }: { hideHeading?: boolean
       <div className="container-page">
         {!hideHeading && (
           <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow mb-4 text-sap-light">{reviews.eyebrow}</p>
+            <p className="eyebrow mb-4 text-birch">{reviews.eyebrow}</p>
             <h2 className="h-display text-3xl text-birch sm:text-4xl">
               {reviews.heading}
             </h2>
