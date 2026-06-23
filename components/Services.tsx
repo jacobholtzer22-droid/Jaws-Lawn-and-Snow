@@ -46,17 +46,33 @@ export default function Services({ hideHeading = false }: { hideHeading?: boolea
                       key={service.title}
                       className="group overflow-hidden rounded-2xl border border-pine/10 bg-birch transition-colors hover:border-pine/25"
                     >
-                      {/* Photo banner — labeled placeholder until the real photo lands. */}
+                      {/* Photo banner (or video) — labeled placeholder until the real photo lands. */}
                       <div className="relative aspect-[16/10] overflow-hidden bg-pine">
-                        {service.image && (
-                          <ImagePlaceholder
-                            image={service.image}
-                            sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
-                            className="transition-transform duration-500 group-hover:scale-[1.03]"
+                        {service.video ? (
+                          <video
+                            className="h-full w-full object-contain"
+                            src={service.video}
+                            poster={service.image?.src || undefined}
+                            controls
+                            preload="metadata"
+                            playsInline
+                            aria-label={service.image?.alt || service.title}
                           />
+                        ) : (
+                          service.image && (
+                            <ImagePlaceholder
+                              image={service.image}
+                              sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                              className="transition-transform duration-500 group-hover:scale-[1.03]"
+                            />
+                          )
                         )}
-                        {/* Brand icon badge, overlaid bottom-left. */}
-                        <span className="absolute bottom-3 left-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-pine text-sap ring-2 ring-birch/90">
+                        {/* Brand icon badge — moved to top on video cards so it clears the controls. */}
+                        <span
+                          className={`absolute left-3 ${
+                            service.video ? "top-3" : "bottom-3"
+                          } inline-flex h-10 w-10 items-center justify-center rounded-xl bg-pine text-sap ring-2 ring-birch/90`}
+                        >
                           <Icon className="h-5 w-5" aria-hidden="true" />
                         </span>
                       </div>

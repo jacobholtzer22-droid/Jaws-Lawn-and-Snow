@@ -18,6 +18,7 @@ import {
   Flower2,
   Layers,
   Trees,
+  Axe,
   Truck,
   Shovel,
   Sun,
@@ -43,6 +44,8 @@ export type Service = {
   icon: LucideIcon;
   /** Optional per-service photo. Unused by default (cards are icon-led). */
   image?: SiteImage;
+  /** Optional service video (mp4). Renders the photo as a poster + click-to-play. */
+  video?: string;
 };
 
 export type ServiceCategory = {
@@ -267,6 +270,18 @@ export const site = {
             placeholderLabel: "Plantings — shrubs & beds",
           },
         },
+        {
+          title: "Stump Grinding",
+          description:
+            "Old stumps ground down below grade and cleared away — so you get your yard back and stop mowing around them.",
+          icon: Axe,
+          image: {
+            src: "/images/service-stump.jpg",
+            alt: "A stump grinder removing a tree stump beside the Jaws work truck",
+            placeholderLabel: "Stump grinding — grinder at a stump",
+          },
+          video: "/videos/stump-grinding.mp4",
+        },
       ],
     },
     {
@@ -377,6 +392,22 @@ export const site = {
       {
         src: "/images/work-8.jpg",
         alt: "A neatly striped lawn under a clear blue sky",
+      },
+      {
+        src: "/images/work-9.jpg",
+        alt: "A riding mower maintaining the lawn at a commercial property",
+      },
+      {
+        src: "/images/work-10.jpg",
+        alt: "A freshly mowed commercial lot bordered by black fencing",
+      },
+      {
+        src: "/images/work-11.jpg",
+        alt: "A neatly striped residential lawn along a chain-link fence",
+      },
+      {
+        src: "/images/work-12.jpg",
+        alt: "A crisply mowed front lawn on a quiet residential street",
       },
     ],
   },

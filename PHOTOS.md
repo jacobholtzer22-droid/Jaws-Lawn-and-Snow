@@ -31,6 +31,18 @@ These live on each service in `site.config.ts` under `serviceCategories[].servic
 
 A "✓" means the photo is already in place; the rest still show labeled placeholders.
 
+### Stump Grinding (video)
+
+`Landscaping › Stump Grinding` shows a **video** (`services[].video`) with a poster image
+(`image.src`). The video lives at `/public/videos/stump-grinding.mp4` (compressed from the
+original ~50 MB clip to ~3 MB) and the poster is `/images/service-stump.jpg` (a frame pulled
+from the video). The card shows the poster + a native play button; the clip loads only when played.
+
+### Gallery (Recent work)
+
+`work-1`…`work-12` in `site.work.photos`. `work-9`/`work-10` are commercial-property work;
+all `work-*` files are in `/public/images`.
+
 Set each one by editing that service's `image.src` (e.g. `src: "/images/service-mowing.jpg"`).
 Service-card photos read best as **landscape** (the card crops to 16:10).
 
