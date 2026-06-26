@@ -19,7 +19,9 @@ export default function ServicesPreview() {
       </div>
 
       <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {serviceCategories.map((cat) => {
+        {serviceCategories
+          .filter((c) => !c.featured)
+          .map((cat) => {
           const Icon = cat.icon;
           return (
             <li key={cat.key}>

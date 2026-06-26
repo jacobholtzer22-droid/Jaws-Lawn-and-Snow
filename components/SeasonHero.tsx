@@ -1,179 +1,57 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 import { Phone, Star } from "lucide-react";
 import { site } from "@/site.config";
-import type { SeasonKey } from "@/site.config";
 import ImagePlaceholder from "./ImagePlaceholder";
 
 /**
- * THE signature element: a season switch.
- * One accessible toggle flips the hero photo, headline, copy, accent, and CTA
- * between Summer (lawn) and Winter (snow) — stating the year-round promise in a
- * single interaction. Toggle buttons (aria-pressed), keyboard-operable, and the
- * crossfade is killed under prefers-reduced-motion (see globals.css).
+ * Hero — a single static hero. (The summer/winter season switch was removed per
+ * the client; the year-round story now lives in the "Two seasons" band below.)
  */
-
-/**
- * Designed winter backdrop for the snow side — a deep-blue snowy night, clearly
- * not a real job photo. Used only while `images.heroWinter.src` is empty; the
- * moment a real snow photo is set in the config, the photo takes over instead.
- */
-function WinterScene() {
-  const flakes =
-    "radial-gradient(3px 3px at 12% 18%, #fff, transparent)," +
-    "radial-gradient(2px 2px at 28% 32%, rgba(255,255,255,.8), transparent)," +
-    "radial-gradient(2.5px 2.5px at 45% 12%, #fff, transparent)," +
-    "radial-gradient(2px 2px at 62% 28%, rgba(255,255,255,.75), transparent)," +
-    "radial-gradient(3px 3px at 78% 16%, #fff, transparent)," +
-    "radial-gradient(2px 2px at 90% 34%, rgba(255,255,255,.7), transparent)," +
-    "radial-gradient(2.5px 2.5px at 18% 48%, #fff, transparent)," +
-    "radial-gradient(2px 2px at 38% 58%, rgba(255,255,255,.7), transparent)," +
-    "radial-gradient(3px 3px at 55% 46%, #fff, transparent)," +
-    "radial-gradient(2px 2px at 72% 62%, rgba(255,255,255,.75), transparent)," +
-    "radial-gradient(2.5px 2.5px at 86% 54%, #fff, transparent)," +
-    "radial-gradient(2px 2px at 8% 70%, rgba(255,255,255,.7), transparent)," +
-    "radial-gradient(3px 3px at 30% 78%, #fff, transparent)," +
-    "radial-gradient(2px 2px at 50% 72%, rgba(255,255,255,.7), transparent)," +
-    "radial-gradient(2.5px 2.5px at 66% 84%, #fff, transparent)," +
-    "radial-gradient(2px 2px at 82% 76%, rgba(255,255,255,.7), transparent)," +
-    "radial-gradient(2px 2px at 95% 66%, rgba(255,255,255,.7), transparent)";
-  return (
-    <div className="absolute inset-0" aria-hidden="true">
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, #0A1F2B 0%, #143A4E 55%, #1F506A 100%)",
-        }}
-      />
-      <div
-        className="absolute inset-x-0 bottom-0 h-1/2"
-        style={{
-          backgroundImage:
-            "linear-gradient(180deg, transparent, rgba(110,160,188,0.25))",
-        }}
-      />
-      <div className="absolute inset-0" style={{ backgroundImage: flakes }} />
-    </div>
-  );
-}
-
 export default function SeasonHero() {
   const { hero, business, trust } = site;
-  const [season, setSeason] = useState<SeasonKey>(hero.defaultSeason);
-
-  const seasonKeys = Object.keys(hero.seasons) as SeasonKey[];
-  const active = hero.seasons[season];
-  const isWinter = season === "winter";
+  const active = hero.seasons[hero.defaultSeason];
+  const heroImage = site.images[active.imageKey];
 
   return (
     <section
       id="top"
       className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-pine"
     >
-      {/* Both season photos stacked; the active one crossfades in. */}
+      {/* Full-bleed hero photo + legibility scrim (weighted to the bottom-left). */}
       <div className="absolute inset-0 -z-10">
-        {seasonKeys.map((key) => {
-          const isActive = key === season;
-          const img = site.images[hero.seasons[key].imageKey];
-          const useWinterScene = key === "winter" && !img.src;
-          return (
-            <div
-              key={key}
-              aria-hidden={!isActive}
-              className={`absolute inset-0 transition-opacity duration-500 ${
-                isActive ? "opacity-100" : "opacity-0"
-              }`}
-            >
-              {useWinterScene ? (
-                <WinterScene />
-              ) : (
-                <ImagePlaceholder
-                  image={img}
-                  sizes="100vw"
-                  priority={key === hero.defaultSeason}
-                  align="top"
-                />
-              )}
-            </div>
-          );
-        })}
-
-        {/* Legibility scrim — light and weighted to the bottom-left (behind the copy)
-         * so the photo itself stays clearly visible. No stripe texture or color tint. */}
+        <ImagePlaceholder image={heroImage} sizes="100vw" priority />
         <div className="absolute inset-0 bg-gradient-to-t from-loam/95 via-loam/45 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-r from-loam/55 via-transparent to-transparent" />
       </div>
 
       <div className="container-page w-full pb-16 pt-28 sm:pb-24">
-        <div className="max-w-2xl">
-          {/* The season switch */}
-          <div
-            role="group"
-            aria-label={hero.switchLabel}
-            className="mb-7 inline-flex items-center gap-1 rounded-full bg-loam/65 p-1 ring-1 ring-white/15 backdrop-blur"
-          >
-            {seasonKeys.map((key) => {
-              const s = hero.seasons[key];
-              const Icon = s.icon;
-              const isActive = key === season;
-              const activeClass =
-                key === "winter"
-                  ? "bg-glacier text-white"
-                  : "bg-sap text-white";
-              return (
-                <button
-                  key={key}
-                  type="button"
-                  aria-pressed={isActive}
-                  onClick={() => setSeason(key)}
-                  className={`inline-flex min-h-[44px] items-center gap-2 rounded-full px-5 py-3 text-sm font-semibold transition-colors ${
-                    isActive
-                      ? activeClass
-                      : "text-birch/70 hover:text-birch"
-                  }`}
-                >
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                  {s.tabLabel}
-                </button>
-              );
-            })}
-          </div>
+        <div className="max-w-2xl animate-fade-up">
+          <p className="eyebrow mb-5 text-birch">{active.eyebrow}</p>
 
-          {/* Copy re-animates on season change (disabled under reduced-motion). */}
-          <div key={season} className="animate-fade-up">
-            <p className="eyebrow mb-5 text-birch">{active.eyebrow}</p>
+          <h1 className="h-display text-4xl text-birch sm:text-6xl lg:text-7xl">
+            {active.headline.split("\n").map((line, i) => (
+              <span key={i} className="block">
+                {line}
+              </span>
+            ))}
+          </h1>
 
-            <h1 className="h-display text-4xl text-birch sm:text-6xl lg:text-7xl">
-              {active.headline.split("\n").map((line, i) => (
-                <span key={i} className="block">
-                  {line}
-                </span>
-              ))}
-            </h1>
+          <p className="mt-6 max-w-xl text-base text-birch/85 sm:text-lg">
+            {active.sub}
+          </p>
 
-            <p className="mt-6 max-w-xl text-base text-birch/85 sm:text-lg">
-              {active.sub}
-            </p>
-
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <Link
-                href={site.cta.href}
-                className={`${isWinter ? "btn-snow" : "btn-primary"} px-7 py-4 text-base`}
-              >
-                {active.primaryCta}
-              </Link>
-              <a
-                href={business.phoneHref}
-                className="btn-ghost px-7 py-4 text-base"
-                aria-label={`Call ${business.name} at ${business.phoneDisplay}`}
-              >
-                <Phone className="h-4 w-4" aria-hidden="true" />
-                {business.phoneDisplay}
-              </a>
-            </div>
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <Link href={site.cta.href} className="btn-primary px-7 py-4 text-base">
+              {active.primaryCta}
+            </Link>
+            <a
+              href={business.phoneHref}
+              className="btn-ghost px-7 py-4 text-base"
+              aria-label={`Call ${business.name} at ${business.phoneDisplay}`}
+            >
+              <Phone className="h-4 w-4" aria-hidden="true" />
+              {business.phoneDisplay}
+            </a>
           </div>
 
           {/* Trust strip */}

@@ -55,6 +55,8 @@ export type ServiceCategory = {
   icon: LucideIcon;
   /** Representative photo for the Home category card. */
   image: SiteImage;
+  /** Render as a large featured block (e.g. a single service with a video) instead of a card grid. */
+  featured?: boolean;
   services: Service[];
 };
 
@@ -137,7 +139,7 @@ export const site = {
       summer: {
         tabLabel: "Summer",
         icon: Sun,
-        eyebrow: "Lawn care · Southeast Michigan",
+        eyebrow: "Lawn care & snow removal · Southeast Michigan",
         headline: "A lawn the\nneighbors notice.",
         sub: "Weekly mowing, clean edges, and tidy beds — handled on schedule, so your yard always looks like someone takes care of it. Because someone does.",
         primaryCta: "Get a free quote",
@@ -270,18 +272,6 @@ export const site = {
             placeholderLabel: "Plantings — shrubs & beds",
           },
         },
-        {
-          title: "Stump Grinding",
-          description:
-            "Old stumps ground down below grade and cleared away — so you get your yard back and stop mowing around them.",
-          icon: Axe,
-          image: {
-            src: "/images/service-stump.jpg",
-            alt: "A stump grinder removing a tree stump beside the Jaws work truck",
-            placeholderLabel: "Stump grinding — grinder at a stump",
-          },
-          video: "/videos/stump-grinding.mp4",
-        },
       ],
     },
     {
@@ -317,6 +307,33 @@ export const site = {
             alt: "A shoveled and salted front walkway in winter",
             placeholderLabel: "Shoveling & salting — cleared walkway",
           },
+        },
+      ],
+    },
+    {
+      key: "stump",
+      label: "Stump Grinding",
+      blurb:
+        "Old stumps ground down below grade and hauled away — watch the grinder go.",
+      icon: Axe,
+      featured: true,
+      image: {
+        src: "/images/service-stump.jpg",
+        alt: "A stump grinder removing a tree stump beside the Jaws work truck",
+        placeholderLabel: "Stump grinding — grinder at a stump",
+      },
+      services: [
+        {
+          title: "Stump Grinding",
+          description:
+            "Got an old stump in the way? We grind it down below grade and clear out the chips, so you get your yard back and stop mowing around it. Here's our grinder in action.",
+          icon: Axe,
+          image: {
+            src: "/images/service-stump.jpg",
+            alt: "A stump grinder removing a tree stump beside the Jaws work truck",
+            placeholderLabel: "Stump grinding — grinder at a stump",
+          },
+          video: "/videos/stump-grinding.mp4",
         },
       ],
     },

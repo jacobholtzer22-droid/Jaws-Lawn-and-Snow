@@ -1,5 +1,6 @@
 import SeasonHero from "@/components/SeasonHero";
 import ServicesPreview from "@/components/ServicesPreview";
+import FeaturedService from "@/components/FeaturedService";
 import Seasons from "@/components/Seasons";
 import Gallery from "@/components/Gallery";
 import CtaBand from "@/components/CtaBand";
@@ -12,6 +13,7 @@ export default function Home() {
     <>
       <SeasonHero />
       <ServicesPreview />
+      <FeaturedService />
       <Seasons />
       <Gallery />
       <CtaBand />

@@ -1,5 +1,6 @@
 import PageHeader from "@/components/PageHeader";
 import Services from "@/components/Services";
+import FeaturedService from "@/components/FeaturedService";
 import { site } from "@/site.config";
 import { pageMetadata } from "@/lib/seo";
 
@@ -16,6 +17,7 @@ export default function ServicesPage() {
         subtitle={servicesIntro.sub}
       />
       <Services hideHeading />
+      <FeaturedService />
     </>
   );
 }

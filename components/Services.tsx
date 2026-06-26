@@ -20,7 +20,9 @@ export default function Services({ hideHeading = false }: { hideHeading?: boolea
       )}
 
       <div className={hideHeading ? "" : "mt-12"}>
-        {serviceCategories.map((cat, ci) => {
+        {serviceCategories
+          .filter((c) => !c.featured)
+          .map((cat, ci) => {
           const CatIcon = cat.icon;
           return (
             <div
@@ -44,35 +46,19 @@ export default function Services({ hideHeading = false }: { hideHeading?: boolea
                   return (
                     <li
                       key={service.title}
-                      className="group overflow-hidden rounded-2xl border border-pine/10 bg-birch transition-colors hover:border-pine/25"
+                      className="group overflow-hidden rounded-2xl border border-pine/10 bg-birch transition duration-200 hover:-translate-y-1 hover:border-pine/20 hover:shadow-xl hover:shadow-pine/10"
                     >
-                      {/* Photo banner (or video) — labeled placeholder until the real photo lands. */}
+                      {/* Photo banner — labeled placeholder until the real photo lands. */}
                       <div className="relative aspect-[16/10] overflow-hidden bg-pine">
-                        {service.video ? (
-                          <video
-                            className="h-full w-full object-contain"
-                            src={service.video}
-                            poster={service.image?.src || undefined}
-                            controls
-                            preload="metadata"
-                            playsInline
-                            aria-label={service.image?.alt || service.title}
+                        {service.image && (
+                          <ImagePlaceholder
+                            image={service.image}
+                            sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                            className="transition-transform duration-500 group-hover:scale-[1.03]"
                           />
-                        ) : (
-                          service.image && (
-                            <ImagePlaceholder
-                              image={service.image}
-                              sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
-                              className="transition-transform duration-500 group-hover:scale-[1.03]"
-                            />
-                          )
                         )}
-                        {/* Brand icon badge — moved to top on video cards so it clears the controls. */}
-                        <span
-                          className={`absolute left-3 ${
-                            service.video ? "top-3" : "bottom-3"
-                          } inline-flex h-10 w-10 items-center justify-center rounded-xl bg-pine text-sap ring-2 ring-birch/90`}
-                        >
+                        {/* Brand icon badge, overlaid bottom-left. */}
+                        <span className="absolute bottom-3 left-3 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-pine text-sap ring-2 ring-birch/90">
                           <Icon className="h-5 w-5" aria-hidden="true" />
                         </span>
                       </div>
