@@ -46,6 +46,8 @@ export type Service = {
   image?: SiteImage;
   /** Optional service video (mp4). Renders the photo as a poster + click-to-play. */
   video?: string;
+  /** Optional highlight bullets — shown in the featured service block. */
+  points?: string[];
 };
 
 export type ServiceCategory = {
@@ -334,6 +336,11 @@ export const site = {
             placeholderLabel: "Stump grinding — grinder at a stump",
           },
           video: "/videos/stump-grinding.mp4",
+          points: [
+            "Ground down below grade",
+            "Chips & debris cleared away",
+            "No more mowing around it",
+          ],
         },
       ],
     },
