@@ -12,7 +12,7 @@ type Props = {
  */
 export default function PageHeader({ eyebrow, title, subtitle }: Props) {
   return (
-    <section className="relative overflow-hidden bg-pine pt-28 pb-14 sm:pt-32 sm:pb-16">
+    <section className="relative overflow-hidden bg-gradient-to-b from-pine to-pine-dark pt-28 pb-14 sm:pt-32 sm:pb-16">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
         style={{
@@ -22,10 +22,23 @@ export default function PageHeader({ eyebrow, title, subtitle }: Props) {
         aria-hidden="true"
       />
       <div className="container-page relative">
-        <p className="eyebrow mb-4 text-birch">{eyebrow}</p>
-        <h1 className="h-display text-4xl text-birch sm:text-5xl">{title}</h1>
+        <p
+          className="eyebrow mb-4 text-birch animate-fade-up"
+          style={{ animationDelay: "40ms" }}
+        >
+          {eyebrow}
+        </p>
+        <h1
+          className="h-display text-4xl text-birch animate-fade-up sm:text-5xl"
+          style={{ animationDelay: "120ms" }}
+        >
+          {title}
+        </h1>
         {subtitle && (
-          <p className="mt-4 max-w-2xl text-base text-birch/75 sm:text-lg">
+          <p
+            className="mt-4 max-w-2xl text-base text-birch/75 animate-fade-up sm:text-lg"
+            style={{ animationDelay: "200ms" }}
+          >
             {subtitle}
           </p>
         )}

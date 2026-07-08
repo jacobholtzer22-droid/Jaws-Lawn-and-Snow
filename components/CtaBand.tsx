@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Phone } from "lucide-react";
 import { site } from "@/site.config";
+import Reveal from "./Reveal";
 
 /**
  * Closing call-to-action band — the page-level conversion close on pages that
@@ -11,9 +12,9 @@ export default function CtaBand() {
   const { cta, business } = site;
 
   return (
-    <section className="relative overflow-hidden bg-pine py-16 sm:py-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-pine to-pine-dark py-16 sm:py-20">
       <div className="field-rule absolute inset-x-0 top-0" />
-      <div className="container-page relative text-center">
+      <Reveal className="container-page relative text-center">
         <h2 className="h-display text-3xl text-birch sm:text-4xl">
           {cta.band.heading}
         </h2>
@@ -33,7 +34,7 @@ export default function CtaBand() {
             {business.phoneDisplay}
           </a>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

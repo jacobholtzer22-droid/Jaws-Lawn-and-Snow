@@ -28,7 +28,7 @@ export default function Contact({ hideHeading = false }: { hideHeading?: boolean
           <div className={`${hideHeading ? "" : "mt-8"} space-y-4`}>
             <a
               href={business.phoneHref}
-              className="flex items-center gap-4 rounded-xl border border-pine/10 bg-white/60 px-5 py-4 transition-colors hover:border-sap"
+              className="flex items-center gap-4 rounded-xl border border-pine/10 bg-white/60 px-5 py-4 transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-sap hover:shadow-card active:scale-[0.99]"
             >
               <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-pine text-sap">
                 <Phone className="h-5 w-5" aria-hidden="true" />

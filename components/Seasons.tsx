@@ -1,5 +1,6 @@
 import { Check } from "lucide-react";
 import Section from "./Section";
+import Reveal from "./Reveal";
 import { site } from "@/site.config";
 
 /**
@@ -10,25 +11,30 @@ export default function Seasons() {
   const { seasons } = site;
 
   return (
-    <Section id="seasons" tone="pine">
-      <div className="max-w-2xl">
+    <Section
+      id="seasons"
+      tone="pine"
+      className="bg-gradient-to-b from-pine to-pine-dark"
+    >
+      <Reveal className="max-w-2xl">
         <p className="eyebrow mb-4 text-birch">{seasons.eyebrow}</p>
         <h2 className="h-display text-3xl text-birch sm:text-4xl">
           {seasons.heading}
         </h2>
         <p className="mt-4 text-base text-birch/75">{seasons.sub}</p>
-      </div>
+      </Reveal>
 
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
-        {seasons.columns.map((col) => {
+        {seasons.columns.map((col, i) => {
           const Icon = col.icon;
           const isWinter = col.key === "winter";
           const accentText = isWinter ? "text-glacier-light" : "text-sap-light";
           const chipBg = isWinter ? "bg-glacier/20" : "bg-sap/20";
           const chipText = isWinter ? "text-glacier-light" : "text-sap-light";
           return (
-            <div
+            <Reveal
               key={col.key}
+              delay={i * 90}
               className="rounded-2xl border border-white/10 bg-loam/40 p-7 sm:p-8"
             >
               <div className="flex items-center gap-3">
@@ -55,7 +61,7 @@ export default function Seasons() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </Reveal>
           );
         })}
       </div>

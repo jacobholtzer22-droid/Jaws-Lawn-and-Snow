@@ -2,6 +2,7 @@ import { Check } from "lucide-react";
 import Section from "./Section";
 import { site } from "@/site.config";
 import ImagePlaceholder from "./ImagePlaceholder";
+import Reveal from "./Reveal";
 
 /** `hideHeading` drops the eyebrow + title when a PageHeader already provides the page title. */
 export default function WhyUs({ hideHeading = false }: { hideHeading?: boolean }) {
@@ -11,17 +12,17 @@ export default function WhyUs({ hideHeading = false }: { hideHeading?: boolean }
     <Section id="why-us" tone="birch">
       <div className="grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-16">
         {/* Photo */}
-        <div className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-pine/10">
+        <Reveal className="relative aspect-[4/3] overflow-hidden rounded-2xl border border-pine/10 shadow-card">
           <ImagePlaceholder
             image={images[whyUs.imageKey]}
             sizes="(min-width: 1024px) 560px, 100vw"
           />
           {/* Mowing-stripe seam along the bottom edge — the brand motif. */}
           <div className="field-rule absolute inset-x-0 bottom-0" />
-        </div>
+        </Reveal>
 
         {/* Copy */}
-        <div>
+        <Reveal delay={90}>
           {!hideHeading && (
             <>
               <p className="eyebrow mb-4">{whyUs.eyebrow}</p>
@@ -60,7 +61,7 @@ export default function WhyUs({ hideHeading = false }: { hideHeading?: boolean }
               </div>
             ))}
           </dl>
-        </div>
+        </Reveal>
       </div>
     </Section>
   );

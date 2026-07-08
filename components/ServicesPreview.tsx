@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Section from "./Section";
 import ImagePlaceholder from "./ImagePlaceholder";
+import Reveal from "./Reveal";
 import { site } from "@/site.config";
 
 /** Home-page services overview — one card per category, linking into /services. */
@@ -10,24 +11,24 @@ export default function ServicesPreview() {
 
   return (
     <Section id="services-preview" tone="birch" className="stripe-wash">
-      <div className="max-w-2xl">
+      <Reveal className="max-w-2xl">
         <p className="eyebrow mb-4">{servicesIntro.eyebrow}</p>
         <h2 className="h-display text-3xl text-pine sm:text-4xl">
           {servicesIntro.heading}
         </h2>
         <p className="mt-4 text-base text-loam/65">{servicesIntro.sub}</p>
-      </div>
+      </Reveal>
 
       <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {serviceCategories
           .filter((c) => !c.featured)
-          .map((cat) => {
+          .map((cat, i) => {
           const Icon = cat.icon;
           return (
-            <li key={cat.key}>
+            <Reveal as="li" key={cat.key} delay={Math.min(i, 4) * 70}>
               <Link
                 href={`/services#${cat.key}`}
-                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-pine/10 bg-birch transition-colors hover:border-pine/25"
+                className="group flex h-full flex-col overflow-hidden rounded-2xl border border-pine/10 bg-birch shadow-card transition-[border-color,box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:border-pine/25 hover:shadow-card-hover"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-pine">
                   <ImagePlaceholder
@@ -70,7 +71,7 @@ export default function ServicesPreview() {
                   </span>
                 </div>
               </Link>
-            </li>
+            </Reveal>
           );
         })}
       </ul>
