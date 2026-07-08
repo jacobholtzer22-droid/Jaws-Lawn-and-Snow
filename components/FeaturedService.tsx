@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { site } from "@/site.config";
 import StumpVideo from "./StumpVideo";
+import Reveal from "./Reveal";
 
 /**
  * Large featured service block (video + copy) — renders the config category
@@ -22,7 +23,7 @@ export default function FeaturedService() {
   return (
     <section id={cat.key} className="scroll-mt-24 bg-birch">
       <div className="container-page pb-20 sm:pb-28">
-        <div className="overflow-hidden rounded-3xl bg-pine text-birch shadow-xl shadow-pine/10">
+        <Reveal className="overflow-hidden rounded-3xl bg-gradient-to-b from-pine to-pine-dark text-birch shadow-panel">
           <div className="grid items-center gap-8 p-6 sm:gap-10 sm:p-8 lg:grid-cols-[auto_1fr] lg:gap-12 lg:p-12">
             {/* Video — modest portrait so the block stays balanced. */}
             {video ? (
@@ -76,7 +77,7 @@ export default function FeaturedService() {
               </div>
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
