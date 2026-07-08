@@ -40,6 +40,12 @@ const config: Config = {
       maxWidth: {
         page: "1200px",
       },
+      /* Consistent, navy-tinted elevation scale (ink = #0C1E34 / #07131F). */
+      boxShadow: {
+        card: "0 1px 2px rgba(12,30,52,0.04), 0 10px 26px -14px rgba(12,30,52,0.18)",
+        "card-hover": "0 12px 34px -12px rgba(12,30,52,0.28)",
+        panel: "0 30px 70px -32px rgba(7,19,31,0.55)",
+      },
       keyframes: {
         "fade-up": {
           "0%": { opacity: "0", transform: "translateY(14px)" },

@@ -37,8 +37,10 @@
     *::before,
     *::after {
       animation-duration: 0.001ms !important;
+      animation-delay: 0ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.001ms !important;
+      transition-delay: 0ms !important;
     }
   }
 }
@@ -55,10 +57,11 @@
   /* Display headings — Bricolage in sentence case, tight and confident. */
   .h-display {
     @apply font-display font-extrabold leading-[1.04] tracking-[-0.02em];
+    text-wrap: balance;
   }
 
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-xl font-body text-sm font-semibold transition-colors duration-200 focus-visible:outline-offset-4;
+    @apply inline-flex items-center justify-center gap-2 rounded-xl font-body text-sm font-semibold transition-[color,background-color,border-color,box-shadow,transform] duration-200 ease-out focus-visible:outline-offset-4 active:scale-[0.97];
   }
 
   .btn-primary {
