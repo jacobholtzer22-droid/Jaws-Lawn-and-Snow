@@ -25,10 +25,21 @@ export default function SeasonHero() {
       </div>
 
       <div className="container-page w-full pb-16 pt-28 sm:pb-24">
-        <div className="max-w-2xl animate-fade-up">
-          <p className="eyebrow mb-5 text-birch">{active.eyebrow}</p>
+        {/* Copy stack enters in a short stagger (CSS load animation, disabled
+         * under reduced-motion). The hero photo above is un-animated + priority,
+         * so it stays the LCP and first paint is not delayed. */}
+        <div className="max-w-2xl">
+          <p
+            className="eyebrow mb-5 text-birch animate-fade-up"
+            style={{ animationDelay: "40ms" }}
+          >
+            {active.eyebrow}
+          </p>
 
-          <h1 className="h-display text-4xl text-birch sm:text-6xl lg:text-7xl">
+          <h1
+            className="h-display text-4xl text-birch animate-fade-up sm:text-6xl lg:text-7xl"
+            style={{ animationDelay: "120ms" }}
+          >
             {active.headline.split("\n").map((line, i) => (
               <span key={i} className="block">
                 {line}
@@ -36,11 +47,17 @@ export default function SeasonHero() {
             ))}
           </h1>
 
-          <p className="mt-6 max-w-xl text-base text-birch/85 sm:text-lg">
+          <p
+            className="mt-6 max-w-xl text-base text-birch/85 animate-fade-up sm:text-lg"
+            style={{ animationDelay: "200ms" }}
+          >
             {active.sub}
           </p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div
+            className="mt-9 flex flex-col gap-3 animate-fade-up sm:flex-row sm:items-center"
+            style={{ animationDelay: "280ms" }}
+          >
             <Link href={site.cta.href} className="btn-primary px-7 py-4 text-base">
               {active.primaryCta}
             </Link>
@@ -55,7 +72,10 @@ export default function SeasonHero() {
           </div>
 
           {/* Trust strip */}
-          <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-birch/75">
+          <div
+            className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm text-birch/75 animate-fade-up"
+            style={{ animationDelay: "360ms" }}
+          >
             {trust.rating != null && (
               <span className="inline-flex items-center gap-1.5 font-semibold text-birch">
                 <span className="flex" aria-hidden="true">
