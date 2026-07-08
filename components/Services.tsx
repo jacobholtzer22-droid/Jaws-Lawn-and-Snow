@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Section from "./Section";
 import ImagePlaceholder from "./ImagePlaceholder";
+import Reveal from "./Reveal";
 import { site } from "@/site.config";
 
 /** `hideHeading` drops the intro block when a PageHeader already provides the page title. */
@@ -41,12 +42,14 @@ export default function Services({ hideHeading = false }: { hideHeading?: boolea
               <p className="mt-3 max-w-2xl text-base text-loam/65">{cat.blurb}</p>
 
               <ul className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                {cat.services.map((service) => {
+                {cat.services.map((service, si) => {
                   const Icon = service.icon;
                   return (
-                    <li
+                    <Reveal
+                      as="li"
                       key={service.title}
-                      className="group overflow-hidden rounded-2xl border border-pine/10 bg-birch transition duration-200 hover:-translate-y-1 hover:border-pine/20 hover:shadow-xl hover:shadow-pine/10"
+                      delay={Math.min(si, 4) * 70}
+                      className="group overflow-hidden rounded-2xl border border-pine/10 bg-birch shadow-card transition-[border-color,box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:border-pine/20 hover:shadow-card-hover"
                     >
                       {/* Photo banner — labeled placeholder until the real photo lands. */}
                       <div className="relative aspect-[16/10] overflow-hidden bg-pine">
@@ -71,7 +74,7 @@ export default function Services({ hideHeading = false }: { hideHeading?: boolea
                           {service.description}
                         </p>
                       </div>
-                    </li>
+                    </Reveal>
                   );
                 })}
               </ul>

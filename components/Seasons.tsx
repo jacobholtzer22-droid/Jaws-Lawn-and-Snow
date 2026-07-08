@@ -11,7 +11,11 @@ export default function Seasons() {
   const { seasons } = site;
 
   return (
-    <Section id="seasons" tone="pine">
+    <Section
+      id="seasons"
+      tone="pine"
+      className="bg-gradient-to-b from-pine to-pine-dark"
+    >
       <Reveal className="max-w-2xl">
         <p className="eyebrow mb-4 text-birch">{seasons.eyebrow}</p>
         <h2 className="h-display text-3xl text-birch sm:text-4xl">

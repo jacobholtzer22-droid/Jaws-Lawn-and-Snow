@@ -55,10 +55,16 @@ const config: Config = {
           "0%": { opacity: "0" },
           "100%": { opacity: "1" },
         },
+        pop: {
+          "0%": { opacity: "0", transform: "scale(0.6)" },
+          "60%": { transform: "scale(1.06)" },
+          "100%": { opacity: "1", transform: "scale(1)" },
+        },
       },
       animation: {
         "fade-up": "fade-up 0.6s ease-out both",
         "fade-in": "fade-in 0.5s ease-out both",
+        pop: "pop 0.4s ease-out both",
       },
     },
   },

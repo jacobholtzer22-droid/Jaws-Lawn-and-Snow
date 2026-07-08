@@ -1,11 +1,29 @@
 import { Star, Quote } from "lucide-react";
+import Reveal from "./Reveal";
 import { site } from "@/site.config";
 
-function Stars({ className = "h-4 w-4" }: { className?: string }) {
+/**
+ * Five gold stars. `pop` staggers a subtle scale-in per star (a CSS load
+ * animation, neutralised under prefers-reduced-motion by globals.css) — used
+ * only on the headline rating, not the per-card stars.
+ */
+function Stars({
+  className = "h-4 w-4",
+  pop = false,
+}: {
+  className?: string;
+  pop?: boolean;
+}) {
   return (
     <span className="inline-flex" aria-hidden="true">
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} className={`${className} fill-marigold text-marigold`} />
+        <Star
+          key={i}
+          className={`${className} fill-marigold text-marigold ${
+            pop ? "animate-pop" : ""
+          }`}
+          style={pop ? { animationDelay: `${i * 70}ms` } : undefined}
+        />
       ))}
     </span>
   );
@@ -17,16 +35,19 @@ export default function Reviews({ hideHeading = false }: { hideHeading?: boolean
   const hasRating = reviews.rating != null;
 
   return (
-    <section id="reviews" className="bg-loam py-20 text-birch sm:py-28">
+    <section
+      id="reviews"
+      className="bg-gradient-to-b from-loam to-loam-deep py-20 text-birch sm:py-28"
+    >
       <div className="container-page">
         {!hideHeading && (
-          <div className="mx-auto max-w-2xl text-center">
+          <Reveal className="mx-auto max-w-2xl text-center">
             <p className="eyebrow mb-4 text-birch">{reviews.eyebrow}</p>
             <h2 className="h-display text-3xl text-birch sm:text-4xl">
               {reviews.heading}
             </h2>
             <p className="mt-4 text-base text-birch/70">{reviews.sub}</p>
-          </div>
+          </Reveal>
         )}
 
         {/* Rating summary + leave-a-review CTA (shown even when the heading is hidden). */}
@@ -40,7 +61,7 @@ export default function Reviews({ hideHeading = false }: { hideHeading?: boolean
               className="flex items-center gap-1"
               aria-label={`${reviews.rating!.toFixed(1)} out of 5 stars`}
             >
-              <Stars className="h-6 w-6" />
+              <Stars className="h-6 w-6" pop />
             </span>
             <p className="mt-3 text-base font-semibold text-birch">
               Rated {reviews.rating!.toFixed(1)} on {reviews.source}
@@ -64,9 +85,11 @@ export default function Reviews({ hideHeading = false }: { hideHeading?: boolean
           {reviews.quotes.map((review, i) => {
             const hasQuote = review.quote.trim().length > 0;
             return (
-              <figure
+              <Reveal
+                as="figure"
                 key={i}
-                className="flex flex-col rounded-2xl border border-white/10 bg-pine/40 p-7"
+                delay={Math.min(i, 4) * 70}
+                className="flex flex-col rounded-2xl border border-white/10 bg-pine/40 p-7 shadow-panel transition-colors duration-300 hover:border-white/20 hover:bg-pine/50"
               >
                 {hasQuote ? (
                   <>
@@ -98,7 +121,7 @@ export default function Reviews({ hideHeading = false }: { hideHeading?: boolean
                     </span>
                   </div>
                 )}
-              </figure>
+              </Reveal>
             );
           })}
         </div>
