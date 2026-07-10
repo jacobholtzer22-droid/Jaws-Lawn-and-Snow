@@ -1,6 +1,7 @@
 import { Phone, MessageSquare, CalendarClock } from "lucide-react";
 import Section from "./Section";
 import ContactForm from "./ContactForm";
+import BrandWatermark from "./BrandWatermark";
 import { site } from "@/site.config";
 
 const INFO_ICONS = [MessageSquare, CalendarClock] as const;
@@ -10,7 +11,15 @@ export default function Contact({ hideHeading = false }: { hideHeading?: boolean
   const { contact, business } = site;
 
   return (
-    <Section id="contact" tone="birch" className="stripe-wash">
+    <Section
+      id="contact"
+      tone="birch"
+      className="stripe-wash relative isolate overflow-hidden"
+    >
+      <BrandWatermark
+        tone="navy"
+        className="-left-12 bottom-4 hidden w-[300px] opacity-[0.04] lg:block"
+      />
       <div className="grid gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
         <div>
           {!hideHeading && (

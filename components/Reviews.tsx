@@ -1,5 +1,6 @@
 import { Star, Quote } from "lucide-react";
 import Reveal from "./Reveal";
+import BrandWatermark from "./BrandWatermark";
 import { site } from "@/site.config";
 
 /**
@@ -37,8 +38,12 @@ export default function Reviews({ hideHeading = false }: { hideHeading?: boolean
   return (
     <section
       id="reviews"
-      className="bg-gradient-to-b from-loam to-loam-deep py-20 text-birch sm:py-28"
+      className="relative isolate overflow-hidden bg-gradient-to-b from-loam to-loam-deep py-20 text-birch sm:py-28"
     >
+      <BrandWatermark
+        tone="cream"
+        className="-left-12 top-10 hidden w-[320px] opacity-[0.05] sm:block"
+      />
       <div className="container-page">
         {!hideHeading && (
           <Reveal className="mx-auto max-w-2xl text-center">

@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import Section from "./Section";
 import Reveal from "./Reveal";
+import BrandWatermark from "./BrandWatermark";
 import { site } from "@/site.config";
 
 /**
@@ -14,8 +15,12 @@ export default function Seasons() {
     <Section
       id="seasons"
       tone="pine"
-      className="bg-gradient-to-b from-pine to-pine-dark"
+      className="relative isolate overflow-hidden bg-gradient-to-b from-pine to-pine-dark"
     >
+      <BrandWatermark
+        tone="cream"
+        className="-right-12 bottom-6 hidden w-[320px] opacity-[0.05] lg:block"
+      />
       <Reveal className="max-w-2xl">
         <p className="eyebrow mb-4 text-birch">{seasons.eyebrow}</p>
         <h2 className="h-display text-3xl text-birch sm:text-4xl">
