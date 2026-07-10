@@ -263,8 +263,8 @@ export const site = {
             "Block and stone retaining walls that hold back slopes, define beds, and add lasting structure to your yard.",
           icon: Layers,
           image: {
-            src: "", // TODO -> /images/service-walls.jpg
-            alt: "A block retaining wall edging a landscaped bed",
+            src: "/images/service-walls.jpg",
+            alt: "A striped lawn edged with a boulder-and-stone border at a wooded home",
             placeholderLabel: "Retaining walls — block / stone wall",
           },
         },
@@ -274,8 +274,8 @@ export const site = {
             "Shrubs, perennials, and fresh planting beds laid out and planted to add color and curb appeal around your home.",
           icon: Trees,
           image: {
-            src: "", // TODO -> /images/service-plantings.jpg
-            alt: "Freshly planted shrubs and flower beds along a home",
+            src: "/images/service-plantings.jpg",
+            alt: "Foundation plantings and mulched beds framing a freshly striped front lawn",
             placeholderLabel: "Plantings — shrubs & beds",
           },
         },
@@ -310,8 +310,10 @@ export const site = {
             "Walkways, steps, and entries cleared by hand and salted down, so no one slips on the way to the door.",
           icon: Shovel,
           image: {
-            src: "", // -> /images/service-salting.jpg
-            alt: "A shoveled and salted front walkway in winter",
+            // Reuses the snow-clearing photo — the only winter photo on hand.
+            // Swap in a dedicated shoveling/salting shot when Joey sends one.
+            src: "/images/service-plowing.jpg",
+            alt: "Clearing snow from a residential driveway on a winter evening",
             placeholderLabel: "Shoveling & salting — cleared walkway",
           },
         },
@@ -566,8 +568,11 @@ export const site = {
       placeholderLabel: "Hero (summer) — striped green lawn, the strongest shot",
     },
     heroWinter: {
-      src: "", // TODO: no snow photo yet -> /images/hero-snow.jpg
-      alt: "A residential driveway plowed clear of snow on a bright winter morning",
+      // Not currently rendered (the hero season switch was removed). Points at the
+      // shared snow photo so no placeholder can surface; swap for a real winter
+      // hero if the season switch ever returns.
+      src: "/images/service-plowing.jpg",
+      alt: "A residential driveway being cleared of snow on a winter evening",
       placeholderLabel: "Hero (winter) — freshly plowed driveway",
     },
     about: {
