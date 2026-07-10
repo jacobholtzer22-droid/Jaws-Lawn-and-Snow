@@ -418,10 +418,6 @@ export const site = {
         alt: "A neatly striped lawn under a clear blue sky",
       },
       {
-        src: "/images/work-9.jpg",
-        alt: "A riding mower maintaining the lawn at a commercial property",
-      },
-      {
         src: "/images/work-10.jpg",
         alt: "A freshly mowed commercial lot bordered by black fencing",
       },
