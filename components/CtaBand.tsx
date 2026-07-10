@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Phone } from "lucide-react";
 import { site } from "@/site.config";
 import Reveal from "./Reveal";
+import BrandWatermark from "./BrandWatermark";
 
 /**
  * Closing call-to-action band — the page-level conversion close on pages that
@@ -12,8 +13,12 @@ export default function CtaBand() {
   const { cta, business } = site;
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-pine to-pine-dark py-16 sm:py-20">
+    <section className="relative isolate overflow-hidden bg-gradient-to-b from-pine to-pine-dark py-16 sm:py-20">
       <div className="field-rule absolute inset-x-0 top-0" />
+      <BrandWatermark
+        tone="cream"
+        className="-right-12 bottom-0 w-[300px] opacity-[0.06] sm:w-[380px]"
+      />
       <Reveal className="container-page relative text-center">
         <h2 className="h-display text-3xl text-birch sm:text-4xl">
           {cta.band.heading}

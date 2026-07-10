@@ -3,23 +3,28 @@ import Image from "next/image";
 import { Phone, MapPin } from "lucide-react";
 import { site } from "@/site.config";
 import { DAY_ORDER, dayLabel, formatDayHours } from "@/lib/format";
+import BrandWatermark from "./BrandWatermark";
 
 export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="bg-loam-deep text-birch">
-      <div className="container-page py-16">
+    <footer className="relative isolate overflow-hidden bg-loam-deep text-birch">
+      <BrandWatermark
+        tone="cream"
+        className="-bottom-10 -right-8 w-[320px] opacity-[0.05] sm:w-[460px]"
+      />
+      <div className="container-page relative py-16">
         <div className="grid gap-10 lg:grid-cols-4">
           {/* Brand + contact */}
           <div className="lg:col-span-2">
-            {site.business.logo ? (
+            {site.business.logoReverse ? (
               <Image
-                src={site.business.logo}
+                src={site.business.logoReverse}
                 alt={site.business.logoAlt}
-                width={112}
-                height={112}
-                className="h-28 w-28 rounded-2xl"
+                width={140}
+                height={140}
+                className="h-28 w-28"
               />
             ) : (
               <div className="h-display text-2xl text-birch">

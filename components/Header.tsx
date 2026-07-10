@@ -39,17 +39,17 @@ export default function Header() {
         {/* Brand → home */}
         <Link
           href="/"
-          className="flex items-center"
+          className="group flex items-center"
           aria-label={`${site.business.name} — home`}
         >
           {site.business.logo ? (
             <Image
               src={site.business.logo}
               alt={site.business.logoAlt}
-              width={48}
-              height={48}
+              width={52}
+              height={52}
               priority
-              className="h-12 w-12 rounded-lg"
+              className="h-12 w-12 rounded-xl shadow-md ring-1 ring-black/5 transition-transform duration-200 ease-out group-hover:scale-[1.04] sm:h-[52px] sm:w-[52px]"
             />
           ) : (
             <span className="h-display text-xl text-birch sm:text-2xl">

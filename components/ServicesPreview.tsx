@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import Section from "./Section";
 import ImagePlaceholder from "./ImagePlaceholder";
 import Reveal from "./Reveal";
+import BrandWatermark from "./BrandWatermark";
 import { site } from "@/site.config";
 
 /** Home-page services overview — one card per category, linking into /services. */
@@ -10,7 +11,15 @@ export default function ServicesPreview() {
   const { servicesIntro, serviceCategories } = site;
 
   return (
-    <Section id="services-preview" tone="birch" className="stripe-wash">
+    <Section
+      id="services-preview"
+      tone="birch"
+      className="stripe-wash relative isolate overflow-hidden"
+    >
+      <BrandWatermark
+        tone="navy"
+        className="-right-12 top-6 hidden w-[300px] opacity-[0.04] lg:block"
+      />
       <Reveal className="max-w-2xl">
         <p className="eyebrow mb-4">{servicesIntro.eyebrow}</p>
         <h2 className="h-display text-3xl text-pine sm:text-4xl">

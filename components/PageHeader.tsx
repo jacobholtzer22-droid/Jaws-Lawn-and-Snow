@@ -1,3 +1,5 @@
+import BrandWatermark from "./BrandWatermark";
+
 type Props = {
   eyebrow: string;
   title: string;
@@ -12,7 +14,7 @@ type Props = {
  */
 export default function PageHeader({ eyebrow, title, subtitle }: Props) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-pine to-pine-dark pt-28 pb-14 sm:pt-32 sm:pb-16">
+    <section className="relative isolate overflow-hidden bg-gradient-to-b from-pine to-pine-dark pt-28 pb-14 sm:pt-32 sm:pb-16">
       <div
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
         style={{
@@ -20,6 +22,10 @@ export default function PageHeader({ eyebrow, title, subtitle }: Props) {
             "repeating-linear-gradient(118deg, #ffffff 0 18px, transparent 18px 36px)",
         }}
         aria-hidden="true"
+      />
+      <BrandWatermark
+        tone="cream"
+        className="-right-10 top-1/2 hidden w-[360px] -translate-y-1/2 opacity-[0.06] sm:block"
       />
       <div className="container-page relative">
         <p

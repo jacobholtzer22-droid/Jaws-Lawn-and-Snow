@@ -117,6 +117,11 @@ export const site = {
     // Brand logo (square lockup). Set to "" to fall back to the text wordmark.
     logo: "/images/logo.png",
     logoAlt: "Jaws Lawn & Snow — Michigan",
+    // Reversed lockup (red + cream on transparent) for dark backgrounds.
+    logoReverse: "/images/logo-reverse.png",
+    // Shark-mark only (no wordmark) — used as a decorative watermark/accent.
+    markNavy: "/images/mark-navy.png", // for light backgrounds
+    markCream: "/images/mark-cream.png", // for dark backgrounds
   },
 
   /* --- Shared microcopy (buttons used in more than one place) --- */
