@@ -237,7 +237,7 @@ export const site = {
       icon: Flower2,
       image: {
         src: "/images/service-mulch.jpg",
-        alt: "A manicured lawn with tidy landscaped beds",
+        alt: "A freshly mulched bed with a river-rock border and shaped shrubs at a wooded property",
         placeholderLabel: "Landscaping — beds & borders",
       },
       services: [
@@ -248,7 +248,7 @@ export const site = {
           icon: Flower2,
           image: {
             src: "/images/service-mulch.jpg",
-            alt: "A manicured striped lawn and tidy landscaped beds beside a stone home",
+            alt: "A dark mulch bed edged with river rock and round shrubs beneath tall trees",
             placeholderLabel: "Mulch & rock beds — fresh mulched bed",
           },
         },
@@ -283,8 +283,8 @@ export const site = {
         "Plowing, shoveling, and salting so you get out on time no matter what fell overnight.",
       icon: Snowflake,
       image: {
-        src: "", // TODO: no snow photo yet -> /images/service-plowing.jpg
-        alt: "A residential driveway plowed clear of snow",
+        src: "/images/service-plowing.jpg",
+        alt: "Clearing a snow-covered driveway with a two-stage snowblower on a winter evening",
         placeholderLabel: "Snow removal — plowed driveway",
       },
       services: [
@@ -294,8 +294,8 @@ export const site = {
             "Driveways and lots plowed fast after every storm, with markers set ahead of time so we protect your grass and your concrete.",
           icon: Truck,
           image: {
-            src: "", // -> /images/service-plowing.jpg
-            alt: "A residential driveway freshly plowed clear of snow",
+            src: "/images/service-plowing.jpg",
+            alt: "A snow-covered residential driveway being cleared with a snowblower",
             placeholderLabel: "Snow plowing — cleared driveway",
           },
         },
@@ -387,19 +387,19 @@ export const site = {
     photos: [
       {
         src: "/images/work-1.jpg",
-        alt: "A large backyard lawn mowed in clean stripes, bordered by tall trees",
+        alt: "A backyard lawn freshly mowed in clean stripes at dusk, framed by tall trees and blooming hydrangeas",
       },
       {
         src: "/images/work-2.jpg",
-        alt: "A two-story home with a freshly striped front lawn",
-      },
-      {
-        src: "/images/work-3.jpg",
-        alt: "A wide striped lawn seen from behind a riding mower",
+        alt: "A red zero-turn mower on a freshly striped lawn under a bright blue summer sky",
       },
       {
         src: "/images/work-4.jpg",
         alt: "A fenced backyard mowed in crisp green stripes",
+      },
+      {
+        src: "/images/work-3.jpg",
+        alt: "A wide striped lawn seen from behind a riding mower",
       },
       {
         src: "/images/work-5.jpg",
@@ -433,6 +433,20 @@ export const site = {
         src: "/images/work-12.jpg",
         alt: "A crisply mowed front lawn on a quiet residential street",
       },
+    ],
+  },
+
+  /* --- Aerial video showcase (home page centerpiece) --- */
+  showcase: {
+    eyebrow: "From above",
+    heading: "A bird's-eye look at the work.",
+    sub: "Striped lawns and clean lines across Southeast Michigan — the whole property, start to finish.",
+    poster: "/images/home-aerial-poster.jpg",
+    label: "Aerial drone flyover of a property with freshly striped lawns",
+    // HEVC first: Safari picks it (lighter on iPhones); other browsers fall back to H.264.
+    sources: [
+      { src: "/videos/home-aerial-hevc.mp4", type: 'video/mp4; codecs="hvc1"' },
+      { src: "/videos/home-aerial.mp4", type: "video/mp4" },
     ],
   },
 
