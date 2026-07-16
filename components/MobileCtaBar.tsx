@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Phone } from "lucide-react";
 import { site } from "@/site.config";
+import PhoneLink from "./PhoneLink";
 
 /**
  * Mobile-only sticky bottom bar so the two highest-intent actions — call and
@@ -32,14 +33,14 @@ export default function MobileCtaBar() {
         style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       >
         <div className="container-page flex items-center gap-3 py-3">
-          <a
+          <PhoneLink
             href={site.business.phoneHref}
             className="btn-ghost min-h-[48px] flex-1 px-4 py-3"
             aria-label={`Call ${site.business.name} at ${site.business.phoneDisplay}`}
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
             {site.cta.callShort}
-          </a>
+          </PhoneLink>
           <Link
             href={site.cta.href}
             className="btn-primary min-h-[48px] flex-1 px-4 py-3"

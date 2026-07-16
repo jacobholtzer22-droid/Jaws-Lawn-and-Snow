@@ -4,6 +4,7 @@ import { Phone, MapPin } from "lucide-react";
 import { site } from "@/site.config";
 import { DAY_ORDER, dayLabel, formatDayHours } from "@/lib/format";
 import BrandWatermark from "./BrandWatermark";
+import PhoneLink from "./PhoneLink";
 
 export default function Footer() {
   const year = new Date().getFullYear();
@@ -35,13 +36,13 @@ export default function Footer() {
             <p className="mt-4 max-w-xs text-sm text-birch/60">
               {site.business.tagline}.
             </p>
-            <a
+            <PhoneLink
               href={site.business.phoneHref}
               className="mt-4 inline-flex min-h-[44px] items-center gap-2 font-display text-lg font-bold text-birch transition-colors hover:text-sap"
             >
               <Phone className="h-5 w-5 text-sap" aria-hidden="true" />
               {site.business.phoneDisplay}
-            </a>
+            </PhoneLink>
             <p className="mt-3 flex items-center gap-2 text-sm text-birch/60">
               <MapPin className="h-4 w-4 text-sap" aria-hidden="true" />
               {site.business.region}

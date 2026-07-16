@@ -2,6 +2,7 @@ import { Phone, MessageSquare, CalendarClock } from "lucide-react";
 import Section from "./Section";
 import ContactForm from "./ContactForm";
 import BrandWatermark from "./BrandWatermark";
+import PhoneLink from "./PhoneLink";
 import { site } from "@/site.config";
 
 const INFO_ICONS = [MessageSquare, CalendarClock] as const;
@@ -35,7 +36,7 @@ export default function Contact({ hideHeading = false }: { hideHeading?: boolean
           )}
 
           <div className={`${hideHeading ? "" : "mt-8"} space-y-4`}>
-            <a
+            <PhoneLink
               href={business.phoneHref}
               className="flex items-center gap-4 rounded-xl border border-pine/10 bg-white/60 px-5 py-4 transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-sap hover:shadow-card active:scale-[0.99]"
             >
@@ -50,7 +51,7 @@ export default function Contact({ hideHeading = false }: { hideHeading?: boolean
                   {business.phoneDisplay}
                 </span>
               </span>
-            </a>
+            </PhoneLink>
 
             {contact.infoLines.map((line, i) => {
               const Icon = INFO_ICONS[i] ?? MessageSquare;

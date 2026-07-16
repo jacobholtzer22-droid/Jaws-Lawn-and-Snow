@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Phone, Star } from "lucide-react";
 import { site } from "@/site.config";
 import ImagePlaceholder from "./ImagePlaceholder";
+import PhoneLink from "./PhoneLink";
 
 /**
  * Hero — a single static hero. (The summer/winter season switch was removed per
@@ -61,14 +62,14 @@ export default function SeasonHero() {
             <Link href={site.cta.href} className="btn-primary px-7 py-4 text-base">
               {active.primaryCta}
             </Link>
-            <a
+            <PhoneLink
               href={business.phoneHref}
               className="btn-ghost px-7 py-4 text-base"
               aria-label={`Call ${business.name} at ${business.phoneDisplay}`}
             >
               <Phone className="h-4 w-4" aria-hidden="true" />
               {business.phoneDisplay}
-            </a>
+            </PhoneLink>
           </div>
 
           {/* Trust strip */}

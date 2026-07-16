@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Phone, Check, Loader2, AlertTriangle } from "lucide-react";
 import { site } from "@/site.config";
+import { CONVERSIONS, reportConversion } from "@/lib/gtag-conversions";
+import PhoneLink from "./PhoneLink";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -38,6 +40,9 @@ export default function ContactForm() {
       });
 
       if (!res.ok) throw new Error(`Request failed: ${res.status}`);
+      // Google Ads conversion — fired ONLY once the CRM has accepted the lead,
+      // never on mount or page load.
+      reportConversion(CONVERSIONS.quoteForm);
       setStatus("success");
     } catch {
       // Keep the user's typed input on failure — never wipe it.
@@ -58,10 +63,13 @@ export default function ContactForm() {
         <p className="mx-auto mt-3 max-w-md text-base text-loam/65">
           {contact.successBody}
         </p>
-        <a href={business.phoneHref} className="btn-dark mt-7 px-7 py-4 text-base">
+        <PhoneLink
+          href={business.phoneHref}
+          className="btn-dark mt-7 px-7 py-4 text-base"
+        >
           <Phone className="h-4 w-4" aria-hidden="true" />
           {business.phoneDisplay}
-        </a>
+        </PhoneLink>
       </div>
     );
   }
@@ -170,12 +178,12 @@ export default function ContactForm() {
           <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0" aria-hidden="true" />
           <span>
             {contact.errorLead}{" "}
-            <a
+            <PhoneLink
               href={business.phoneHref}
               className="font-semibold underline underline-offset-2"
             >
               {business.phoneDisplay}
-            </a>
+            </PhoneLink>
             .
           </span>
         </div>

@@ -3,6 +3,7 @@ import { Phone } from "lucide-react";
 import { site } from "@/site.config";
 import Reveal from "./Reveal";
 import BrandWatermark from "./BrandWatermark";
+import PhoneLink from "./PhoneLink";
 
 /**
  * Closing call-to-action band — the page-level conversion close on pages that
@@ -30,14 +31,14 @@ export default function CtaBand() {
           <Link href={cta.href} className="btn-primary px-7 py-4 text-base">
             {cta.label}
           </Link>
-          <a
+          <PhoneLink
             href={business.phoneHref}
             className="btn-ghost px-7 py-4 text-base"
             aria-label={`Call ${business.name} at ${business.phoneDisplay}`}
           >
             <Phone className="h-4 w-4" aria-hidden="true" />
             {business.phoneDisplay}
-          </a>
+          </PhoneLink>
         </div>
       </Reveal>
     </section>
