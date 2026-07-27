@@ -108,11 +108,11 @@ export const site = {
   business: {
     name: "Jaws Lawn & Snow",
     shortName: "Jaws",
-    tagline: "Lawn care & snow removal in Southeast Michigan",
+    tagline: "Lawn care & snow removal in Canton, Michigan",
     // TODO: confirm Joey's number for the lawn+snow line (reused from Jaws Detailing for now).
     phoneDisplay: "(734) 262-2365",
     phoneHref: "tel:+17342622365",
-    region: "Southeast Michigan",
+    region: "Canton, Michigan",
     email: "", // optional — add a public contact email if Joey wants one shown
     // Brand logo (square lockup). Set to "" to fall back to the text wordmark.
     logo: "/images/logo.png",
@@ -146,7 +146,7 @@ export const site = {
       summer: {
         tabLabel: "Summer",
         icon: Sun,
-        eyebrow: "Lawn care & snow removal · Southeast Michigan",
+        eyebrow: "Lawn care & snow removal · Canton, Michigan",
         headline: "A lawn the\nneighbors notice.",
         sub: "Weekly mowing, clean edges, and tidy beds — handled on schedule, so your yard always looks like someone takes care of it. Because someone does.",
         primaryCta: "Get a free quote",
@@ -155,7 +155,7 @@ export const site = {
       winter: {
         tabLabel: "Winter",
         icon: Snowflake,
-        eyebrow: "Snow removal · Southeast Michigan",
+        eyebrow: "Snow removal · Canton, Michigan",
         headline: "Plowed before\nyou're awake.",
         sub: "When the snow stops, we start. Driveways cleared, walkways shoveled, and salt down — so you get out on time no matter what fell overnight.",
         primaryCta: "Get on the snow list",
@@ -390,7 +390,7 @@ export const site = {
   work: {
     eyebrow: "Recent work",
     heading: "Stripes we're proud of.",
-    sub: "A few recent lawns and properties we keep looking sharp across Southeast Michigan.",
+    sub: "A few recent lawns and properties we keep looking sharp around Canton, Michigan.",
     photos: [
       {
         src: "/images/work-1.jpg",
@@ -443,7 +443,7 @@ export const site = {
   showcase: {
     eyebrow: "From above",
     heading: "A bird's-eye look at the work.",
-    sub: "Striped lawns and clean lines across Southeast Michigan — the whole property, start to finish.",
+    sub: "Striped lawns and clean lines around Canton, Michigan — the whole property, start to finish.",
     poster: "/images/home-aerial-poster.jpg",
     label: "Aerial drone flyover of a property with freshly striped lawns",
     // HEVC first: Safari picks it (lighter on iPhones); other browsers fall back to H.264.
@@ -473,24 +473,22 @@ export const site = {
   },
 
   /* --- Service area ---
-   * TODO: replace with Joey's actual towns. These are SE-Michigan placeholders
-   * near the 734 area so previews look populated — confirm before launch.
+   * Focused on Canton, MI and its immediate neighbors. Canton leads the copy;
+   * the far Washtenaw County towns were intentionally dropped so leads stay local.
    */
   serviceArea: {
     eyebrow: "Service area",
-    heading: "Proudly serving\nSoutheast Michigan.",
-    note: "Don't see your town? Ask anyway — we cover most of Southeast Michigan and we're always adding stops.",
+    heading: "Proudly serving\nCanton, Michigan.",
+    note: "Based in Canton and covering the towns right around it. Don't see yours? Ask anyway — we're always adding nearby stops.",
     cta: "See if we cover you",
     towns: [
-      "Ann Arbor",
-      "Ypsilanti",
-      "Saline",
       "Canton",
       "Plymouth",
+      "Northville",
+      "Westland",
+      "Livonia",
       "Belleville",
-      "Dexter",
-      "Chelsea",
-      "Milan",
+      "Van Buren Township",
     ],
   },
 
@@ -639,16 +637,16 @@ export const site = {
    */
   seo: {
     title:
-      "Jaws Lawn & Snow — Lawn Care & Snow Removal in Southeast Michigan",
+      "Jaws Lawn & Snow — Lawn Care & Snow Removal in Canton, MI",
     description:
-      "Lawn care in summer, snow removal in winter — one local, insured crew for your whole property in Southeast Michigan. Mowing, cleanups, plowing, and salting. Get a free quote.",
+      "Lawn care in summer, snow removal in winter — one local, insured crew for your whole property in Canton, Michigan and the nearby towns. Mowing, cleanups, plowing, and salting. Get a free quote.",
     url: "https://jawslawnandsnow.com", // TODO: confirm final domain
     pages: {
       home: {
         title:
-          "Jaws Lawn & Snow — Lawn Care & Snow Removal in Southeast Michigan",
+          "Jaws Lawn & Snow — Lawn Care & Snow Removal in Canton, MI",
         description:
-          "Lawn care in summer, snow removal in winter — one local, insured crew for your whole property in Southeast Michigan. Get a free quote.",
+          "Lawn care in summer, snow removal in winter — one local, insured crew for your whole property in Canton, Michigan and nearby. Get a free quote.",
       },
       services: {
         title: "Services — Lawn Care & Snow Removal | Jaws Lawn & Snow",
@@ -658,12 +656,12 @@ export const site = {
       about: {
         title: "About — Local, Insured Lawn & Snow Crew | Jaws Lawn & Snow",
         description:
-          "A local, owner-run crew that treats your property like our own — and shows up in January, not just July. Serving Southeast Michigan year-round.",
+          "A local, owner-run crew that treats your property like our own — and shows up in January, not just July. Serving Canton, Michigan and nearby year-round.",
       },
       reviews: {
         title: "Reviews — Jaws Lawn & Snow",
         description:
-          "See what Southeast Michigan homeowners say about Jaws Lawn & Snow's lawn care and snow removal.",
+          "See what Canton-area homeowners say about Jaws Lawn & Snow's lawn care and snow removal.",
       },
       contact: {
         title: "Get a Free Quote — Jaws Lawn & Snow",
