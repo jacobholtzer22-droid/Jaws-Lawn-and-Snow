@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Phone, Check, Loader2, AlertTriangle } from "lucide-react";
 import { site } from "@/site.config";
 import { CONVERSIONS, reportConversion } from "@/lib/gtag-conversions";
@@ -8,16 +9,44 @@ import PhoneLink from "./PhoneLink";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
+/** Honeypot field name. A real person never sees or fills this. */
+const HONEYPOT = "hp_7d3a_ref";
+
 export default function ContactForm() {
   const { contact, business, crm } = site;
   const f = contact.form;
+  const router = useRouter();
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [cityZip, setCityZip] = useState("");
+  const [service, setService] = useState("");
+  const [frequency, setFrequency] = useState("");
+  const [contactMethod, setContactMethod] = useState("");
   const [message, setMessage] = useState("");
   const [smsConsent, setSmsConsent] = useState(false); // real checkbox, never auto-true
+  const [hp, setHp] = useState("");
   const [status, setStatus] = useState<Status>("idle");
+
+  /**
+   * The CRM contract is a fixed set of fields — it has no columns for address,
+   * service, frequency or contact preference. Rather than inventing payload
+   * keys the CRM would silently drop, the structured answers are composed into
+   * the one free-text field it does read.
+   */
+  function composeMessage() {
+    const lines = [
+      address && `Service address: ${address}`,
+      cityZip && `City / ZIP: ${cityZip}`,
+      service && `Service requested: ${service}`,
+      frequency && `Mowing frequency: ${frequency}`,
+      contactMethod && `Preferred contact: ${contactMethod}`,
+      message.trim() && `\nNotes: ${message.trim()}`,
+    ].filter(Boolean);
+    return lines.join("\n");
+  }
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -29,13 +58,15 @@ export default function ContactForm() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         // Body is EXACTLY these fields — do not add/rename (CRM contract).
+        // hp_7d3a_ref is the honeypot the CRM's spam scorer reads.
         body: JSON.stringify({
           name,
           phone,
           email,
-          message,
+          message: composeMessage(),
           smsConsent,
           businessSlug: crm.businessSlug,
+          [HONEYPOT]: hp,
         }),
       });
 
@@ -44,13 +75,16 @@ export default function ContactForm() {
       // never on mount or page load.
       reportConversion(CONVERSIONS.quoteForm);
       setStatus("success");
+      // Dedicated thank-you URL so the conversion has a page to land on.
+      // No query string: nothing the customer typed goes into the URL.
+      router.push("/thanks");
     } catch {
       // Keep the user's typed input on failure — never wipe it.
       setStatus("error");
     }
   }
 
-  /* ---- Success: replace the form ---- */
+  /* ---- Success: replace the form (also shown briefly before /thanks loads) ---- */
   if (status === "success") {
     return (
       <div className="rounded-2xl border border-pine/10 bg-white p-8 text-center sm:p-12">
@@ -75,9 +109,12 @@ export default function ContactForm() {
   }
 
   /* ---- Form ---- */
-  const inputClass =
+  const fieldClass =
     "w-full rounded-xl border border-pine/15 bg-white px-4 py-3.5 text-[15px] text-loam placeholder:text-loam/35 focus:border-sap focus:outline-none focus-visible:outline-none";
   const labelClass = "mb-1.5 block text-sm font-semibold text-loam";
+  const optional = (
+    <span className="font-normal text-loam/40">{f.optionalLabel}</span>
+  );
 
   return (
     <form
@@ -85,6 +122,22 @@ export default function ContactForm() {
       className="rounded-2xl border border-pine/10 bg-white p-6 sm:p-8"
       noValidate
     >
+      {/* Honeypot. `hidden` is the HTML attribute, not a CSS class, so it stays
+          hidden even if stylesheets fail. Never shown to, or reachable by, a
+          real visitor. */}
+      <div hidden>
+        <label htmlFor={HONEYPOT}>Leave this field empty</label>
+        <input
+          id={HONEYPOT}
+          name={HONEYPOT}
+          type="text"
+          autoComplete="off"
+          tabIndex={-1}
+          value={hp}
+          onChange={(e) => setHp(e.target.value)}
+        />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelClass}>
@@ -98,7 +151,7 @@ export default function ContactForm() {
             autoComplete="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className={inputClass}
+            className={fieldClass}
             placeholder={f.namePlaceholder}
           />
         </div>
@@ -114,16 +167,111 @@ export default function ContactForm() {
             autoComplete="tel"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
-            className={inputClass}
+            className={fieldClass}
             placeholder={f.phonePlaceholder}
           />
         </div>
       </div>
 
+      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="address" className={labelClass}>
+            {f.addressLabel}
+          </label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            required
+            autoComplete="street-address"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className={fieldClass}
+            placeholder={f.addressPlaceholder}
+          />
+        </div>
+        <div>
+          <label htmlFor="cityZip" className={labelClass}>
+            {f.cityZipLabel}
+          </label>
+          <input
+            id="cityZip"
+            name="cityZip"
+            type="text"
+            required
+            value={cityZip}
+            onChange={(e) => setCityZip(e.target.value)}
+            className={fieldClass}
+            placeholder={f.cityZipPlaceholder}
+          />
+        </div>
+      </div>
+
+      <div className="mt-5">
+        <label htmlFor="service" className={labelClass}>
+          {f.serviceLabel}
+        </label>
+        <select
+          id="service"
+          name="service"
+          required
+          value={service}
+          onChange={(e) => setService(e.target.value)}
+          className={fieldClass}
+        >
+          <option value="">{f.servicePlaceholder}</option>
+          {f.serviceOptions.map((opt) => (
+            <option key={opt} value={opt}>
+              {opt}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="frequency" className={labelClass}>
+            {f.frequencyLabel} {optional}
+          </label>
+          <select
+            id="frequency"
+            name="frequency"
+            value={frequency}
+            onChange={(e) => setFrequency(e.target.value)}
+            className={fieldClass}
+          >
+            <option value="">—</option>
+            {f.frequencyOptions.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
+        </div>
+        <div>
+          <label htmlFor="contactMethod" className={labelClass}>
+            {f.contactMethodLabel} {optional}
+          </label>
+          <select
+            id="contactMethod"
+            name="contactMethod"
+            value={contactMethod}
+            onChange={(e) => setContactMethod(e.target.value)}
+            className={fieldClass}
+          >
+            <option value="">—</option>
+            {f.contactMethodOptions.map((opt) => (
+              <option key={opt} value={opt}>
+                {opt}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+
       <div className="mt-5">
         <label htmlFor="email" className={labelClass}>
-          {f.emailLabel}{" "}
-          <span className="font-normal text-loam/40">{f.emailOptionalLabel}</span>
+          {f.emailLabel} {optional}
         </label>
         <input
           id="email"
@@ -132,24 +280,25 @@ export default function ContactForm() {
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className={inputClass}
+          className={fieldClass}
           placeholder={f.emailPlaceholder}
         />
       </div>
 
       <div className="mt-5">
         <label htmlFor="message" className={labelClass}>
-          {f.messageLabel}
+          {f.messageLabel} {optional}
         </label>
         <textarea
           id="message"
           name="message"
-          rows={4}
+          rows={3}
           value={message}
           onChange={(e) => setMessage(e.target.value)}
-          className={`${inputClass} resize-y`}
+          className={`${fieldClass} resize-y`}
           placeholder={f.messagePlaceholder}
         />
+        <p className="mt-2 text-[13px] text-loam/55">{f.photoHint}</p>
       </div>
 
       {/* TCPA consent — real checkbox, default unchecked */}

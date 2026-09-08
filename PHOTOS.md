@@ -61,3 +61,40 @@ Service-card photos read best as **landscape** (the card crops to 16:10).
 - The `about` shot works in landscape (4:3). A person + mower + truck reads as "real
   local crew."
 - Keep files reasonably sized (long edge ~2000px, JPG/WebP). `next/image` handles the rest.
+
+---
+
+## Still needed (added Sept 2026, client feedback pass)
+
+Every item below renders **nothing** today — no stock photo, no placeholder box,
+no invented copy. Send the asset and the section turns on with no code change.
+
+| # | Needed | What it unblocks | Where it goes |
+|---|---|---|---|
+| 1 | **Photo of Joey** (portrait or on a job site, roughly 4:5) **plus 2–4 sentences of bio in writing** | The "Meet Joey" section on `/about` — built and mounted, currently returns `null` | `site.config.ts` → `meetOwner.photo.src`, `meetOwner.photo.alt`, `meetOwner.body` |
+| 2 | **The town each gallery photo was taken in** (6 photos, listed below) | Gallery captions read `"<service> · <city>"`. Written and wired, but the caption stays hidden while `city` is `""` — a guessed town is a fabricated fact | `site.config.ts` → `work.photos[].city` |
+| 3 | **Hedge / shrub trimming** photo | Photo band on that service card (renders icon-only today) | new `image` on that service |
+| 4 | **Bed weeding & cleanup** photo | Same | Same |
+| 5 | **Bush / brush removal** photo | Same | Same |
+| 6 | **Aeration & overseeding** photo | Same | Same |
+| 7 | **Topsoil & grass seeding** photo | Same | Same |
+| 8 | **Before / after pairs** (same property, both states) | A before-and-after section — not built, because no genuine pairs exist | — |
+| 9 | A dedicated **shoveling / salting** shot | `Snow Removal › Shoveling & Salting` currently reuses the plowing photo | that service's `image.src` |
+
+### Gallery photos awaiting a town
+
+`work-1`, `work-2`, `work-4`, `work-5`, `work-6`, `work-11`.
+
+### Gallery photos removed this pass
+
+Trimmed from 11 frames to 6. Removed: `work-3` and `work-7` (shot over the mower
+deck / truck hood — the equipment fills the frame), `work-10` (cluttered, patchy
+turf), `work-8` and `work-12` (near-duplicates of stronger frames). The files are
+still in `/public/images`; only the `work.photos` list changed, so restoring one
+is a single config entry.
+
+### Social share image
+
+`/public/og.jpg` (1200×630) is generated from `hero-lawn.jpg` — a real Jaws
+photo — with the brand lockup and a wash in the brand navy. No stock imagery.
+It is referenced sitewide from `app/layout.tsx` and per page from `lib/seo.ts`.

@@ -36,22 +36,45 @@ export default function Contact({ hideHeading = false }: { hideHeading?: boolean
           )}
 
           <div className={`${hideHeading ? "" : "mt-8"} space-y-4`}>
-            <PhoneLink
-              href={business.phoneHref}
-              className="flex items-center gap-4 rounded-xl border border-pine/10 bg-white/60 px-5 py-4 transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-sap hover:shadow-card active:scale-[0.99]"
-            >
-              <span className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-pine text-sap">
-                <Phone className="h-5 w-5" aria-hidden="true" />
-              </span>
-              <span>
-                <span className="block text-xs font-semibold uppercase tracking-wider text-loam/50">
-                  {contact.callOrTextLabel}
+            {/* Call and text are separate actions on purpose — a lot of people
+                will text who would never dial. Both carry the same number. */}
+            <div className="grid gap-3 sm:grid-cols-2">
+              <PhoneLink
+                href={business.phoneHref}
+                className="flex min-h-[44px] items-center gap-4 rounded-xl border border-pine/10 bg-white/60 px-5 py-4 transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-sap hover:shadow-card active:scale-[0.99]"
+                aria-label={`Call ${business.phoneDisplay}`}
+              >
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-pine text-sap">
+                  <Phone className="h-5 w-5" aria-hidden="true" />
                 </span>
-                <span className="font-display text-lg font-bold text-pine">
-                  {business.phoneDisplay}
+                <span>
+                  <span className="block text-xs font-semibold uppercase tracking-wider text-loam/50">
+                    {contact.callLabel}
+                  </span>
+                  <span className="font-display text-lg font-bold text-pine">
+                    {business.phoneDisplay}
+                  </span>
                 </span>
-              </span>
-            </PhoneLink>
+              </PhoneLink>
+
+              <a
+                href={contact.smsHref}
+                className="flex min-h-[44px] items-center gap-4 rounded-xl border border-pine/10 bg-white/60 px-5 py-4 transition-[border-color,box-shadow,transform] duration-200 ease-out hover:border-sap hover:shadow-card active:scale-[0.99]"
+                aria-label={`Text ${business.phoneDisplay}`}
+              >
+                <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-pine text-sap">
+                  <MessageSquare className="h-5 w-5" aria-hidden="true" />
+                </span>
+                <span>
+                  <span className="block text-xs font-semibold uppercase tracking-wider text-loam/50">
+                    {contact.textLabel}
+                  </span>
+                  <span className="font-display text-lg font-bold text-pine">
+                    {business.phoneDisplay}
+                  </span>
+                </span>
+              </a>
+            </div>
 
             {contact.infoLines.map((line, i) => {
               const Icon = INFO_ICONS[i] ?? MessageSquare;

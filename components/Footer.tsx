@@ -43,9 +43,15 @@ export default function Footer() {
               <Phone className="h-5 w-5 text-sap" aria-hidden="true" />
               {site.business.phoneDisplay}
             </PhoneLink>
+            {/* Service-area business: the pin is the base (Belleville), and the
+                line under it names the markets served. Canton is a market, not
+                a location — don't collapse these two back into one. */}
             <p className="mt-3 flex items-center gap-2 text-sm text-birch/60">
               <MapPin className="h-4 w-4 text-sap" aria-hidden="true" />
               {site.business.region}
+            </p>
+            <p className="mt-2 max-w-xs text-sm text-birch/55">
+              {site.business.servingLine}
             </p>
           </div>
 

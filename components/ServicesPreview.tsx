@@ -36,7 +36,7 @@ export default function ServicesPreview() {
           return (
             <Reveal as="li" key={cat.key} delay={Math.min(i, 4) * 70}>
               <Link
-                href={`/services#${cat.key}`}
+                href={`/services/${cat.slug}`}
                 className="group flex h-full flex-col overflow-hidden rounded-2xl border border-pine/10 bg-birch shadow-card transition-[border-color,box-shadow,transform] duration-300 ease-out hover:-translate-y-1 hover:border-pine/25 hover:shadow-card-hover"
               >
                 <div className="relative aspect-[16/10] overflow-hidden bg-pine">

@@ -4,6 +4,7 @@ import FeaturedService from "@/components/FeaturedService";
 import Seasons from "@/components/Seasons";
 import AerialShowcase from "@/components/AerialShowcase";
 import Gallery from "@/components/Gallery";
+import HomeReviews from "@/components/HomeReviews";
 import CtaBand from "@/components/CtaBand";
 import { pageMetadata } from "@/lib/seo";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <Seasons />
       <AerialShowcase />
       <Gallery />
+      <HomeReviews />
       <CtaBand />
     </>
   );

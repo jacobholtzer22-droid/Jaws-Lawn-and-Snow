@@ -78,7 +78,15 @@ export default function SeasonHero() {
             style={{ animationDelay: "360ms" }}
           >
             {trust.rating != null && (
-              <span className="inline-flex items-center gap-1.5 font-semibold text-birch">
+              /* The rating links straight to the Google listing — people tap a
+                 star rating expecting to see the reviews behind it. */
+              <a
+                href={site.reviews.reviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-[44px] items-center gap-1.5 font-semibold text-birch underline decoration-sap decoration-2 underline-offset-4 transition-colors hover:text-sap"
+                aria-label={`${trust.rating.toFixed(1)} out of 5 on ${trust.ratingSource} — read the reviews`}
+              >
                 <span className="flex" aria-hidden="true">
                   {Array.from({ length: 5 }).map((_, i) => (
                     <Star
@@ -88,7 +96,7 @@ export default function SeasonHero() {
                   ))}
                 </span>
                 {trust.rating.toFixed(1)} on {trust.ratingSource}
-              </span>
+              </a>
             )}
             {trust.points.map((p) => (
               <span key={p} className="inline-flex items-center gap-2">

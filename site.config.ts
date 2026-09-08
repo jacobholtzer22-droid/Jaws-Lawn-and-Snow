@@ -23,6 +23,11 @@ import {
   Shovel,
   Sun,
   Snowflake,
+  Wind,
+  Wheat,
+  Shrub,
+  TreeDeciduous,
+  Trash2,
 } from "lucide-react";
 
 /* ---- Types ----------------------------------------------------------------- */
@@ -51,8 +56,13 @@ export type Service = {
 };
 
 export type ServiceCategory = {
+  /** In-page anchor id. */
   key: string;
+  /** URL segment for this category's own page: /services/<slug>. */
+  slug: string;
   label: string;
+  /** One-line intro for the category's own page + its metadata description. */
+  intro: string;
   blurb: string;
   icon: LucideIcon;
   /** Representative photo for the Home category card. */
@@ -108,11 +118,15 @@ export const site = {
   business: {
     name: "Jaws Lawn & Snow",
     shortName: "Jaws",
-    tagline: "Lawn care & snow removal in Canton, Michigan",
+    tagline: "Belleville-based lawn care & snow removal",
     // TODO: confirm Joey's number for the lawn+snow line (reused from Jaws Detailing for now).
     phoneDisplay: "(734) 262-2365",
     phoneHref: "tel:+17342622365",
-    region: "Canton, Michigan",
+    // Physical base (service-area business). Canton is a target market, NOT our
+    // location — see Google's business-representation guidelines.
+    region: "Belleville, MI",
+    servingLine:
+      "Belleville-based, proudly serving Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor, Saline, and select surrounding areas.",
     email: "", // optional — add a public contact email if Joey wants one shown
     // Brand logo (square lockup). Set to "" to fall back to the text wordmark.
     logo: "/images/logo.png",
@@ -146,16 +160,16 @@ export const site = {
       summer: {
         tabLabel: "Summer",
         icon: Sun,
-        eyebrow: "Lawn care & snow removal · Canton, Michigan",
+        eyebrow: "Lawn care & snow removal · Canton & Belleville, MI",
         headline: "A lawn the\nneighbors notice.",
-        sub: "Weekly mowing, clean edges, and tidy beds — handled on schedule, so your yard always looks like someone takes care of it. Because someone does.",
+        sub: "Reliable mowing, detailed trimming, and a clean finish — handled on schedule, so your yard always looks like someone takes care of it. Because someone does.",
         primaryCta: "Get a free quote",
         imageKey: "heroSummer",
       },
       winter: {
         tabLabel: "Winter",
         icon: Snowflake,
-        eyebrow: "Snow removal · Canton, Michigan",
+        eyebrow: "Snow removal · Canton & Belleville, MI",
         headline: "Plowed before\nyou're awake.",
         sub: "When the snow stops, we start. Driveways cleared, walkways shoveled, and salt down — so you get out on time no matter what fell overnight.",
         primaryCta: "Get on the snow list",
@@ -189,9 +203,12 @@ export const site = {
   serviceCategories: [
     {
       key: "lawn",
+      slug: "lawn-care",
       label: "Lawn Care",
+      intro:
+        "Mowing, trimming, seeding, aeration and seasonal cleanups — the routine work that keeps a property looking cared for from spring through fall.",
       blurb:
-        "Weekly mowing, crisp edges, and seasonal cleanups that keep your yard sharp.",
+        "Mowing, crisp edges, seeding and seasonal cleanups that keep your yard sharp.",
       icon: Sprout,
       image: {
         src: "/images/service-mowing.jpg",
@@ -201,8 +218,10 @@ export const site = {
       services: [
         {
           title: "Lawn Mowing",
+          // Client-supplied wording (verbatim). Do not paraphrase — it sets the
+          // scope of the standard service vs. the paid add-ons.
           description:
-            "Sharp, even cuts on a schedule that fits your yard. We mow, handle the clippings, and leave clean lines every single visit.",
+            "Standard mowing service includes mowing, string trimming along sidewalks, driveways, landscape beds, fences and other obstacles, plus blowing clippings from hard surfaces. Mechanical edging and bagging are available as additional services.",
           icon: Sprout,
           image: {
             src: "/images/service-mowing.jpg",
@@ -222,6 +241,18 @@ export const site = {
           },
         },
         {
+          title: "Aeration & Overseeding",
+          description:
+            "Core aeration to open up compacted soil, followed by overseeding so new grass has somewhere to take hold. Best done in the fall.",
+          icon: Wind,
+        },
+        {
+          title: "Topsoil & Grass Seeding",
+          description:
+            "Topsoil brought in to level low spots and bare patches, then seeded so the thin areas fill back in instead of turning to mud.",
+          icon: Wheat,
+        },
+        {
           title: "Spring & Fall Cleanups",
           description:
             "Leaves, sticks, and winter mess cleared out so your lawn starts the season healthy and your beds look ready, not buried.",
@@ -236,9 +267,12 @@ export const site = {
     },
     {
       key: "landscaping",
+      slug: "landscaping",
       label: "Landscaping",
+      intro:
+        "Mulch and rock, hedge and shrub work, bed weeding, and brush removal — the jobs that clean up everything the mower doesn't touch.",
       blurb:
-        "Beds, walls, and plantings that give the whole property structure and curb appeal.",
+        "Mulch, hedges, beds and brush removal — everything the mower doesn't touch.",
       icon: Flower2,
       image: {
         src: "/images/service-mulch.jpg",
@@ -247,7 +281,7 @@ export const site = {
       },
       services: [
         {
-          title: "Mulch & Rock Beds",
+          title: "Mulch & Rock Installation",
           description:
             "Fresh mulch or decorative rock, weeded and edged clean — beds that lock in moisture, hold back weeds, and make the whole yard pop.",
           icon: Flower2,
@@ -257,6 +291,26 @@ export const site = {
             placeholderLabel: "Mulch & rock beds — fresh mulched bed",
           },
         },
+        {
+          title: "Hedge & Shrub Trimming",
+          description:
+            "Hedges and shrubs cut back into shape and the trimmings hauled off, so the front of the house stops looking overgrown.",
+          icon: Shrub,
+        },
+        {
+          title: "Bed Weeding & Cleanup",
+          description:
+            "Weeds pulled out of the beds, edges re-cut, and the debris cleared — the reset that makes fresh mulch actually look fresh.",
+          icon: Trash2,
+        },
+        {
+          title: "Bush & Brush Removal",
+          description:
+            "Overgrown bushes, volunteer saplings, and brush piles taken out and hauled away so you get the space back.",
+          icon: TreeDeciduous,
+        },
+        /* Retaining walls and plantings stay listed but sit last — they're
+         * offered, not the work we lead with. */
         {
           title: "Retaining Walls",
           description:
@@ -283,7 +337,10 @@ export const site = {
     },
     {
       key: "snow",
+      slug: "snow-removal",
       label: "Snow Removal",
+      intro:
+        "Plowing, hand-shoveling and salting on a storm-priority route, so the driveway is open before you need it.",
       blurb:
         "Plowing, shoveling, and salting so you get out on time no matter what fell overnight.",
       icon: Snowflake,
@@ -321,7 +378,10 @@ export const site = {
     },
     {
       key: "stump",
+      slug: "stump-grinding",
       label: "Stump Grinding",
+      intro:
+        "Old stumps ground down below grade and the chips cleared away, so you get the yard back and stop mowing around it.",
       blurb:
         "Old stumps ground down below grade and hauled away — watch the grinder go.",
       icon: Axe,
@@ -390,51 +450,51 @@ export const site = {
   work: {
     eyebrow: "Recent work",
     heading: "Stripes we're proud of.",
-    sub: "A few recent lawns and properties we keep looking sharp around Canton, Michigan.",
+    sub: "A few recent lawns and properties we keep looking sharp around Canton, Belleville, and nearby.",
+    /* Captions read "<service> · <city>". `city` is intentionally "" on every
+     * photo — the town each job was in is a business fact we don't have. Fill
+     * them in and the city appears automatically; leave them blank and only the
+     * service shows. Never guess a town.
+     *
+     * Trimmed from 11 to 6 frames: work-3 and work-7 were shot over the mower
+     * deck / truck hood, work-10 was cluttered and patchy, and work-8 / work-12
+     * duplicated stronger frames. */
     photos: [
       {
         src: "/images/work-1.jpg",
         alt: "A backyard lawn freshly mowed in clean stripes at dusk, framed by tall trees and blooming hydrangeas",
+        service: "Lawn mowing",
+        city: "",
       },
       {
         src: "/images/work-2.jpg",
         alt: "A red zero-turn mower on a freshly striped lawn under a bright blue summer sky",
+        service: "Lawn mowing",
+        city: "",
       },
       {
         src: "/images/work-4.jpg",
         alt: "A fenced backyard mowed in crisp green stripes",
-      },
-      {
-        src: "/images/work-3.jpg",
-        alt: "A wide striped lawn seen from behind a riding mower",
+        service: "Lawn mowing",
+        city: "",
       },
       {
         src: "/images/work-5.jpg",
         alt: "A rural property with a white rail fence and freshly cut grass",
+        service: "Lawn mowing",
+        city: "",
       },
       {
         src: "/images/work-6.jpg",
         alt: "A backyard with a stone fire pit and a tidy, maintained lawn",
-      },
-      {
-        src: "/images/work-7.jpg",
-        alt: "A red brick home with a freshly striped front lawn",
-      },
-      {
-        src: "/images/work-8.jpg",
-        alt: "A neatly striped lawn under a clear blue sky",
-      },
-      {
-        src: "/images/work-10.jpg",
-        alt: "A freshly mowed commercial lot bordered by black fencing",
+        service: "Lawn mowing",
+        city: "",
       },
       {
         src: "/images/work-11.jpg",
         alt: "A neatly striped residential lawn along a chain-link fence",
-      },
-      {
-        src: "/images/work-12.jpg",
-        alt: "A crisply mowed front lawn on a quiet residential street",
+        service: "Lawn mowing",
+        city: "",
       },
     ],
   },
@@ -443,7 +503,7 @@ export const site = {
   showcase: {
     eyebrow: "From above",
     heading: "A bird's-eye look at the work.",
-    sub: "Striped lawns and clean lines around Canton, Michigan — the whole property, start to finish.",
+    sub: "Striped lawns and clean lines around Canton, Belleville, and nearby — the whole property, start to finish.",
     poster: "/images/home-aerial-poster.jpg",
     label: "Aerial drone flyover of a property with freshly striped lawns",
     // HEVC first: Safari picks it (lighter on iPhones); other browsers fall back to H.264.
@@ -462,7 +522,7 @@ export const site = {
       "We show up when we say we will",
       "Locally owned and fully insured",
       "Flat, upfront pricing — no surprise add-ons",
-      "The same crew that knows your property",
+      "An owner-led local crew that learns your property",
     ],
     imageKey: "about" as const,
     stats: [
@@ -472,23 +532,40 @@ export const site = {
     ] satisfies Stat[],
   },
 
+  /* --- Meet the owner (About page) ---
+   * Renders ONLY when `body` is non-empty AND `photo.src` is set. Both are
+   * blank because Joey's bio and a photo of him are facts we don't have —
+   * nothing here is invented, and the section stays off the page until he
+   * sends them. Fill both in and the section appears; no code change needed.
+   */
+  meetOwner: {
+    eyebrow: "Meet the owner",
+    heading: "Meet Joey.",
+    name: "Joey",
+    body: "",
+    photo: {
+      src: "",
+      alt: "",
+      placeholderLabel: "Meet Joey — portrait of the owner, on a job site",
+    } satisfies SiteImage,
+  },
+
   /* --- Service area ---
-   * Focused on Canton, MI and its immediate neighbors. Canton leads the copy;
-   * the far Washtenaw County towns were intentionally dropped so leads stay local.
+   * Belleville-based service-area business. Canton is the biggest target market
+   * but is NOT our physical location. Town list confirmed by the client.
    */
   serviceArea: {
     eyebrow: "Service area",
-    heading: "Proudly serving\nCanton, Michigan.",
-    note: "Based in Canton and covering the towns right around it. Don't see yours? Ask anyway — we're always adding nearby stops.",
+    heading: "Belleville-based,\nserving Canton and nearby.",
+    note: "Belleville-based, proudly serving Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor, Saline, and select surrounding areas. Don't see yours? Ask anyway.",
     cta: "See if we cover you",
     towns: [
       "Canton",
-      "Plymouth",
-      "Northville",
-      "Westland",
-      "Livonia",
       "Belleville",
       "Van Buren Township",
+      "Ypsilanti",
+      "Ann Arbor",
+      "Saline",
     ],
   },
 
@@ -509,6 +586,14 @@ export const site = {
     eyebrow: "Reviews",
     heading: "Word gets around.",
     sub: "We let the work — and our customers — do the talking.",
+    readAllLabel: "Read all Google reviews",
+    /* Home-page strip: a short proof block sitting directly above the quote CTA. */
+    home: {
+      eyebrow: "What customers say",
+      heading: "Real reviews from real neighbors.",
+      /* Which of `quotes` to surface on the home page, by index. */
+      featured: [0, 2, 3],
+    },
     placeholderLabel: "Review coming soon",
     placeholderHint: "Paste a real Google review in site.config.ts",
     // Real Google reviews (from jawslawnandsnow.com). All 5★. Do not invent more.
@@ -595,7 +680,11 @@ export const site = {
     eyebrow: "Get a quote",
     heading: "Get your free quote.",
     sub: "Tell us your address and what you need — lawn, snow, or both. We'll text you back fast with a price and the next open slot.",
-    callOrTextLabel: "Call or text",
+    callLabel: "Call us",
+    textLabel: "Text us",
+    /* sms: link. iOS and Android both accept a bare sms:<number>; no body is
+     * prefilled so nothing the customer didn't type gets sent. */
+    smsHref: "sms:+17342622365",
     infoLines: [
       "Prefer to type? Fill out the form and we'll text you right back.",
       "Booking snow now for the season — get on the route before the first storm.",
@@ -608,9 +697,42 @@ export const site = {
       emailLabel: "Email",
       emailOptionalLabel: "(optional)",
       emailPlaceholder: "you@email.com",
-      messageLabel: "What do you need?",
+      addressLabel: "Service address",
+      addressPlaceholder: "123 Main St",
+      cityZipLabel: "City & ZIP",
+      cityZipPlaceholder: "Belleville, 48111",
+      serviceLabel: "What do you need?",
+      servicePlaceholder: "Choose a service",
+      /* Mirrors the service categories. Kept as plain strings so the option the
+       * customer picked lands in the CRM message verbatim. */
+      serviceOptions: [
+        "Lawn mowing",
+        "Trimming & edging",
+        "Aeration & overseeding",
+        "Topsoil & grass seeding",
+        "Spring or fall cleanup",
+        "Mulch & rock installation",
+        "Hedge & shrub trimming",
+        "Bed weeding & cleanup",
+        "Bush & brush removal",
+        "Retaining wall or plantings",
+        "Snow removal",
+        "Stump grinding",
+        "Something else",
+      ],
+      frequencyLabel: "Mowing frequency",
+      frequencyOptions: ["Weekly", "Every other week", "One-time", "Not sure yet"],
+      contactMethodLabel: "Best way to reach you",
+      contactMethodOptions: ["Text", "Call", "Email"],
+      optionalLabel: "(optional)",
+      /* The CRM endpoint takes JSON, not multipart — there is no file upload
+       * here. Photos come in by text instead, which is where this customer
+       * base already sends them. */
+      photoHint:
+        "Have photos of the property? Text them to (734) 262-2365 and we'll match them to your quote.",
+      messageLabel: "Anything else?",
       messagePlaceholder:
-        "Your address, the service you want (lawn, snow, or both), and anything we should know.",
+        "Gate code, dogs in the yard, problem areas — anything we should know.",
       submitLabel: "Get my free quote",
       submittingLabel: "Sending…",
     },
@@ -637,16 +759,16 @@ export const site = {
    */
   seo: {
     title:
-      "Jaws Lawn & Snow — Lawn Care & Snow Removal in Canton, MI",
+      "Jaws Lawn & Snow — Lawn Care & Snow Removal | Canton & Belleville, MI",
     description:
-      "Lawn care in summer, snow removal in winter — one local, insured crew for your whole property in Canton, Michigan and the nearby towns. Mowing, cleanups, plowing, and salting. Get a free quote.",
-    url: "https://jawslawnandsnow.com", // TODO: confirm final domain
+      "Belleville-based lawn care and snow removal serving Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor and Saline. Mowing, cleanups, plowing, and salting. Get a free quote.",
+    url: "https://www.jawslawnandsnow.com", // canonical host = www (matches the live redirect)
     pages: {
       home: {
         title:
-          "Jaws Lawn & Snow — Lawn Care & Snow Removal in Canton, MI",
+          "Jaws Lawn & Snow — Lawn Care & Snow Removal | Canton & Belleville, MI",
         description:
-          "Lawn care in summer, snow removal in winter — one local, insured crew for your whole property in Canton, Michigan and nearby. Get a free quote.",
+          "Belleville-based lawn care and snow removal serving Canton, Belleville, Ypsilanti, Ann Arbor and nearby. Mowing, cleanups, plowing, and salting. Get a free quote.",
       },
       services: {
         title: "Services — Lawn Care & Snow Removal | Jaws Lawn & Snow",
@@ -656,12 +778,37 @@ export const site = {
       about: {
         title: "About — Local, Insured Lawn & Snow Crew | Jaws Lawn & Snow",
         description:
-          "A local, owner-run crew that treats your property like our own — and shows up in January, not just July. Serving Canton, Michigan and nearby year-round.",
+          "A Belleville-based, owner-led crew that treats your property like our own — and shows up in January, not just July. Serving Canton and nearby year-round.",
       },
       reviews: {
         title: "Reviews — Jaws Lawn & Snow",
         description:
-          "See what Canton-area homeowners say about Jaws Lawn & Snow's lawn care and snow removal.",
+          "See what homeowners around Canton, Belleville and Ypsilanti say about Jaws Lawn & Snow's lawn care and snow removal.",
+      },
+      "lawn-care": {
+        title: "Lawn Care — Mowing, Seeding & Cleanups | Jaws Lawn & Snow",
+        description:
+          "Mowing, string trimming, aeration and overseeding, topsoil and grass seeding, and spring and fall cleanups across Canton, Belleville, Ypsilanti and nearby.",
+      },
+      landscaping: {
+        title: "Landscaping — Mulch, Hedges & Brush Removal | Jaws Lawn & Snow",
+        description:
+          "Mulch and rock installation, hedge and shrub trimming, bed weeding, and bush and brush removal across Canton, Belleville, Ypsilanti and nearby.",
+      },
+      "snow-removal": {
+        title: "Snow Removal — Plowing, Shoveling & Salting | Jaws Lawn & Snow",
+        description:
+          "Driveway and lot plowing, hand-shoveled walkways, and salting on a storm-priority route across Canton, Belleville, Ypsilanti and nearby.",
+      },
+      "stump-grinding": {
+        title: "Stump Grinding — Stumps Ground Below Grade | Jaws Lawn & Snow",
+        description:
+          "Old stumps ground down below grade and the chips cleared away, across Canton, Belleville, Ypsilanti and nearby. Free quotes.",
+      },
+      thanks: {
+        title: "Thanks — Jaws Lawn & Snow",
+        description:
+          "Thanks for reaching out. We'll be in touch shortly with your free quote.",
       },
       contact: {
         title: "Get a Free Quote — Jaws Lawn & Snow",

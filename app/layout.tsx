@@ -4,6 +4,8 @@ import Script from "next/script";
 import { site } from "@/site.config";
 import { GOOGLE_ADS_ID } from "@/lib/gtag-conversions";
 import Header from "@/components/Header";
+import JsonLd from "@/components/JsonLd";
+import { localBusinessSchema, websiteSchema } from "@/lib/schema";
 import Footer from "@/components/Footer";
 import MobileCtaBar from "@/components/MobileCtaBar";
 import "./globals.css";
@@ -25,6 +27,14 @@ const body = Figtree({
   display: "swap",
 });
 
+/* Sitewide share image. Real photo from this repo + the brand lockup — no stock. */
+const OG_IMAGE = {
+  url: "/og.jpg",
+  width: 1200,
+  height: 630,
+  alt: `${site.business.name} — lawn care and snow removal`,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.seo.url),
   title: {
@@ -33,6 +43,21 @@ export const metadata: Metadata = {
   },
   description: site.seo.description,
   robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    siteName: site.business.name,
+    locale: "en_US",
+    title: site.seo.title,
+    description: site.seo.description,
+    url: site.seo.url,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.seo.title,
+    description: site.seo.description,
+    images: [OG_IMAGE.url],
+  },
 };
 
 export const viewport: Viewport = {
@@ -62,6 +87,10 @@ export default function RootLayout({
             gtag('config','${GOOGLE_ADS_ID}');
           `}
         </Script>
+        {/* Sitewide structured data: the business itself + the site.
+         * Per-page Service nodes live on the service category pages. */}
+        <JsonLd data={localBusinessSchema()} />
+        <JsonLd data={websiteSchema()} />
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-pine focus:px-4 focus:py-2 focus:font-semibold focus:text-birch"

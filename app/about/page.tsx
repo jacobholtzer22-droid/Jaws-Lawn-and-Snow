@@ -1,5 +1,6 @@
 import PageHeader from "@/components/PageHeader";
 import WhyUs from "@/components/WhyUs";
+import MeetOwner from "@/components/MeetOwner";
 import ServiceArea from "@/components/ServiceArea";
 import { site } from "@/site.config";
 import { pageMetadata } from "@/lib/seo";
@@ -13,6 +14,7 @@ export default function AboutPage() {
     <>
       <PageHeader eyebrow={whyUs.eyebrow} title={whyUs.heading} />
       <WhyUs hideHeading />
+      <MeetOwner />
       <ServiceArea />
     </>
   );
