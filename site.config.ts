@@ -138,6 +138,29 @@ export const site = {
     markCream: "/images/mark-cream.png", // for dark backgrounds
   },
 
+  /* --- Sister companies (same owner) ---
+   * Surfaced in a one-time, dismissible popup (SisterSitesPopup) so a visitor who
+   * actually needs painting or auto detailing is pointed to the right Jaws site.
+   * URLs verified live 2026-09-10 — the painting domain is jawspaintingco.com
+   * (NOT jawspainting.com, which does not resolve).
+   */
+  sisterSites: {
+    heading: "Jaws does more than lawns.",
+    sub: "Same local, family-run crew. If you need one of these instead, we've got a site for that too.",
+    items: [
+      {
+        name: "Jaws Painting",
+        service: "Interior & exterior house painting",
+        url: "https://jawspaintingco.com",
+      },
+      {
+        name: "Jaws Auto Detailing",
+        service: "Mobile car detailing that comes to you",
+        url: "https://jawsautodetailing.com",
+      },
+    ],
+  },
+
   /* --- Shared microcopy (buttons used in more than one place) --- */
   cta: {
     label: "Get a free quote", // header, services, etc.

@@ -8,6 +8,7 @@ import JsonLd from "@/components/JsonLd";
 import { localBusinessSchema, websiteSchema } from "@/lib/schema";
 import Footer from "@/components/Footer";
 import MobileCtaBar from "@/components/MobileCtaBar";
+import SisterSitesPopup from "@/components/SisterSitesPopup";
 import "./globals.css";
 
 /* Display: Bricolage Grotesque — an expressive, slightly characterful grotesque.
@@ -101,6 +102,7 @@ export default function RootLayout({
         <main id="main">{children}</main>
         <Footer />
         <MobileCtaBar />
+        <SisterSitesPopup />
       </body>
     </html>
   );
