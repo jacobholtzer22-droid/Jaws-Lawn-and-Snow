@@ -32,7 +32,7 @@ export default function Header() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-pine/95 backdrop-blur"
+          ? "border-b border-white/10 bg-pine shadow-md"
           : "border-b border-transparent bg-transparent"
       }`}
     >
@@ -82,9 +82,12 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Always-legible "call" chip: a solid navy pill so the number stays
+           * readable on any background — over the bright hero at the top and over
+           * matching navy sections once the header turns opaque on scroll. */}
           <PhoneLink
             href={site.business.phoneHref}
-            className="hidden items-center gap-2 text-sm font-semibold text-birch transition-colors hover:text-sap sm:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-pine px-4 py-2 text-sm font-semibold text-birch shadow-sm ring-1 ring-white/15 transition-colors hover:bg-pine-light sm:inline-flex"
           >
             <Phone className="h-4 w-4 text-sap" aria-hidden="true" />
             {site.business.phoneDisplay}
