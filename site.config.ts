@@ -67,6 +67,14 @@ export type ServiceCategory = {
   icon: LucideIcon;
   /** Representative photo for the Home category card. */
   image: SiteImage;
+  /** "What's included" bullets on the category page. */
+  included: string[];
+  /** Real project photos for the category page, by `work.photos[].src`. */
+  projectPhotos: string[];
+  /** Category FAQ. Rendered on the page AND emitted as FAQPage schema from this
+   * same array, so the two can never drift. Every answer must trace to a fact
+   * already in this file or in the client's own writing. */
+  faq: { q: string; a: string }[];
   /** Render as a large featured block (e.g. a single service with a video) instead of a card grid. */
   featured?: boolean;
   services: Service[];
@@ -146,7 +154,7 @@ export const site = {
    */
   sisterSites: {
     heading: "Jaws does more than lawns.",
-    sub: "Same local, family-run crew. If you need one of these instead, we've got a site for that too.",
+    sub: "Same local, owner-led team. If you need one of these instead, we've got a site for that too.",
     items: [
       {
         name: "Jaws Painting",
@@ -193,8 +201,8 @@ export const site = {
         tabLabel: "Winter",
         icon: Snowflake,
         eyebrow: "Snow removal · Canton & Belleville, MI",
-        headline: "Plowed before\nyou're awake.",
-        sub: "When the snow stops, we start. Driveways cleared, walkways shoveled, and salt down — so you get out on time no matter what fell overnight.",
+        headline: "Snow service you\ncan plan around.",
+        sub: "Residential and commercial snow service based on the agreed snowfall trigger and service plan, with dependable communication throughout the storm.",
         primaryCta: "Get on the snow list",
         imageKey: "heroWinter",
       },
@@ -230,6 +238,37 @@ export const site = {
       label: "Lawn Care",
       intro:
         "Mowing, trimming, seeding, aeration and seasonal cleanups — the routine work that keeps a property looking cared for from spring through fall.",
+      included: [
+        "Mowing with string trimming along sidewalks, driveways, beds and fences",
+        "Clippings blown off hard surfaces",
+        "Weekly or every-other-week mowing",
+        "Aeration and overseeding",
+        "Topsoil and grass seeding for thin or bare areas",
+        "Spring and fall cleanups",
+      ],
+      projectPhotos: [
+        "/images/work-1.jpg",
+        "/images/work-2.jpg",
+        "/images/work-5.jpg",
+      ],
+      faq: [
+        {
+          q: "What does standard mowing include?",
+          a: "Standard mowing service includes mowing, string trimming along sidewalks, driveways, landscape beds, fences and other obstacles, plus blowing clippings from hard surfaces.",
+        },
+        {
+          q: "Are edging and bagging included?",
+          a: "Mechanical edging and bagging are available as additional services. Mention either one on the quote form and we'll include it in your price.",
+        },
+        {
+          q: "How often do you mow?",
+          a: "We offer weekly and every-other-week mowing. Pick the one you want on the quote form.",
+        },
+        {
+          q: "Do you offer fertilizer or weed control?",
+          a: "Not at this time. Our lawn care covers mowing, trimming, aeration and overseeding, topsoil and seeding, and spring and fall cleanups.",
+        },
+      ],
       blurb:
         "Mowing, crisp edges, seeding and seasonal cleanups that keep your yard sharp.",
       icon: Sprout,
@@ -294,6 +333,24 @@ export const site = {
       label: "Landscaping",
       intro:
         "Mulch and rock, hedge and shrub work, bed weeding, and brush removal — the jobs that clean up everything the mower doesn't touch.",
+      included: [
+        "Mulch or decorative rock installed, with beds weeded and edged",
+        "Hedges and shrubs trimmed back into shape",
+        "Bed weeding and cleanup",
+        "Overgrown bushes, saplings and brush removed",
+        "Trimmings and debris hauled away",
+      ],
+      projectPhotos: [],
+      faq: [
+        {
+          q: "Do you haul away the trimmings and brush?",
+          a: "Yes. Hedge trimmings, pulled weeds and removed brush are hauled off as part of the job.",
+        },
+        {
+          q: "Mulch or rock — which should I choose?",
+          a: "We install either. Tell us what you have now and what you're after on the quote form, and we'll talk it through when we price the job.",
+        },
+      ],
       blurb:
         "Mulch, hedges, beds and brush removal — everything the mower doesn't touch.",
       icon: Flower2,
@@ -332,30 +389,6 @@ export const site = {
             "Overgrown bushes, volunteer saplings, and brush piles taken out and hauled away so you get the space back.",
           icon: TreeDeciduous,
         },
-        /* Retaining walls and plantings stay listed but sit last — they're
-         * offered, not the work we lead with. */
-        {
-          title: "Retaining Walls",
-          description:
-            "Block and stone retaining walls that hold back slopes, define beds, and add lasting structure to your yard.",
-          icon: Layers,
-          image: {
-            src: "/images/service-walls.jpg",
-            alt: "A striped lawn edged with a boulder-and-stone border at a wooded home",
-            placeholderLabel: "Retaining walls — block / stone wall",
-          },
-        },
-        {
-          title: "Plantings & Beds",
-          description:
-            "Shrubs, perennials, and fresh planting beds laid out and planted to add color and curb appeal around your home.",
-          icon: Trees,
-          image: {
-            src: "/images/service-plantings.jpg",
-            alt: "Foundation plantings and mulched beds framing a freshly striped front lawn",
-            placeholderLabel: "Plantings — shrubs & beds",
-          },
-        },
       ],
     },
     {
@@ -363,9 +396,32 @@ export const site = {
       slug: "snow-removal",
       label: "Snow Removal",
       intro:
-        "Plowing, hand-shoveling and salting on a storm-priority route, so the driveway is open before you need it.",
+        "Residential and commercial snow service based on the agreed snowfall trigger and service plan, with dependable communication throughout the storm.",
+      included: [
+        "Residential driveways and commercial lots",
+        "Walkways, steps and entries cleared by hand",
+        "Salting as part of your service plan",
+        "Service based on an agreed snowfall trigger",
+        "Markers used where appropriate to help protect lawn edges and paved surfaces",
+        "Dependable communication throughout the storm",
+      ],
+      projectPhotos: [],
+      faq: [
+        {
+          q: "When do you come out after it snows?",
+          a: "Service is based on the snowfall trigger and service plan we agree on with you up front, and we keep you updated throughout the storm.",
+        },
+        {
+          q: "Do you handle commercial properties?",
+          a: "Yes. We provide residential and commercial snow service.",
+        },
+        {
+          q: "Do you put out markers?",
+          a: "Markers are used where appropriate to help protect lawn edges and paved surfaces.",
+        },
+      ],
       blurb:
-        "Plowing, shoveling, and salting so you get out on time no matter what fell overnight.",
+        "Plowing, shoveling, and salting on an agreed snowfall trigger, with clear communication through the storm.",
       icon: Snowflake,
       image: {
         src: "/images/service-plowing.jpg",
@@ -376,7 +432,7 @@ export const site = {
         {
           title: "Snow Plowing",
           description:
-            "Driveways and lots plowed fast after every storm, with markers set ahead of time so we protect your grass and your concrete.",
+            "Residential driveways and commercial lots plowed according to your agreed snowfall trigger and service plan. Markers used where appropriate to help protect lawn edges and paved surfaces.",
           icon: Truck,
           image: {
             src: "/images/service-plowing.jpg",
@@ -387,7 +443,7 @@ export const site = {
         {
           title: "Shoveling & Salting",
           description:
-            "Walkways, steps, and entries cleared by hand and salted down, so no one slips on the way to the door.",
+            "Walkways, steps, and entries cleared by hand and salted as part of your service plan.",
           icon: Shovel,
           image: {
             // Reuses the snow-clearing photo — the only winter photo on hand.
@@ -405,6 +461,22 @@ export const site = {
       label: "Stump Grinding",
       intro:
         "Old stumps ground down below grade and the chips cleared away, so you get the yard back and stop mowing around it.",
+      included: [
+        "Stump ground down below grade",
+        "Chips and debris cleared away",
+        "No more mowing around it",
+      ],
+      projectPhotos: [],
+      faq: [
+        {
+          q: "How far down do you grind?",
+          a: "We grind the stump down below grade, so you can mow over the spot instead of around it.",
+        },
+        {
+          q: "What happens to the wood chips?",
+          a: "The chips and debris are cleared away when we finish.",
+        },
+      ],
       blurb:
         "Old stumps ground down below grade and hauled away — watch the grinder go.",
       icon: Axe,
@@ -436,6 +508,68 @@ export const site = {
     },
   ] satisfies ServiceCategory[],
 
+  /* --- FAQ shared by every service + location page --- */
+  sharedFaq: [
+    {
+      q: "Is the quote free?",
+      a: "Yes. Quotes are free with no pressure and no obligation.",
+    },
+    {
+      q: "How do I get a quote?",
+      a: "Fill out the quote form, or call or text (734) 262-2365.",
+    },
+    {
+      q: "Which areas do you serve?",
+      a: "We're based in Belleville and serve Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor, Saline, and select surrounding areas.",
+    },
+  ],
+
+  /* --- Before & after sets ---
+   * Empty on purpose: no genuine same-property pairs exist yet. Each entry needs
+   * two real photos of the SAME property. `category` is a serviceCategories
+   * slug; `city` follows the same never-guess rule as the gallery. The home
+   * page and matching service/location pages render these automatically; with
+   * the array empty, nothing renders.
+   */
+  beforeAfter: [] as {
+    before: { src: string; alt: string };
+    after: { src: string; alt: string };
+    service: string;
+    category: string;
+    city: string;
+  }[],
+
+  /* --- Services on hold (NOT rendered anywhere) ---
+   * Pulled from the service cards, category pages, quote form and schema at
+   * Joey's request (Sept 2026) while he decides whether to advertise them. To
+   * restore: move the entries back into the Landscaping `services` list and
+   * re-add "Retaining wall or plantings" to contact.form.serviceOptions.
+   */
+  servicesOnHold: [
+        {
+          title: "Retaining Walls",
+          description:
+            "Block and stone retaining walls that hold back slopes, define beds, and add lasting structure to your yard.",
+          icon: Layers,
+          image: {
+            src: "/images/service-walls.jpg",
+            alt: "A striped lawn edged with a boulder-and-stone border at a wooded home",
+            placeholderLabel: "Retaining walls — block / stone wall",
+          },
+        },
+        {
+          title: "Plantings & Beds",
+          description:
+            "Shrubs, perennials, and fresh planting beds laid out and planted to add color and curb appeal around your home.",
+          icon: Trees,
+          image: {
+            src: "/images/service-plantings.jpg",
+            alt: "Foundation plantings and mulched beds framing a freshly striped front lawn",
+            placeholderLabel: "Plantings — shrubs & beds",
+          },
+        },
+  ],
+
   /* --- Two-season band (reinforces the year-round identity) --- */
   seasons: {
     eyebrow: "All year, one call",
@@ -461,7 +595,7 @@ export const site = {
           "Driveway & lot plowing",
           "Hand-shoveled walkways",
           "Salting & de-icing",
-          "Storm-priority service",
+          "Agreed snowfall triggers",
         ],
       },
     ] satisfies SeasonColumn[],
@@ -474,7 +608,7 @@ export const site = {
     eyebrow: "Recent work",
     heading: "Stripes we're proud of.",
     sub: "A few recent lawns and properties we keep looking sharp around Canton, Belleville, and nearby.",
-    /* Captions read "<service> · <city>". `city` is intentionally "" on every
+    /* Captions read "<service> in <city>" (e.g. "Weekly mowing in Canton"). `city` is intentionally "" on every
      * photo — the town each job was in is a business fact we don't have. Fill
      * them in and the city appears automatically; leave them blank and only the
      * service shows. Never guess a town.
@@ -565,13 +699,83 @@ export const site = {
     eyebrow: "Meet the owner",
     heading: "Meet Joey.",
     name: "Joey",
-    body: "",
+    /* Drafted only from facts Joey has confirmed in writing (owner-led,
+     * locally owned, Belleville-based, lawn + snow, the towns served). Still
+     * hidden: MeetOwner renders nothing until photo.src is set. Joey should
+     * read and personalise this before it goes live. */
+    body: "Jaws Lawn & Snow is locally owned and owner-operated. I'm Joey, and I run the business out of Belleville, serving homeowners and businesses across Canton, Van Buren Township, Ypsilanti, Ann Arbor, Saline and nearby.\n\nJaws is an owner-led local team: lawn care in the summer, snow service in the winter.",
     photo: {
       src: "",
       alt: "",
       placeholderLabel: "Meet Joey — portrait of the owner, on a job site",
     } satisfies SiteImage,
   },
+
+  /* --- Location pages (/service-areas/<slug>) ---
+   * One page per main market, each with its own wording. Rules:
+   * - `intro`/`body` state only what's true: where we're based (Belleville, per
+   *   Joey), the services we offer, and public geography (county, neighbouring
+   *   towns). No invented jobs, customer counts, response times or local stories.
+   * - `towns` are the gallery `city` values that count as this market. A page
+   *   shows "Recent work in <town>" from gallery photos and before/after sets
+   *   tagged with one of these.
+   * - A page is NOINDEXED and left out of the sitemap until at least one real
+   *   project photo is tagged to it. Five near-identical pages with no local
+   *   proof read as doorway pages to Google; one tagged photo turns indexing on
+   *   automatically.
+   */
+  locations: [
+    {
+      slug: "canton-mi",
+      name: "Canton",
+      county: "Wayne County",
+      towns: ["Canton"],
+      heading: "Lawn care and snow removal in Canton, MI",
+      intro:
+        "Canton is one of our main service areas. From our base in neighbouring Belleville we cover lawns, landscaping, snow and stumps across Canton Township.",
+      body: "Our standard mowing visit covers the details that make a Canton yard look finished: a clean cut, string trimming along sidewalks, driveways, beds and fences, and clippings blown off the hard surfaces. Cleanups, mulch and hedge trimming can be added to the same service, and in winter the same team handles residential driveways and commercial lots on an agreed snowfall trigger.",
+    },
+    {
+      slug: "belleville-van-buren-township-mi",
+      name: "Belleville & Van Buren Township",
+      county: "Wayne County",
+      towns: ["Belleville", "Van Buren Township"],
+      heading: "Lawn care and snow removal in Belleville & Van Buren Township",
+      intro:
+        "Belleville is home base for Jaws Lawn & Snow. We're locally owned and owner-operated, and Belleville and the surrounding Van Buren Township are the closest routes we run.",
+      body: "Neighbours here can book recurring service or a single job: a spring or fall cleanup, a stump that needs grinding, or a round of bed weeding before fresh mulch goes down. Weekly and every-other-week mowing and winter snow service are available across Belleville and Van Buren Township.",
+    },
+    {
+      slug: "ypsilanti-mi",
+      name: "Ypsilanti",
+      county: "Washtenaw County",
+      towns: ["Ypsilanti"],
+      heading: "Lawn care and snow removal in Ypsilanti, MI",
+      intro:
+        "We serve homeowners and businesses in Ypsilanti, in Washtenaw County, from our base in Belleville.",
+      body: "In Ypsilanti we handle the full range of what we do: routine mowing and trimming, aeration and overseeding to thicken tired lawns, topsoil and seeding for bare patches, and brush and bush removal for overgrown yards. When the season turns, snow service runs on the trigger and plan we agree with you up front.",
+    },
+    {
+      slug: "ann-arbor-mi",
+      name: "Ann Arbor",
+      county: "Washtenaw County",
+      towns: ["Ann Arbor"],
+      heading: "Lawn care and snow removal in Ann Arbor, MI",
+      intro:
+        "Jaws serves Ann Arbor properties from our base in Belleville, with the same owner-led team handling lawn, landscaping, snow and stump work.",
+      body: "Beyond the weekly cut, Ann Arbor customers can have hedges and shrubs trimmed back into shape, beds weeded and refreshed with mulch or decorative rock, and stumps ground below grade so they stop getting in the way of the mower. Quotes are free, and you can ask for as much or as little as your property needs.",
+    },
+    {
+      slug: "saline-mi",
+      name: "Saline",
+      county: "Washtenaw County",
+      towns: ["Saline"],
+      heading: "Lawn care and snow removal in Saline, MI",
+      intro:
+        "We serve Saline, in Washtenaw County, for recurring lawn care, seasonal work and winter snow service.",
+      body: "For Saline properties, a recurring mowing schedule pairs well with seasonal work booked ahead: a spring cleanup to clear out winter debris, aeration and overseeding in the fall, and a snow plan agreed before the first storm. Tell us what you need on the quote form and we'll price the whole year or just the one job.",
+    },
+  ],
 
   /* --- Service area ---
    * Belleville-based service-area business. Canton is the biggest target market
@@ -738,7 +942,6 @@ export const site = {
         "Hedge & shrub trimming",
         "Bed weeding & cleanup",
         "Bush & brush removal",
-        "Retaining wall or plantings",
         "Snow removal",
         "Stump grinding",
         "Something else",
@@ -821,7 +1024,7 @@ export const site = {
       "snow-removal": {
         title: "Snow Removal — Plowing, Shoveling & Salting | Jaws Lawn & Snow",
         description:
-          "Driveway and lot plowing, hand-shoveled walkways, and salting on a storm-priority route across Canton, Belleville, Ypsilanti and nearby.",
+          "Residential and commercial plowing, hand-shoveled walkways, and salting on an agreed snowfall trigger across Canton, Belleville, Ypsilanti and nearby.",
       },
       "stump-grinding": {
         title: "Stump Grinding — Stumps Ground Below Grade | Jaws Lawn & Snow",

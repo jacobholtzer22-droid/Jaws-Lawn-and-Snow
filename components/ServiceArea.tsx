@@ -44,6 +44,22 @@ export default function ServiceArea() {
           ))}
         </ul>
       </div>
+
+      <div className="mt-10 border-t border-pine/10 pt-8">
+        <p className="text-sm font-semibold text-loam/70">Service area pages</p>
+        <ul className="mt-3 flex flex-wrap gap-3">
+          {site.locations.map((loc) => (
+            <li key={loc.slug}>
+              <Link
+                href={`/service-areas/${loc.slug}`}
+                className="inline-flex min-h-[44px] items-center rounded-full border border-pine/15 bg-white/60 px-4 text-sm font-semibold text-pine transition-colors hover:border-sap"
+              >
+                {loc.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </Section>
   );
 }

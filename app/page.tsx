@@ -5,6 +5,7 @@ import Seasons from "@/components/Seasons";
 import AerialShowcase from "@/components/AerialShowcase";
 import Gallery from "@/components/Gallery";
 import HomeReviews from "@/components/HomeReviews";
+import BeforeAfter from "@/components/BeforeAfter";
 import CtaBand from "@/components/CtaBand";
 import { pageMetadata } from "@/lib/seo";
 
@@ -19,6 +20,7 @@ export default function Home() {
       <Seasons />
       <AerialShowcase />
       <Gallery />
+      <BeforeAfter />
       <HomeReviews />
       <CtaBand />
     </>

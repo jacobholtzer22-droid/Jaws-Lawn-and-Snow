@@ -112,3 +112,31 @@ export function serviceSchema(cat: CategoryLike) {
     },
   };
 }
+
+type FaqLike = readonly { readonly q: string; readonly a: string }[];
+
+/** FAQPage node. Feed it the exact array the page renders. */
+export function faqSchema(items: FaqLike) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+}
+
+export function breadcrumbSchema(crumbs: { name: string; path: string }[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.name,
+      item: `${ORIGIN}${c.path}`,
+    })),
+  };
+}

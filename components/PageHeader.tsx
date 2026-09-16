@@ -4,6 +4,8 @@ type Props = {
   eyebrow: string;
   title: string;
   subtitle?: string;
+  /** Optional actions (e.g. quote buttons) under the subtitle. */
+  children?: React.ReactNode;
 };
 
 /**
@@ -12,7 +14,7 @@ type Props = {
  * clears the fixed header. Renders the page's single <h1>; section headings below
  * are <h2>. Carries the mowing-stripe motif (field-rule) along the bottom edge.
  */
-export default function PageHeader({ eyebrow, title, subtitle }: Props) {
+export default function PageHeader({ eyebrow, title, subtitle, children }: Props) {
   return (
     <section className="relative isolate overflow-hidden bg-gradient-to-b from-pine to-pine-dark pt-28 pb-14 sm:pt-32 sm:pb-16">
       <div
@@ -48,6 +50,14 @@ export default function PageHeader({ eyebrow, title, subtitle }: Props) {
             {subtitle}
           </p>
         )}
+        {children ? (
+          <div
+            className="mt-8 animate-fade-up"
+            style={{ animationDelay: "260ms" }}
+          >
+            {children}
+          </div>
+        ) : null}
       </div>
       <div className="field-rule absolute inset-x-0 bottom-0" />
     </section>

@@ -21,6 +21,11 @@ const VALID_TYPES = new Set([
   "City",
   "State",
   "OpeningHoursSpecification",
+  "FAQPage",
+  "Question",
+  "Answer",
+  "BreadcrumbList",
+  "ListItem",
 ]);
 
 /* CONFIRMED FACTS. Anything asserted in schema must appear here. */
