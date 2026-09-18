@@ -274,7 +274,7 @@ export const site = {
       icon: Sprout,
       image: {
         src: "/images/service-mowing.jpg",
-        alt: "A freshly mowed green lawn curving along the walkway of a brick home",
+        alt: "A thick, freshly mowed green lawn beside a wood fence",
         placeholderLabel: "Lawn care — striped lawn",
       },
       services: [
@@ -287,7 +287,7 @@ export const site = {
           icon: Sprout,
           image: {
             src: "/images/service-mowing.jpg",
-            alt: "A freshly mowed green lawn curving along the walkway of a brick home",
+            alt: "A thick, freshly mowed green lawn beside a wood fence",
             placeholderLabel: "Lawn mowing — striped, freshly cut lawn",
           },
         },
@@ -298,7 +298,7 @@ export const site = {
           icon: Scissors,
           image: {
             src: "/images/service-edging.jpg",
-            alt: "A front lawn cut in clean stripes with crisp edges along the driveway and walkway",
+            alt: "Crisp grass edges along the crisscrossing sidewalks of a corner-lot property",
             placeholderLabel: "Trimming & edging — crisp lawn border",
           },
         },
@@ -318,11 +318,7 @@ export const site = {
           description:
             "Topsoil brought in to level low spots and bare patches, then seeded so the thin areas fill back in instead of turning to mud.",
           icon: Wheat,
-          image: {
-            src: "/images/service-seeding.jpg",
-            alt: "A lush, freshly seeded green lawn filling in evenly along a wood fence",
-            placeholderLabel: "Seeding — new grass filling in",
-          },
+          // Icon-led — awaiting a dedicated seeding photo from the client.
         },
         {
           title: "Spring & Fall Cleanups",
