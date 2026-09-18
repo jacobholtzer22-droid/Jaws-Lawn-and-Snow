@@ -57,6 +57,8 @@ export default function Services({ hideHeading = false }: { hideHeading?: boolea
               <ul className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                 {cat.services.map((service, si) => {
                   const Icon = service.icon;
+                  // Optional per-service photo (only some services carry one).
+                  const image = "image" in service ? service.image : undefined;
                   return (
                     <Reveal
                       as="li"
@@ -66,10 +68,10 @@ export default function Services({ hideHeading = false }: { hideHeading?: boolea
                     >
                       {/* Photo banner. Services with no real photo render no
                           band at all — never a stock image, never an empty box. */}
-                      {service.image ? (
+                      {image ? (
                         <div className="relative aspect-[16/10] overflow-hidden bg-pine">
                           <ImagePlaceholder
-                            image={service.image}
+                            image={image}
                             sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
                             className="transition-transform duration-500 group-hover:scale-[1.03]"
                           />
@@ -81,7 +83,7 @@ export default function Services({ hideHeading = false }: { hideHeading?: boolea
                       ) : null}
 
                       <div className="p-6">
-                        {!service.image && (
+                        {!image && (
                           <span className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-pine text-sap">
                             <Icon className="h-5 w-5" aria-hidden="true" />
                           </span>

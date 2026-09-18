@@ -274,7 +274,7 @@ export const site = {
       icon: Sprout,
       image: {
         src: "/images/service-mowing.jpg",
-        alt: "A large lawn with fresh mowing stripes",
+        alt: "A freshly mowed green lawn curving along the walkway of a brick home",
         placeholderLabel: "Lawn care — striped lawn",
       },
       services: [
@@ -287,7 +287,7 @@ export const site = {
           icon: Sprout,
           image: {
             src: "/images/service-mowing.jpg",
-            alt: "View across a large lawn with fresh mowing stripes from behind the mower",
+            alt: "A freshly mowed green lawn curving along the walkway of a brick home",
             placeholderLabel: "Lawn mowing — striped, freshly cut lawn",
           },
         },
@@ -307,12 +307,22 @@ export const site = {
           description:
             "Core aeration to open up compacted soil, followed by overseeding so new grass has somewhere to take hold. Best done in the fall.",
           icon: Wind,
+          image: {
+            src: "/images/service-aeration.jpg",
+            alt: "A thick, healthy green front lawn beside a paved driveway",
+            placeholderLabel: "Aeration & overseeding — thick green lawn",
+          },
         },
         {
           title: "Topsoil & Grass Seeding",
           description:
             "Topsoil brought in to level low spots and bare patches, then seeded so the thin areas fill back in instead of turning to mud.",
           icon: Wheat,
+          image: {
+            src: "/images/service-seeding.jpg",
+            alt: "A lush, freshly seeded green lawn filling in evenly along a wood fence",
+            placeholderLabel: "Seeding — new grass filling in",
+          },
         },
         {
           title: "Spring & Fall Cleanups",
@@ -376,18 +386,33 @@ export const site = {
           description:
             "Hedges and shrubs cut back into shape and the trimmings hauled off, so the front of the house stops looking overgrown.",
           icon: Shrub,
+          image: {
+            src: "/images/service-hedge.jpg",
+            alt: "Neatly trimmed low shrubs lining the front walkway of a home",
+            placeholderLabel: "Hedge & shrub trimming — shaped shrubs",
+          },
         },
         {
           title: "Bed Weeding & Cleanup",
           description:
             "Weeds pulled out of the beds, edges re-cut, and the debris cleared — the reset that makes fresh mulch actually look fresh.",
           icon: Trash2,
+          image: {
+            src: "/images/service-bedweeding.jpg",
+            alt: "A shaped shrub in a clean, freshly weeded and mulched bed",
+            placeholderLabel: "Bed weeding & cleanup — tidy mulch bed",
+          },
         },
         {
           title: "Bush & Brush Removal",
           description:
             "Overgrown bushes, volunteer saplings, and brush piles taken out and hauled away so you get the space back.",
           icon: TreeDeciduous,
+          image: {
+            src: "/images/service-brush.jpg",
+            alt: "Overgrown brush and saplings being cleared from the side of a brick home",
+            placeholderLabel: "Bush & brush removal — cleared brush",
+          },
         },
       ],
     },
@@ -434,24 +459,14 @@ export const site = {
           description:
             "Residential driveways and commercial lots plowed according to your agreed snowfall trigger and service plan. Markers used where appropriate to help protect lawn edges and paved surfaces.",
           icon: Truck,
-          image: {
-            src: "/images/service-plowing.jpg",
-            alt: "A snow-covered residential driveway being cleared with a snowblower",
-            placeholderLabel: "Snow plowing — cleared driveway",
-          },
+          // Icon-led until real plow photos arrive — the one snow photo we have
+          // stays on the category hero only, so it never repeats on the page.
         },
         {
           title: "Shoveling & Salting",
           description:
             "Walkways, steps, and entries cleared by hand and salted as part of your service plan.",
           icon: Shovel,
-          image: {
-            // Reuses the snow-clearing photo — the only winter photo on hand.
-            // Swap in a dedicated shoveling/salting shot when Joey sends one.
-            src: "/images/service-plowing.jpg",
-            alt: "Clearing snow from a residential driveway on a winter evening",
-            placeholderLabel: "Shoveling & salting — cleared walkway",
-          },
         },
       ],
     },

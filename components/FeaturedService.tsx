@@ -16,7 +16,8 @@ export default function FeaturedService() {
   const service = cat.services[0];
   if (!service) return null;
   const Icon = cat.icon;
-  // `video`/`points` only exist on the stump service literal under `as const`.
+  // `image`/`video`/`points` only exist on some service literals under `as const`.
+  const image = "image" in service ? service.image : undefined;
   const video = "video" in service ? service.video : undefined;
   const points = "points" in service ? service.points : undefined;
 
@@ -30,8 +31,8 @@ export default function FeaturedService() {
               <div className="mx-auto w-full max-w-[240px] overflow-hidden rounded-2xl bg-black ring-1 ring-white/10 lg:mx-0">
                 <StumpVideo
                   src={video}
-                  poster={service.image?.src}
-                  label={service.image?.alt || service.title}
+                  poster={image?.src}
+                  label={image?.alt || service.title}
                   className="block aspect-[9/16] w-full object-cover"
                 />
               </div>
