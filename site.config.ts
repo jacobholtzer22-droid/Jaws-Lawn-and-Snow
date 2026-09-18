@@ -445,9 +445,9 @@ export const site = {
         "Plowing, shoveling, and salting on an agreed snowfall trigger, with clear communication through the storm.",
       icon: Snowflake,
       image: {
-        src: "/images/service-plowing.jpg",
-        alt: "Clearing a snow-covered driveway with a two-stage snowblower on a winter evening",
-        placeholderLabel: "Snow removal — plowed driveway",
+        src: "/images/service-plow-truck.jpg",
+        alt: "A pickup truck with a Western snow plow clearing a snow-covered lot in winter",
+        placeholderLabel: "Snow removal — plow truck",
       },
       services: [
         {
@@ -455,8 +455,11 @@ export const site = {
           description:
             "Residential driveways and commercial lots plowed according to your agreed snowfall trigger and service plan. Markers used where appropriate to help protect lawn edges and paved surfaces.",
           icon: Truck,
-          // Icon-led until real plow photos arrive — the one snow photo we have
-          // stays on the category hero only, so it never repeats on the page.
+          image: {
+            src: "/images/service-plow-truck.jpg",
+            alt: "A pickup truck with a Western snow plow clearing a snow-covered lot",
+            placeholderLabel: "Snow plowing — plow truck",
+          },
         },
         {
           title: "Shoveling & Salting",
