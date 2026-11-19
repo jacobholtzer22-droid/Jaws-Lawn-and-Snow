@@ -72,6 +72,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <head>
+        <script defer src="https://www.alignandacquire.com/t/s/jaws-lawn-snow.js"></script>
+      </head>
       <body className="bg-birch font-body text-loam antialiased">
         {/* Google tag (gtag.js) — loaded once, sitewide, for Google Ads
          * conversion tracking. Conversions are reported via lib/gtag-conversions. */}
