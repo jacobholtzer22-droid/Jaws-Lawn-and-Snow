@@ -98,6 +98,9 @@ export default function Footer() {
         <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-sm text-birch/55 sm:flex-row sm:items-center sm:justify-between">
           <p>
             © {year} {site.business.name}. {site.footer.rightsText}
+            {" "}·{" "}
+            <Link href="/privacy" className="transition-colors hover:text-birch">Privacy</Link>
+            <span hidden data-aa-cookie-wrap>{" "}·{" "}<a href="#" data-aa-cookie-settings className="transition-colors hover:text-birch">Cookie settings</a></span>
           </p>
           <p>{site.footer.credit}</p>
         </div>
