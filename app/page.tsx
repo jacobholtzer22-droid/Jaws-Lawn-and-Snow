@@ -7,6 +7,10 @@ import Gallery from "@/components/Gallery";
 import HomeReviews from "@/components/HomeReviews";
 import BeforeAfter from "@/components/BeforeAfter";
 import CtaBand from "@/components/CtaBand";
+import FaqList from "@/components/FaqList";
+import JsonLd from "@/components/JsonLd";
+import { faqSchema } from "@/lib/schema";
+import { site } from "@/site.config";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata("home");
@@ -14,6 +18,7 @@ export const metadata = pageMetadata("home");
 export default function Home() {
   return (
     <>
+      <JsonLd data={faqSchema(site.homeFaq)} />
       <SeasonHero />
       <ServicesPreview />
       <FeaturedService />
@@ -22,6 +27,7 @@ export default function Home() {
       <Gallery />
       <BeforeAfter />
       <HomeReviews />
+      <FaqList heading="Questions before you book." items={site.homeFaq} />
       <CtaBand />
     </>
   );

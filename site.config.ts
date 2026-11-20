@@ -253,20 +253,44 @@ export const site = {
       ],
       faq: [
         {
-          q: "What does standard mowing include?",
-          a: "Standard mowing service includes mowing, string trimming along sidewalks, driveways, landscape beds, fences and other obstacles, plus blowing clippings from hard surfaces.",
+          q: "What is included with standard mowing service?",
+          a: "Standard service includes mowing, string trimming around sidewalks, driveways, landscaping, fences, trees, and other obstacles, followed by blowing grass clippings from paved surfaces.",
         },
         {
-          q: "Are edging and bagging included?",
-          a: "Mechanical edging and bagging are available as additional services. Mention either one on the quote form and we'll include it in your price.",
+          q: "Are mechanical edging and grass bagging included?",
+          a: "Mechanical edging and bagging are optional services and are priced separately. Let us know that you want either service when requesting your quote so it can be included in your plan.",
         },
         {
-          q: "How often do you mow?",
-          a: "We offer weekly and every-other-week mowing. Pick the one you want on the quote form.",
+          q: "Do you offer weekly and biweekly mowing?",
+          a: "Yes. Weekly and every-other-week mowing are available depending on the property, location, and route availability. Weekly service normally provides the cleanest and healthiest appearance during peak growing season.",
         },
         {
-          q: "Do you offer fertilizer or weed control?",
-          a: "Not at this time. Our lawn care covers mowing, trimming, aeration and overseeding, topsoil and seeding, and spring and fall cleanups.",
+          q: "What happens if it rains on my scheduled mowing day?",
+          a: "We monitor the weather and ground conditions. If mowing would damage the lawn or leave an unacceptable result, service may be delayed until conditions improve. We work through weather delays as quickly as possible.",
+        },
+        {
+          q: "Do you mow wet grass?",
+          a: "We avoid mowing when the lawn is excessively wet or soft enough for equipment to cause ruts. Light moisture may not prevent service, but protecting the property and producing a clean result come first.",
+        },
+        {
+          q: "What should I do before the crew arrives?",
+          a: "Please remove toys, hoses, pet waste, furniture, and other objects from the lawn. Gates should be unlocked, and pets should remain indoors while service is being completed.",
+        },
+        {
+          q: "Do you remove grass clippings?",
+          a: "Grass clippings are normally returned to the lawn because they provide nutrients as they break down. Bagging and removal are available for an additional charge when requested.",
+        },
+        {
+          q: "Can you repair bare, thin, or uneven areas?",
+          a: "Yes. We offer topsoil installation, grass seeding, aeration, and overseeding. We’ll recommend the appropriate service based on the condition of the lawn and the time of year.",
+        },
+        {
+          q: "When is the best time to aerate and overseed in Southeast Michigan?",
+          a: "Late summer through early fall is generally the best window because soil temperatures remain warm while cooler weather helps new grass establish. Spring work may also be possible depending on the property.",
+        },
+        {
+          q: "Do you offer spring and fall cleanups?",
+          a: "Yes. Cleanup services can include leaves, sticks, dead growth, and seasonal debris. Hauling and disposal will be clearly identified in your quote.",
         },
       ],
       blurb:
@@ -349,12 +373,24 @@ export const site = {
       projectPhotos: [],
       faq: [
         {
-          q: "Do you haul away the trimmings and brush?",
-          a: "Yes. Hedge trimmings, pulled weeds and removed brush are hauled off as part of the job.",
+          q: "Do you supply mulch, rock, topsoil, and other materials?",
+          a: "Yes. We can supply and deliver the materials needed for your project, or discuss using customer-provided materials when appropriate. Materials, delivery, labor, and disposal will be itemized or clearly described in the estimate.",
         },
         {
-          q: "Mulch or rock — which should I choose?",
-          a: "We install either. Tell us what you have now and what you're after on the quote form, and we'll talk it through when we price the job.",
+          q: "Is bed preparation included with mulch installation?",
+          a: "Your quote will specify the preparation included. Depending on the property, this may include weeding, redefining bed edges, removing old material, and installing the requested mulch or decorative stone.",
+        },
+        {
+          q: "Do you haul away branches, brush, and trimmings?",
+          a: "Yes. Debris removal can be included with trimming, brush removal, and cleanup projects. Your estimate will clearly state whether hauling and disposal are included.",
+        },
+        {
+          q: "Can you remove bushes and small volunteer trees?",
+          a: "Yes. We remove unwanted bushes, overgrowth, saplings, and brush. Larger trees or projects requiring specialized equipment are evaluated individually.",
+        },
+        {
+          q: "Do you provide stump grinding?",
+          a: "Yes. We can grind unwanted stumps below grade and remove or redistribute the resulting chips according to the agreed project scope.",
         },
       ],
       blurb:
@@ -429,16 +465,48 @@ export const site = {
       projectPhotos: [],
       faq: [
         {
-          q: "When do you come out after it snows?",
-          a: "Service is based on the snowfall trigger and service plan we agree on with you up front, and we keep you updated throughout the storm.",
+          q: "What is a snowfall trigger?",
+          a: "The trigger is the amount of accumulated snow required before service begins. Your trigger—commonly one or two inches—is agreed upon before the season so you know when to expect service.",
         },
         {
-          q: "Do you handle commercial properties?",
-          a: "Yes. We provide residential and commercial snow service.",
+          q: "When will you arrive after it snows?",
+          a: "Route timing depends on when the storm ends, total accumulation, road conditions, and your service plan. We monitor each storm and communicate with customers as service progresses.",
         },
         {
-          q: "Do you put out markers?",
-          a: "Markers are used where appropriate to help protect lawn edges and paved surfaces.",
+          q: "Do you plow while it is still snowing?",
+          a: "Most residential properties are serviced after the storm ends or approaches completion. During long or heavy storms, additional visits may be necessary to keep properties accessible and prevent excessive accumulation.",
+        },
+        {
+          q: "What does residential snow service include?",
+          a: "Service can include driveway plowing, hand-shoveling walkways, steps, landings, and entrances, along with salting or deicing. Your quote will identify exactly which areas are included.",
+        },
+        {
+          q: "Is salt included with every visit?",
+          a: "Salt is included only when listed in your service plan. It can be applied to driveways, walkways, steps, and entrances as an optional or scheduled service.",
+        },
+        {
+          q: "Do you offer seasonal contracts and per-visit service?",
+          a: "Service options depend on the property and route availability. We can quote seasonal, prepaid, or per-visit arrangements and explain which option best fits your needs.",
+        },
+        {
+          q: "What happens during a large snowfall?",
+          a: "Deeper storms require more time, labor, and equipment use and may require multiple visits. Any depth-based price changes or additional services will be explained before the season begins.",
+        },
+        {
+          q: "Do you clear around parked vehicles?",
+          a: "We clear accessible areas but cannot properly plow underneath or immediately around parked vehicles. Keeping the driveway open when possible allows us to provide the most complete service.",
+        },
+        {
+          q: "How can I prepare my property for snow service?",
+          a: "Remove portable basketball hoops, extension cords, decorations, newspapers, and other obstacles. Keep vehicles out of the service area when possible and identify any fragile pavement, low landscaping, or hidden hazards before winter.",
+        },
+        {
+          q: "Do you install driveway markers?",
+          a: "Markers are installed where appropriate to identify pavement edges, landscaping, and other areas that may be difficult to see once snow accumulates.",
+        },
+        {
+          q: "Do you provide commercial snow and ice management?",
+          a: "Yes. Commercial service is available for lots, drive lanes, sidewalks, entrances, and other agreed areas. Each property receives a customized scope based on operating hours, traffic, safety needs, and trigger requirements.",
         },
       ],
       blurb:
@@ -522,19 +590,55 @@ export const site = {
     },
   ] satisfies ServiceCategory[],
 
-  /* --- FAQ shared by every service + location page --- */
+  /* --- General FAQ (client-written, Nov 2026). Home page shows all eight. --- */
+  homeFaq: [
+    {
+      q: "What areas do you serve?",
+      a: "Jaws Lawn & Snow is based in Belleville and serves Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor, Saline, and select nearby communities. If you’re close but don’t see your city listed, contact us—we may still be able to help.",
+    },
+    {
+      q: "Are you fully insured?",
+      a: "Yes. Jaws Lawn & Snow is fully insured for the services we provide. Proof of insurance is available for customers, property managers, and commercial accounts upon request.",
+    },
+    {
+      q: "Do you provide free estimates?",
+      a: "Yes. Estimates are free, straightforward, and come with no pressure or obligation. Submit our online quote form or call or text us at (734) 262-2365.",
+    },
+    {
+      q: "How quickly will I receive my estimate?",
+      a: "We respond as quickly as possible, usually within one business day. Some properties can be quoted from photos and property information, while larger or more detailed projects may require an on-site visit.",
+    },
+    {
+      q: "Do you serve residential and commercial properties?",
+      a: "Yes. We work with homeowners, rental properties, businesses, associations, and other commercial properties. Service plans are customized around the property and the work required.",
+    },
+    {
+      q: "Can I hire Jaws for both lawn care and snow removal?",
+      a: "Yes. We provide year-round property care, allowing you to use one dependable local company for lawn maintenance, landscaping, seasonal cleanups, and winter snow service.",
+    },
+    {
+      q: "Do you offer one-time work or only recurring service?",
+      a: "We offer both. Regularly scheduled service is available for mowing and snow removal, while cleanups, trimming, mulch, brush removal, stump grinding, seeding, and similar projects can be scheduled as one-time jobs.",
+    },
+    {
+      q: "How does payment work?",
+      a: "You’ll receive clear pricing before work begins. Invoices and payment instructions are sent electronically, making it easy to review and pay for your service.",
+    },
+  ],
+
+  /* --- FAQ shared by every service + location page (subset of homeFaq) --- */
   sharedFaq: [
     {
-      q: "Is the quote free?",
-      a: "Yes. Quotes are free with no pressure and no obligation.",
+      q: "Do you provide free estimates?",
+      a: "Yes. Estimates are free, straightforward, and come with no pressure or obligation. Submit our online quote form or call or text us at (734) 262-2365.",
     },
     {
-      q: "How do I get a quote?",
-      a: "Fill out the quote form, or call or text (734) 262-2365.",
+      q: "How quickly will I receive my estimate?",
+      a: "We respond as quickly as possible, usually within one business day. Some properties can be quoted from photos and property information, while larger or more detailed projects may require an on-site visit.",
     },
     {
-      q: "Which areas do you serve?",
-      a: "We're based in Belleville and serve Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor, Saline, and select surrounding areas.",
+      q: "What areas do you serve?",
+      a: "Jaws Lawn & Snow is based in Belleville and serves Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor, Saline, and select nearby communities. If you’re close but don’t see your city listed, contact us—we may still be able to help.",
     },
   ],
 
