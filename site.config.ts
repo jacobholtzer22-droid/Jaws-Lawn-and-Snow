@@ -466,7 +466,7 @@ export const site = {
       faq: [
         {
           q: "What is a snowfall trigger?",
-          a: "The trigger is the amount of accumulated snow required before service begins. Your trigger—commonly one or two inches—is agreed upon before the season so you know when to expect service.",
+          a: "The trigger is the amount of accumulated snow required before service begins. Your trigger, commonly one or two inches, is agreed upon before the season so you know when to expect service.",
         },
         {
           q: "When will you arrive after it snows?",
@@ -594,7 +594,7 @@ export const site = {
   homeFaq: [
     {
       q: "What areas do you serve?",
-      a: "Jaws Lawn & Snow is based in Belleville and serves Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor, Saline, and select nearby communities. If you’re close but don’t see your city listed, contact us—we may still be able to help.",
+      a: "Jaws Lawn & Snow is based in Belleville and serves Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor, Saline, and select nearby communities. If you’re close but don’t see your city listed, contact us. We may still be able to help.",
     },
     {
       q: "Are you fully insured?",
@@ -638,7 +638,7 @@ export const site = {
     },
     {
       q: "What areas do you serve?",
-      a: "Jaws Lawn & Snow is based in Belleville and serves Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor, Saline, and select nearby communities. If you’re close but don’t see your city listed, contact us—we may still be able to help.",
+      a: "Jaws Lawn & Snow is based in Belleville and serves Canton, Belleville, Van Buren Township, Ypsilanti, Ann Arbor, Saline, and select nearby communities. If you’re close but don’t see your city listed, contact us. We may still be able to help.",
     },
   ],
 
